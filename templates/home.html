@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fake Frontend</title>
+</head>
+<body>
+  <h1>Farmer Query Frontend</h1>
+
+  <input id="query" placeholder="Type something" />
+  <button onclick="sendQuery()">Send</button>
+
+  <p id="response_query"></p>
+  
+  <h1>Farmer Feedback Frontend</h1>
+
+  <input id="feedback" placeholder="Give us your feedback" />
+  <button onclick="sendFeedback()">Send</button>
+
+  <p id="response_feedback"></p>
+
+  <script>
+    async function sendQuery() {
+      const query = document.getElementById('query').value;
+
+      const res = await fetch('http://127.0.0.1:5000/query', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query })
+      });
+
+      const data = await res.json();
+      document.getElementById('response_query').innerText = "Response: " + data.response;
+
+    }
+    async function sendFeedback() {
+      const feedback = document.getElementById('feedback').value;
+
+      const res = await fetch('http://127.0.0.1:5000/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ feedback })
+      });
+
+      const data = await res.json();
+      document.getElementById('response_feedback').innerText = "Response: " + data.response;
+      
+    }
+  </script>
+</body>
+</html>
