@@ -59,6 +59,8 @@ def home_page():
 @app.route('/api/signin', methods=["POST"])
 def signin():
     username, password = request.json["username"], request.json["password"]
+    if not username or not password:
+        return jsonify({"response": "Username or password missing."})
     if username in users:
         return jsonify({"response": "This Username is already taken, Please take another one."})
     else:
