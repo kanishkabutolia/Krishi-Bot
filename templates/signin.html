@@ -4,15 +4,14 @@
     <title>Fake Frontend</title>
 </head>
 <body>
-    <h1>Login</h1>
+    <h1>Sign In</h1>
 
     <h3>Username</h3>
-    <input id="username" placeholder="Type your registered username" />
+    <input id="username" placeholder="Type your desired username" />
     <p></p>
     <h3>Password</h3>
     <input id="password" placeholder="Password" type="password" />
     <button onclick="sendUser()">Login</button>
-    <a href="/signin" style="margin-top: 50px; display: block;">Not Registered? Click here!</a>
     <p id="response"></p>
 
     <script>
@@ -20,7 +19,7 @@
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
 
-            const res = await fetch('http://127.0.0.1:5000/api/login', {
+            const res = await fetch('http://127.0.0.1:5000/api/signin', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ "username": username, "password": password })

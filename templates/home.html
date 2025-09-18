@@ -22,7 +22,7 @@
     async function sendQuery() {
       const query = document.getElementById('query').value;
 
-      const res = await fetch('http://127.0.0.1:5000/query', {
+      const res = await fetch('http://127.0.0.1:5000/api/query', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query })
@@ -35,7 +35,7 @@
     async function sendFeedback() {
       const feedback = document.getElementById('feedback').value;
 
-      const res = await fetch('http://127.0.0.1:5000/feedback', {
+      const res = await fetch('http://127.0.0.1:5000/api/feedback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ feedback })

@@ -6,7 +6,7 @@ app = Flask(__name__)
 # Database-related stubs
 # -------------------------
 database = {"pests": "Use XYZ."}
-users = {"Rajesh": "Rajesh123", "Harsh": "Mohit@Kumar123"}
+users = {"Rajesh": "Rajesh123", "Mohit": "Mohit@Kumar123"}
 feedbacks = []
 queries = []
 def connect_db():
@@ -44,6 +44,26 @@ def init():
 @app.route('/login')
 def login_page():
     return render_template("login.html")
+    # TODO: Login Page
+
+@app.route('/signin')
+def sign_page():
+    return render_template("signin.html")
+    # TODO: Sign In page
+
+@app.route('/home')
+def home_page():
+    return render_template("home.html")
+    # TODO: Home Page
+
+@app.route('/api/signin', methods=["POST"])
+def signin():
+    username, password = request.json["username"], request.json["password"]
+    if username in users:
+        return jsonify({"response": "This Username is already taken, Please take another one."})
+    else:
+        users[username] = password
+        return jsonify({"response": "success"})
 
 @app.route('/api/login', methods=["POST"])
 def login():
@@ -52,14 +72,8 @@ def login():
         return jsonify({"response": "success"})
     else:
         return jsonify({"response": "Incorrect username or password."})
-    # TODO: Login Page
 
-@app.route('/home')
-def home_page():
-    return render_template("home.html")
-    # TODO: Home Page
-
-@app.route('/query', methods=['POST'])
+@app.route('/api/query', methods=['POST'])
 def handle_query():
     query = request.json["query"].lower()
     save_query(query)
@@ -68,7 +82,7 @@ def handle_query():
     # TODO: Get query type (text/image), call appropriate process function
     # TODO: Save query and generate response
 
-@app.route('/feedback', methods=['POST'])
+@app.route('/api/feedback', methods=['POST'])
 def handle_feedback():
     save_feedback(request.json["feedback"])
     return jsonify({"response": "Thank you for feedback!"})
