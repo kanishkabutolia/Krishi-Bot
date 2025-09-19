@@ -28,7 +28,7 @@
 
         const data = await res.json();
         if (data.response === "success") {
-            window.location.href = "/home"; // redirect on client side
+            window.location.href = "/otp"; // redirect on client side
         } else {
             document.getElementById("response").innerText = data.response;
         }}

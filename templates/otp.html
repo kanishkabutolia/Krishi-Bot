@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fake Frontend</title>
+</head>
+<body>
+
+    <h3 style="margin-top: 50px;">OTP</h3>
+    <input id="otp" placeholder="Enter the OTP." />
+    <p></p>
+    <button onclick="Verify()">Verify</button>
+    <a href="/otp" style="margin-top: 50px; display: block;">Did not receive? Send Again!</a>
+    <p id="response"></p>
+
+    <script>
+        async function sendOTP() {
+            const res = await fetch('http://127.0.0.1:5000/api/send_otp', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' }
+            });
+            window.data = await res.json();
+        }
+        
+        sendOTP()
+        
+        async function Verify() {
+            const otp = document.getElementById("otp").value;
+            if (window.data.response === otp) {
+                window.location.href = "/home"; // redirect on client side
+            } else {
+                document.getElementById("response").innerText = "Incorrect OTP.";
+        }}
+    </script>
+</body>
+</html>
