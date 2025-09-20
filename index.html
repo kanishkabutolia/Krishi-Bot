@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FarmAssist</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    body {
+      background-color: #f5f5f5;
+    }
+
+    h1.section-title, h2.fw-bold {
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Rounded cards */
+    .card-rounded {
+      border-radius: 12px !important;
+    }
+
+    /* FAQ accordion buttons rounded */
+    .accordion-button {
+      border-radius: 8px;
+    }
+
+    /* FAQ search bar rounded */
+    .faq-search .form-control {
+      border-radius: 0.5rem 0 0 0.5rem;
+    }
+
+    .faq-search .btn {
+      border-radius: 0 0.5rem 0.5rem 0;
+    }
+
+    /* Resource Boxes hover */
+    .resource-box {
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .resource-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    }
+
+    /* Buttons in FAQ Categories */
+    .faq-btn {
+      background-color: rgba(229, 225, 225, 0.85);
+      color: black;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .faq-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    /* Contact buttons hover */
+    .contact-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    /* Status badges */
+    .badge-pending {
+      background-color: #ffc107;
+      color: #212529;
+    }
+    .badge-answered {
+      background-color: #28a745;
+    }
+
+    /* Fade-in animation for new queries */
+    .fade-in {
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark shadow sticky-top" style="background-color: #1F4224;">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+      <img src="assets/images/leaf.png" alt="FarmAssist Logo" height="40">
+      <span class="fw-bold text-white">FarmAssist</span>
+    </a>
+    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav gap-2">
+        <li class="nav-item"><a class="nav-link text-white" href="index.html"><i class="bi bi-house"></i> Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="queries.html"><i class="bi bi-question-circle"></i> Queries</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="profile.html"><i class="bi bi-person"></i> Profile</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="help.html"><i class="bi bi-telephone"></i> Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Header -->
+<main class="help">
+  <div class="container text-center my-5">
+    <h1 class="mb-4 fw-bold">Help and Support</h1>
+    <p class="lead">Find answers to common questions and learn how to make the most of Krishibot.</p>
+  </div>
+</main>
+
+<!-- Main Content -->
+<main class="container my-5">
+  <div class="row g-4">
+    <!-- Left Column: FAQ + My Queries (70%) -->
+    <div class="col-lg-8 d-flex flex-column gap-3">
+      
+      <!-- FAQ Section Card -->
+      <div class="p-4 bg-white border rounded shadow-sm">
+        <h2 class="fw-bold mb-3">Frequently Asked Questions</h2>
+
+        <!-- Search Bar -->
+        <div class="faq-search mb-3">
+          <div class="input-group">
+            <input id="faqSearch" type="text" class="form-control" placeholder="Search FAQs...">
+            <button class="btn btn-success"><i class="bi bi-search"></i></button>
+          </div>
+        </div>
+
+        <!-- FAQ Accordion -->
+        <div class="accordion" id="faqAccordion">
+          <div class="accordion-item card-rounded">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                How to manage crop irrigation?
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">You can manage crop irrigation by setting schedules based on crop type and weather conditions.</div>
+            </div>
+          </div>
+          <div class="accordion-item card-rounded">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                How long does it take for a query to be answered?
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Most queries are answered within 2-4 business hours. Complex queries may take up to 24 hours. Emergency queries are escalated for faster response.</div>
+            </div>
+          </div>
+          <div class="accordion-item card-rounded">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                How to track my queries history?
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">You can view all your queries under 'My Queries' section with their status.</div>
+            </div>
+          </div>
+          <div class="accordion-item card-rounded">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                Is Krishibot free to use?
+              </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Basic features of Krishibot are free. Premium features like soil report require a subscription.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- My Queries Section Card -->
+      <div class="p-4 bg-white border rounded shadow-sm">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2 class="fw-bold mb-0">My Queries</h2>
+          <button class="btn btn-success d-flex align-items-center gap-1" data-bs-toggle="modal" data-bs-target="#addQueryModal">
+            <i class="bi bi-plus-lg"></i> Add Query
+          </button>
+        </div>
+
+        <!-- Search Bar with Filter -->
+        <div class="d-flex mb-3 gap-2">
+          <input id="querySearch" type="text" class="form-control" placeholder="Search your queries...">
+          <select id="queryFilter" class="form-select filter-select">
+            <option value="all">All</option>
+            <option value="answered">Answered</option>
+            <option value="pending">Pending</option>
+          </select>
+          <button class="btn btn-success"><i class="bi bi-search"></i></button>
+        </div>
+
+        <!-- Queries List -->
+        <div class="list-group" id="queriesList">
+          <div class="list-group-item list-group-item-action flex-column align-items-start query-item fade-in" data-status="answered">
+            <div class="d-flex w-100 justify-content-between">
+              <h6 class="mb-1 fw-bold">Query 1: How to increase wheat yield?</h6>
+              <span class="badge badge-answered">Answered</span>
+            </div>
+            <p class="mb-1">Tips and best practices for wheat crop yield improvement.</p>
+          </div>
+          <div class="list-group-item list-group-item-action flex-column align-items-start query-item fade-in" data-status="pending">
+            <div class="d-flex w-100 justify-content-between">
+              <h6 class="mb-1 fw-bold">Query 2: Best irrigation schedule?</h6>
+              <span class="badge badge-pending">Pending</span>
+            </div>
+            <p class="mb-1">Looking for optimal irrigation methods for different crops.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right Column: Boxes (30%) -->
+    <div class="col-lg-4 d-flex flex-column gap-3">
+      <!-- FAQ Categories Box -->
+      <div class="p-3 bg-light border rounded text-center flex-fill">
+        <h5 class="mb-3 fw-bold">FAQ Categories</h5>
+        <div class="d-grid gap-2" style="grid-template-columns: repeat(2, 1fr);">
+          <button class="faq-btn">Getting Started</button>
+          <button class="faq-btn">Response Times</button>
+          <button class="faq-btn">Query Types</button>
+          <button class="faq-btn">Pricing</button>
+        </div>
+      </div>
+
+      <!-- Help Resources Box -->
+      <div class="p-3 bg-light border rounded text-center flex-fill">
+        <h5 class="mb-3 fw-bold">Help Resources</h5>
+        <div class="d-flex flex-column gap-3">
+          <div class="p-3 border border-dark rounded text-center bg-white shadow-sm resource-box">
+            <h6 class="fw-bold">Getting Started with Krishibot</h6>
+            <p class="mb-0">Complete guide to using the platform efficiently</p>
+          </div>
+          <div class="p-3 border border-dark rounded text-center bg-white shadow-sm resource-box">
+            <h6 class="fw-bold">Crop Disease Identification Guide</h6>
+            <p class="mb-0">Visual guide to common crop diseases and treatments</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Still Need Help Box -->
+      <div class="p-3 bg-light border rounded text-center flex-fill">
+        <h5 class="mb-3 fw-bold">Still Need Help?</h5>
+        <p class="mb-3">Contact our support team directly:</p>
+        <div class="d-flex flex-column gap-2 align-items-center">
+          <a href="tel:+911234567890" class="btn btn-outline-dark w-75 d-flex align-items-center justify-content-center gap-2 contact-btn">
+            <i class="bi bi-telephone-fill"></i> +91 12345 67890
+          </a>
+          <a href="mailto:support@krishibot.com" class="btn btn-outline-dark w-75 d-flex align-items-center justify-content-center gap-2 contact-btn">
+            <i class="bi bi-envelope-fill"></i> support@krishibot.com
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Add Query Modal -->
+<div class="modal fade" id="addQueryModal" tabindex="-1" aria-labelledby="addQueryModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="addQueryModalLabel">Add New Query</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="addQueryForm">
+          <div class="mb-3">
+            <label for="queryTitle" class="form-label">Query Title</label>
+            <input type="text" class="form-control" id="queryTitle" placeholder="Enter your query title" required>
+          </div>
+          <div class="mb-3">
+            <label for="queryDescription" class="form-label">Description</label>
+            <textarea class="form-control" id="queryDescription" rows="3" placeholder="Enter query description" required></textarea>
+          </div>
+          <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-success">Add Query</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // FAQ search
+  document.getElementById('faqSearch').addEventListener('input', function () {
+    const query = this.value.toLowerCase();
+    document.querySelectorAll('#faqAccordion .accordion-item').forEach(faq => {
+      faq.style.display = faq.innerText.toLowerCase().includes(query) ? "block" : "none";
+    });
+  });
+
+  // Queries: add new query
+  const queriesList = document.getElementById('queriesList');
+  const queryForm = document.getElementById('addQueryForm');
+
+  function getNextQueryNumber() {
+    return queriesList.querySelectorAll('.query-item').length + 1;
+  }
+
+  queryForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    const title = document.getElementById('queryTitle').value.trim();
+    const description = document.getElementById('queryDescription').value.trim();
+    if(!title || !description) return;
+
+    const number = getNextQueryNumber();
+    const div = document.createElement('div');
+    div.className = 'list-group-item list-group-item-action flex-column align-items-start query-item fade-in';
+    div.dataset.status = 'pending';
+    div.innerHTML = `
+      <div class="d-flex w-100 justify-content-between">
+        <h6 class="mb-1 fw-bold">Query ${number}: ${title}</h6>
+        <span class="badge badge-pending">Pending</span>
+      </div>
+      <p class="mb-1">${description}</p>
+    `;
+    queriesList.appendChild(div);
+    queryForm.reset();
+    bootstrap.Modal.getInstance(document.getElementById('addQueryModal')).hide();
+    filterQueries(); // update visibility
+  });
+
+  // Queries search & filter
+  const querySearch = document.getElementById('querySearch');
+  const queryFilter = document.getElementById('queryFilter');
+
+  function filterQueries() {
+    const searchText = querySearch.value.toLowerCase();
+    const filterValue = queryFilter.value.toLowerCase();
+    document.querySelectorAll('.query-item').forEach(query => {
+      const text = query.innerText.toLowerCase();
+      const status = query.dataset.status.toLowerCase();
+      query.style.display = (text.includes(searchText) && (filterValue === 'all' || filterValue === status)) ? "block" : "none";
+    });
+  }
+
+  querySearch.addEventListener('input', filterQueries);
+  queryFilter.addEventListener('change', filterQueries);
+</script>
+
+</body>
+</html>

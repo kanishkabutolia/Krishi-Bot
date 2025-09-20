@@ -1,0 +1,48 @@
+body {
+      background-color: #f5f5f5;
+    }
+    h1.section-title {
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    /* Rounded cards */
+    .card-rounded {
+      border-radius: 12px !important;
+    }
+    /* FAQ accordion buttons rounded */
+    .accordion-button {
+      border-radius: 8px;
+    }
+    /* FAQ search bar rounded */
+    .faq-search .form-control {
+      border-radius: 0.5rem 0 0 0.5rem;
+    }
+    .faq-search .btn {
+      border-radius: 0 0.5rem 0.5rem 0;
+    }
+    /* Resource Boxes hover */
+    .resource-box {
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .resource-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    }
+    /* Buttons in FAQ Categories */
+    .faq-btn {
+      background-color: rgba(229, 225, 225, 0.85);
+      color: black;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .faq-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    /* Contact buttons hover */
+    .contact-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
