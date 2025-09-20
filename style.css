@@ -643,110 +643,41 @@ main{
   height: 14px;
   margin-right: 5px;
 }
-/* footer */
-footer{
-  background-color:#00480D;
+/* Footer main container */
+footer {
+  background-color: #00480D;
   width: 100%;
   min-height: 20rem;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: auto;
+  margin: auto;
+  padding: 20px 0;
+}
 
-}
-footer> div{
+/* Container holding the 4 divs */
+footer > div:first-child {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
+  width: 100%;
+  justify-content: space-between; /* spreads divs evenly */
+  align-items: flex-start;
 }
-.fd{
-  width: 20%;
+
+/* 3 smaller divs */
+.fd {
+  width: 20%; /* 20% of footer width each */
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding: 30px;
 }
-.fd>img{
-  height: 5rem;
-  width: 30%;
-}
-footer div>p{
-  color: rgba(255, 255, 255, 0.79);
-  font-size: 17px;
-}
-.fd1> p:first-of-type{
-  font-size: 20px;
-}
-.fd1>p>img{
-  margin-right: 10px;
-  height: 15px;
-}
-.fd>a{
-  text-decoration: none;
-  color: rgba(255, 255, 255, 0.79);
-}
-.fd>a:hover{
-  color: white;
-  cursor: pointer;
-}
-.fd>h3{
-  color: white;
-}
-.fd1{
-  width: 40%;
-}
-.fdd2{
-  width: 96%;
-  background-color: rgba(255, 255, 255, 0.233);
-  border-radius: 10px;
-  border: 1px solid rgba(158, 157, 157, 0.752);
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 20px;
 
-}
-.fdd2>div>h3{
-  color: #00480D;
-  margin-bottom: 5px;
-}
-.fdd2>div>input{
-  height: 40px;
-  width: 250px;
-  border: none;
-  border-radius: 8px;
-  padding: 10px;
-  font-size: 15px;
-}
-.fdd2>div>button{
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  font-weight: 500;
-  font-size: 15px;
-  background-color: rgba(255, 255, 255, 0.703);
-}
-.fdd2>div>button:hover{
-  cursor: pointer;
-  background-color: rgb(255, 255, 255);
-}
-.fdd2 > div:last-child {
+/* 1 larger div */
+.fd1 {
+  width: 40%; /* 40% of footer width */
   display: flex;
-  align-items: center;
-  gap: 10px; 
-}
-footer div:last-of-type{
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding: 15px 25px;
-}
-.imgg{
-  height: 20px;
-  margin-right: 10px;
-}
-#p{
-  font-size: 12px;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px;
 }
