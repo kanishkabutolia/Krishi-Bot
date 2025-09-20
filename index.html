@@ -1,0 +1,162 @@
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>कृषिBot-AI-Powered Farmer Query Support & Advisory System</title>
+    <link rel="shortcut icon" href="images/Favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <link rel="shortcut icon" href="images/Favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+</head>
+<body>
+    <header>
+        <nav id="nav">
+            <a href="#"><img src="KrishiBot2.png" alt="image" class="Logo"></a>
+            <div id="nav-cont">
+                <ul id="header-ul">
+                    <a href="#" class="a-li"><li class="li"><img src="Home-icon.png" alt="image1">Home</li></a>
+                    <a href="#" class="a-li"><li class="li"><img src="Query-icon.png" alt="image2">Query</li></a>
+                    <a href="#" class="a-li"><li class="li"><img src="Profile-icon.png" alt="image3">My Profile</li></a>
+                    <a href="#" class="a-li"><li class="li"><img src="Call-icon.png" alt="image4">Contact</li></a>
+                </ul>
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        <span id="selected-lang">
+                            <img src="Englihs-icon .png" alt="English" class="Icon"> English
+                        </span>
+                        <img src="down-arrow.png" alt="down-arrow" class="arrow">
+                    </button>
+                    <div class="dropdown-content">
+                        <div onclick="setLang('English','images/Englihs-icon.png')">
+                        <img src="Englihs-icon (1).png" class="Language"> English
+                        </div>
+                        <div onclick="setLang('हिन्दी','images/Hindi-icon.png')">
+                        <img src="Hindi-icon.png" class="Language"> हिन्दी (Hindi)
+                        </div>
+                        <div onclick="setLang('മലയാളം','images/Language-icon.png')">
+                        <img src="Language-icon.png" class="Language"> മലയാളം (Malayalam)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </nav>
+         <h1> My Profile </h1>
+            <p> Manage your farming profile and track your progress</p>
+        <div class =" box">
+           
+            <div class ="box1">
+                <div class="img">
+                    <img src="profile2.jpg" height="100px" width="100px" class ="profile">
+                    <h4>prem kumar Sharma </h4>
+                    <p class ="prof">Organic Farmer</p>
+                    <div class ="leaf">
+                        <i class="fa-solid fa-leaf"></i> Verified Farmer
+                      
+                    </div>
+                    
+                    
+
+</div>
+
+    <p class="first"> <i class="fa-solid fa-location-dot"></i> Village Rampur</p>
+  <p class="info"><i class="fa-solid fa-phone"></i> +91 9273961926</p>
+  <p class="info"><i class="fa-solid fa-envelope"></i> rajesh.kumar</p>
+  <p class="info"><i class="fa-solid fa-calendar"></i> Member since</p>
+
+  <button class="edit"> <i class="fa-solid fa-pen-to-square"></i>Edit profile</button>
+
+  
+                
+            </div>
+
+
+          
+            </aside>
+
+            <main class="profile-main">
+                <section class="stats-cards">
+                    <div class="stat-card">
+                        <span class="icon"><i class="fa-solid fa-square-check"></i></span>
+                        <div class="stat-value">42</div>
+                        <div class="stat-label">Queries Resolved</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="icon"><i class="fa-solid fa-users"></i></span>
+                        <div class="stat-value">8</div>
+                        <div class="stat-label">Expert Connections</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="icon"><i class="fa-solid fa-star"></i></span>
+                        <div class="stat-value">98%</div>
+                        <div class="stat-label">Satisfaction Rate</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="icon"><i class="fa-solid fa-calendar-days"></i></span>
+                        <div class="stat-value">2023</div>
+                        <div class="stat-label">Member Since</div>
+                    </div>
+                </section>
+
+                <section class="farm-details-section">
+                    <h2 class="section-header">Farm Details</h2>
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <span class="detail-label">Farm Size</span>
+                            <span class="detail-value">5.2 Acres</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Soil Type</span>
+                            <span class="detail-value">Alluvial Soil</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Primary Crops</span>
+                            <span class="detail-value">Wheat, Rice, Sugarcane</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Irrigation Method</span>
+                            <span class="detail-value">Drip Irrigation</span>
+                        </div>
+                    </div>
+                </section>
+                <div>
+                <section class="recent-queries-section">
+                    <h2 class="section-header">Recent Queries</h2>
+                    <ul class="query-list">
+                        <li class="query-item">
+                            <span class="query-text">How to treat wheat rust disease?</span>
+                            <div class="query-status">Resolved</div>
+                        </li>
+                        <li class="query-item">
+                            <span class="query-text">What is the best fertilizer for rice?</span>
+                            <div class="query-status">Resolved</div>
+                        </li>
+                        <li class="query-item">
+                            <span class="query-text">Government subsidy for drip irrigation</span>
+                            <div class="query-status">In Progress</div>
+                        </li>
+                        <li class = "vlq"> View All Queries</li>
+                    </ul>
+                </section>
+                </div>
+
+
+            
+        </div>
+         
+         
+    </header>
+</body>
+</html>
+         
+         
+    </header>
+</body>
+</html>
