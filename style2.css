@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', 'Noto Sans', 'Merriweather Sans', sans-serif;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#nav{
+    background-color: #00480D;
+    width: 100%;
+    height: 3.5rem;
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 0 1rem;
+    position: sticky;
+}
+.Logo{
+    height: 3.5rem;
+    display: inline;
+    margin-left: 50px;
+    
+}
+#nav-cont{
+    display: flex;
+    align-items: center;
+    margin-right: 80px;
+    width: 33rem;
+    gap: 1.5rem;
+}
+#header-ul{
+   list-style-type: none;
+    display: flex;
+    align-items: center;  
+    gap: 2rem;          
+    margin: 0;
+    padding: 0;
+    flex-wrap: nowrap; 
+}
+.a-li{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.886);
+}
+.li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap; 
+    text-decoration: none;
+
+}
+.li:hover{
+    background: #eaffe653;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropbtn {
+  background: none;
+  color: hsla(0, 0%, 100%, .886);
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 160px; 
+}
+.selected-lang {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.Icon {
+  width: 20px;
+  height: 20px;
+}
+.arrow {
+  width: 14px;
+  height: 14px;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: #CDFFC553;
+  border-radius: 8px;
+  margin-top: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 160px;
+  z-index: 999;
+}
+.dropdown-content div {
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.dropdown-content div:hover {
+  background: #2c9a08; 
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+main h1{
+    font-family: 'Merriweather Sans', sans-serif;
+    font-weight: 800;
+}
+main p{
+    font-size: 1.3rem;
+    color: grey;
+}
+.card{
+    height: 15rem;
+    width: 22%;
+    background-color: rgba(236, 234, 234, 0.342);
+}
