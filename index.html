@@ -4,43 +4,275 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>कृषिBot-AI-Powered Farmer Query Support & Advisory System</title>
-    <link rel="shortcut icon" href="images/Favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/images/Favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
 <body>
     <header>
         <nav id="nav">
-            <a href="#"><img src="images/KrishiBot2.png" alt="image" class="Logo"></a>
+            <a href="#"><img src="assets/images/logo.png" alt="image" class="Logo"></a>
             <div id="nav-cont">
                 <ul id="header-ul">
-                    <a href="#" class="a-li"><li class="li"><img src="images/Home-icon.png" alt="image1">Home</li></a>
-                    <a href="#" class="a-li"><li class="li"><img src="images/Query-icon.png" alt="image2">Query</li></a>
-                    <a href="#" class="a-li"><li class="li"><img src="images/Profile-icon.png" alt="image3">My Profile</li></a>
-                    <a href="#" class="a-li"><li class="li"><img src="images/Call-icon.png" alt="image4">Contact</li></a>
+                    <a href="#" class="a-li"><li class="li"><img src="assets/icon/Home-icon.png" alt="image1">Home</li></a>
+                    <a href="#" class="a-li"><li class="li"><img src="assets/icon/Query-icon.png" alt="image2">Query</li></a>
+                    <a href="#" class="a-li"><li class="li"><img src="assets/icon/Profile-icon.png" alt="image3">My Profile</li></a>
+                    <a href="#" class="a-li"><li class="li"><img src="assets/icon/Call-icon.png" alt="image4">Contact</li></a>
                 </ul>
                 <div class="dropdown">
                     <button class="dropbtn">
                         <span id="selected-lang">
-                            <img src="images/Englihs-icon.png" alt="English" class="Icon"> English
+                            <img src="assets/icon/Englihs-icon.png" alt="English" class="Icon"> English
                         </span>
-                        <img src="images/down-arrow.png" alt="down-arrow" class="arrow">
+                        <img src="assets/icon/down-arrow.png" alt="down-arrow" class="arrow">
                     </button>
                     <div class="dropdown-content">
-                        <div onclick="setLang('English','images/Englihs-icon.png')">
-                        <img src="images/Englihs-icon.png" class="Language"> English
+                        <div onclick="setLang('English','assets/icon/Englihs-icon.png')">
+                        <img src="assets/icon/Englihs-icon.png" class="Language"> English
                         </div>
-                        <div onclick="setLang('हिन्दी','images/Hindi-icon.png')">
-                        <img src="images/Hindi-icon.png" class="Language"> हिन्दी (Hindi)
+                        <div onclick="setLang('हिन्दी','assets/icon/Hindi-icon.png')">
+                        <img src="assets/icon/Hindi-icon.png" class="Language"> हिन्दी (Hindi)
                         </div>
-                        <div onclick="setLang('മലയാളം','images/Language-icon.png')">
-                        <img src="images/Language-icon.png" class="Language"> മലയാളം (Malayalam)
+                        <div onclick="setLang('മലയാളം','assets/icon/Language-icon.png')">
+                        <img src="assets/icon/Language-icon.png" class="Language"> മലയാളം (Malayalam)
                         </div>
                     </div>
                 </div>
             </div>
-            
         </nav>
     </header>
+    <main>
+        <!-- main image content -->
+        <div id="headline">
+            <div>
+                <h1>Get Expert Farming Advice Instantly</h1>
+                <p>Connect with agricultural experts, get answers to your farming questions, and receive personalized advice to boost your crop yields</p>
+                <button><a href="#"><img src="assets/icon/ask-icon.png" alt="Ask Your Query">Ask Your Query</a></button>
+                <div id="small-div">
+                    <div class="div"><a href="#"><img src="assets/icon/chat-bubble.png" alt="Chat-bubble">Text</a></div>
+                    <div class="div"><a href="#"><img src="assets/icon/mic-icon.png" alt="Voice">Voice</a></div>
+                    <div class="div"><a href="#"><img src="assets/icon/cam-icon.png" alt="image">Image</a></div>
+                </div>
+            </div>
+        </div>
+        <!-- quick help categories -->
+         <div id="div2">
+            <h1>Quick Help Categories</h1>
+            <p>Get instant answers for the most common farming questions</p>
+            <div id="box">
+                <div class="div1">
+                    <img src="assets/icon/bug-icon.png" alt="Bugs">
+                    <h3>Pests & Diseases</h3>
+                    <p>Identify and treat crop pests and diseases</p>
+                    <button class="button"><a href="#">Get Help <img src="assets/icon/right-arrow.png" alt="Right-arrow"></a></button>
+                </div>
+                <div class="div2">
+                    <img src="assets/icon/weather icon.png" alt="Weather">
+                    <h3>Weather Forecast</h3>
+                    <p>Get weather updates and farming alerts</p>
+                    <button class="button"><a href="#">Get Help <img src="assets/icon/right-arrow.png" alt="Right-arrow"></a></button>
+                </div>
+                <div class="div3">
+                    <img src="assets/icon/dollar icon.png" alt="Dollar">
+                    <h3>Government Subsidies</h3>
+                    <p>Find available subsidies and schemes</p>
+                    <button class="button"><a href="#">Get Help <img src="assets/icon/right-arrow.png" alt="Right-arrow"></a></button>
+                </div>
+                <div class="div4">
+                    <img src="assets/icon/graph-icon.png" alt="Graph">
+                    <h3>Market Trends</h3>
+                    <p>Check crop prices and market demand</p>
+                    <button class="button"><a href="#">Get Help <img src="assets/icon/right-arrow.png" alt="Right-arrow"></a></button>
+                </div>
+            </div>
+         </div>
+         <!-- Advisory Results -->
+        <div id="div3">
+            <h1>Your Advisory Results</h1>
+            <p>Expert advice and solutions for your farming queries</p>
+            <div class="card card1">
+                <div>
+                    <h3>Leaf yellowing in wheat crop <img src="assets/icon/checkmark-icon.png" alt="Check"></h3>
+                    <p>2 hours ago</p>
+                </div>
+                <div>
+                    <button>Plant Disease</button>
+                    <button>Answered</button>
+                    <button><img src="assets/icon/person-icon.png" alt="Profile"> Dr. Rajesh Kumar</button>
+                </div>
+                <div>
+                    <h2><img src="assets/icon/alert-icon.png" alt="Alert">Important Notice</h2>
+                    <p>Diagnosed as nitrogen deficiency. Apply urea fertilizer at 50kg/acre immediately. Soil test recommended.</p>
+                </div>
+                <hr>
+                <div>
+                     <p>Rate this answer: <img src="assets/icon/5 full star-icon.png" alt="Star"></p>
+                     <button><img src="assets/icon/chat-black-icon.png" alt="Chat-bubble">Follow-up</button>
+                </div>
+            </div>
+            <div class="card card2">
+                <div>
+                    <h3>Best time for cotton sowing <img src="assets/icon/checkmark-icon.png" alt="Check"></h3>
+                    <p>1 day ago</p>
+                </div>
+                <div>
+                    <button>Crop Planning</button>
+                    <button>Answered</button>
+                    <button><img src="assets/icon/person-icon.png" alt="Profile"> Prof. Meera Singh</button>
+                </div>
+                <div id="card23">
+                    <p>Optimal sowing window is April 15-May 15 for your region. Ensure soil temperature above 18°C.</p>
+                </div>
+                <hr>
+                <div>
+                     <p>Rate this answer: <img src="assets/icon/star-icon.png" alt="Star"></p>
+                     <button><img src="assets/icon/chat-black-icon.png" alt="Chat-bubble">Follow-up</button>
+                </div>
+            </div>
+            <div class="card card3">
+                <div>
+                    <h3>Unusual pest attack on tomatoes <img src="assets/icon/alert-icon.png" alt="Check"></h3>
+                    <p>3 hours ago</p>
+                </div>
+                <div>
+                    <button>Pest Control</button>
+                    <button>Escalated</button>
+                    <button><img src="assets/icon/person-icon.png" alt="Profile"> Pending Assignment</button>
+                </div>
+                <div >
+                    <h2><img src="assets/icon/alert-icon.png" alt="Alert">Important Notice</h2>
+                    <p>Query escalated to entomology specialist. Field visit scheduled within 48 hours.</p>
+                </div>
+            </div>
+        </div>
+        <!-- What Farmers Are Saying -->
+         <div id="div4">
+            <h1>What Farmers Are Saying</h1>
+            <p>Real success stories from farmers across India</p>
+            <div id="cards">
+                <div class="cardss cards1">
+                    <p><img src="assets/icon/quotation-icon.png" alt="Quotation">"FarmAdvisor helped me identify and treat a pest problem that could have destroyed my entire cotton crop. The expert advice was accurate and timely."</p>
+                    <hr>
+                    <div id="divv">
+                        <div>
+                            <img src="assets/icon/profile2-icon.png" alt="Profile">
+                            <div>
+                                 <p>Ramesh Patel</p>
+                                <p>Gujarat, India</p>
+                            </div>
+                        </div>
+                        <button>Cotton</button>
+                    </div>
+                    <img src="assets/icon/5 full star-icon.png" alt="star" id="image">
+                </div>
+                <div class="cardss cards2">
+                    <p><img src="assets/icon/quotation-icon.png" alt="Quotation">"The weather alerts and farming tips have improved my wheat yield by 30%. The chatbot is very easy to use, even for someone like me who is not tech-savvy."</p>
+                    <hr>
+                    <div id="divv">
+                        <div>
+                            <img src="assets/icon/profile2-icon.png" alt="Profile">
+                            <div>
+                                 <p>Priya Sharma</p>
+                                <p>Punjab, India</p>
+                            </div>
+                        </div>
+                        <button>Wheat</button>
+                    </div>
+                    <img src="assets/icon/5 full star-icon.png" alt="star" id="image">
+                </div>
+                <div class="cardss cards3">
+                    <p><img src="assets/icon/quotation-icon.png" alt="Quotation">"Great platform for getting quick answers to farming questions. The subsidy information helped me apply for government schemes I didn't know existed."</p>
+                    <hr>
+                    <div id="divv">
+                        <div>
+                            <img src="assets/icon/profile2-icon.png" alt="Profile">
+                            <div>
+                                 <p>Arjun Reddy</p>
+                                <p>Karnataka, India</p>
+                            </div>
+                        </div>
+                        <button>Rice</button>
+                    </div>
+                    <img src="assets/icon/star-icon.png" alt="star" id="image">
+                </div>
+            </div>
+         </div>
+         <!-- Share your experience -->
+         <div id="div5">
+            <div class="container">
+                <h2>Share Your Experience</h2>
+                <p>Help us improve by sharing your feedback.</p>
+                <form id="feedbackForm">
+                    <label for="name">Name <span>*</span></label>
+                    <input type="text" id="name" placeholder="Name" required />
+                    <label for="email">Email <span>*</span></label>
+                    <input type="email" id="email" placeholder="Email" required />
+                <div class="rating">
+                    <label>Your Rating <span>*</span></label>
+                    <div id="stars">
+                    <span class="span" data-value="1">&#9733;</span>
+                    <span class="span" data-value="2">&#9733;</span>
+                    <span class="span" data-value="3">&#9733;</span>
+                    <span class="span" data-value="4">&#9733;</span>
+                    <span class="span" data-value="5">&#9733;</span>
+                    </div>
+                </div>
+                <textarea id="message" placeholder="Tell us about your experience with कृषिBot..." required></textarea>
+                <button type="submit" id="btn"><img src="assets/icon/send-icon.png" alt="Send"> Submit Feedback</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div>
+            <div class="fd fd1">
+                <img src="assets/images/logo.png" alt="LOGO">
+                <p>Empowering farmers with expert advice, real-time weather updates, and personalized agricultural solutions for better crop yields and sustainable farming.</p>
+                <p> <img src="assets/icon/Call-icon.png" alt="Icon">+91 1800-Krishi-HELP</p>
+                <p> <img src="assets/icon/mail-icon.png" alt="Icon">support@Krishihelp.in</p>
+                <p> <img src="assets/icon/location-icon.png" alt="Icon">New Delhi, India</p>
+            </div>
+            <div class="fd fd2">
+                <h3>Services</h3>
+                <a href="#">Crop Advisory</a>
+                <a href="#">Weather Alerts</a>
+                <a href="#">Pest Control</a>
+                <a href="#">Market Prices</a>
+            </div>
+            <div class="fd fd3">
+                <h3>Support</h3>
+                <a href="#">Help Center</a>
+                <a href="#">Contact Us</a>
+                <a href="#">FAQs</a>
+                <a href="#">User Guide</a>
+            </div>
+            <div class="fd fd4">
+                <h3>Legal</h3>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+                <a href="#">Disclaimer</a>
+            </div>
+        </div>
+        <div class="fdd2">
+            <div>
+                <h3>Stay Updated</h3>
+                <p>Get the latest farming tips, weather alerts, and market updates delivered to your inbox.</p>
+            </div>
+            <div>
+                <input type="email" name="Email" id="Email" placeholder="Enter your Email">
+                <button>Subscribe</button>
+            </div>
+        </div>
+        <div id="d">
+            <p id="p">© 2025 कृषिBot. All rights reserved. | Developed for farmers, by farmers.</p>
+            <span>
+                <img class="imgg" src="assets/icon/facebook-icon.png" alt="Facebook">
+                <img class="imgg" src="assets/icon/twitter-icon.png" alt="Twitter">
+                <img class="imgg" src="assets/icon/instagram-icon.png" alt="Instagram">
+                <img class="imgg" src="assets/icon/youtube-icon.png" alt="Youtube">
+            </span>
+        </div>
+    </footer>
 </body>
 </html>

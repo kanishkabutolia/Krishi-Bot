@@ -1,7 +1,16 @@
-*{
-    padding: 0;
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', 'Noto Sans', 'Merriweather Sans', sans-serif;
 }
+body {
+    margin: 0;
+    padding: 0;
+}
+
 #nav{
     background-color: #00480D;
     width: 100%;
@@ -13,7 +22,7 @@
     position: sticky;
 }
 .Logo{
-    height: 2.5rem;
+    height: 3.5rem;
     display: inline;
     margin-left: 50px;
     
@@ -105,4 +114,639 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
+main{
 
+}
+#headline{
+  width: 100%;           
+  height: 600px;           
+  background: linear-gradient(rgba(2, 63, 2, 0.4), rgba(2, 72, 2, 0.4)), 
+    url("assets/images/main.png");
+  background-size: cover;  
+  background-position: center; 
+  background-repeat: no-repeat; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#headline div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
+}
+#headline div h1{
+  font-family: 'Merriweather Sans', sans-serif;
+  font-weight: 900;
+  color: white;
+  width: 800px;
+  text-align: center;
+  font-size: 3.2rem;
+}
+#headline div p{
+  color:white;
+  font-size: 1.5rem;
+  width: 800px;
+  text-align: center;
+}
+#headline div button{
+  background-color: white;
+  border: none;
+  font-size: 20px;
+  padding: 25px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+#headline div button a{
+  text-decoration: none;
+  color: #00480D;
+}
+#headline div button a img{
+  height: 1rem;
+  margin-right: 10px;
+}
+#headline div button:hover{
+  background-color: rgba(255, 255, 255, 0.827);
+}
+#small-div{
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center; 
+  gap: 15px;
+}
+#small-div div a{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+   text-decoration: none;
+  color: white;
+  font-size: 18px;
+} 
+#small-div div:hover{
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+}
+
+/*  quick help categories*/
+#div2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 30rem;
+  gap: 15px;
+  margin-top: 40px;
+}
+#div2 h1{
+  font-family: 'Merriweather Sans', sans-serif;
+  font-weight: 800;
+}
+#div2 p{
+  font-size: 1.3rem;
+  color: grey;
+}
+#box{
+  margin-left: 15px;
+  margin-right: 15px;
+}
+#div2 div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+#div2 div div{
+  height: 250px;
+  width: 350px;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+#div2 div div img{
+  height: 60px;
+  background-color: white;
+  padding: 15px;
+  border-radius: 50px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+#div2 div div p{
+  font-size: 16px;
+}
+#div2 div div button{
+  background: none;
+  border: 0.5px solid rgba(128, 128, 128, 0.577);
+  border-radius: 10px;
+}
+#div2 div div button:hover{
+  background-color: rgba(0, 0, 0, 0.048);
+}
+#div2 div div button a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  padding-left: 12px;
+}
+#div2 div div button img{
+  background: none;
+  box-shadow: none;
+  height: 2.5rem;
+}
+.div1{
+  background-color: rgba(255, 180, 180, 0.323);
+  border: 1px solid rgb(255, 66, 66);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.div1:hover{
+  background-color: rgba(255, 180, 180, 0.448);
+}
+.div2{
+  background-color: rgba(219, 219, 255, 0.456);
+  border: 1px solid rgb(39, 150, 255);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.div2:hover{
+  background-color: rgba(219, 219, 255, 0.664);
+}
+.div3{
+  background-color: rgba(195, 255, 195, 0.403);
+   border: 1px solid rgb(31, 251, 31);
+   border-radius: 10px;
+   cursor: pointer;
+}
+.div3:hover{
+  background-color: rgba(195, 255, 195, 0.641);
+}
+.div4{
+  background-color: rgba(255, 237, 173, 0.332);
+   border: 1px solid rgb(254, 178, 0);
+   border-radius: 10px;
+   cursor: pointer;
+}
+.div4:hover{
+  background-color: rgba(255, 237, 173, 0.616);
+}
+
+/* Advisory Results */
+#div3{
+  background-color: rgba(128, 128, 128, 0.078);
+  width: 100%;
+  height: 80rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 60px;
+}
+#div3 h1{
+  font-family: 'Merriweather Sans', sans-serif;
+  font-weight: 800;
+}
+#div3 p{
+  font-size: 1.3rem;
+  color: grey;
+}
+.card1{
+  margin-top: 50px;
+}
+.card{
+  width: 60%;
+  height: 22rem;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-left: 6px solid rgb(236, 0, 0);
+}
+.card:hover{
+  background-color: rgba(128, 128, 128, 0.045);
+}
+.card>div:first-of-type{
+  display: flex;
+  justify-content: space-between;
+  height: 10px;
+  width: 100%;
+  padding: 25px;
+  margin-top: 20px;
+}
+.card>div:first-of-type h3{
+  color: rgba(0, 0, 0, 0.781);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+#div3 div >div:first-of-type p{
+  display: inline;
+  font-size: 15px;
+}
+#div3 div div:nth-child(2){
+  display: flex;
+  gap: 20px;
+  margin-left: 25px;
+}
+#div3 div div:nth-child(2) button{
+  background-color: rgba(128, 128, 128, 0.184);
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-weight: 500;
+}
+#div3 div div:nth-child(2) button:nth-child(2){
+  background-color: #98ff7566;
+  color: #11421a;
+}
+#div3 div div:nth-child(2) button:nth-child(3){
+  background: none;
+  color: #999898;
+}
+#div3 div div:nth-child(2) button:nth-child(3) img{
+  height: 15px;
+}
+#div3 div div:nth-child(3){
+  width: 95%;
+  background-color: rgba(255, 180, 180, 0.323);
+  border: 0.5px solid rgb(255, 119, 119);
+  padding: 20px;
+  border-radius: 10px;
+  margin-left: 25px;
+  margin-top: 20px;
+}
+#div3 div div:nth-child(3) h2{
+  color: red;
+  font-weight: 400;
+  font-size: 15px;
+}
+#div3 div div:nth-child(3) h2 img{
+  height: 1rem;
+  margin-right: 5px;
+}
+#div3 div div:nth-child(3) p{
+  color: rgba(0, 0, 0, 0.684);
+  font-size: 20px;
+  font-family: 'Nota sans', sans-serif;
+  margin-top: 10px;
+  width: 90%;
+  line-height: 30px;
+}
+#div3 div hr{
+  border: none;
+  border-top: 1px solid rgba(128, 128, 128, 0.2);
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 20px;
+}
+#div3 div div:last-of-type{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding:0 25px 25px;
+  margin-top: 20px;
+}
+#div3 div div:last-of-type p{
+  color: black;
+  font-size: 15px;
+}
+#div3 div div:last-of-type p img{
+  margin-top: 2px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+#div3 div div:last-of-type button{
+  background: none;
+  border: 0.5px solid rgba(128, 128, 128, 0.304);
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#div3 div div:last-of-type button:hover{
+  background-color: rgba(201, 201, 201, 0.201);
+}
+#div3 div div:last-of-type button img{
+  margin-right: 5px;
+  height: 12px;
+}
+.card2{
+  border-left: 6px solid rgb(225, 154, 0);
+  height:18rem !important;
+}
+#card23{
+  background: none !important;
+  border: none !important;
+  padding: 10px!important;
+}
+#card23 p{
+  color: rgba(0, 0, 0, 0.684) !important;
+  font-size: 20px !important;
+  font-family: 'Nota sans', sans-serif !important;
+  line-height: 20px !important;
+  font-size: 20px !important;
+  padding: 0 !important;
+}
+.card3{
+  height: 17rem;
+}
+.card3 div:last-child{
+  width: 95% !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.card3 div:last-child h2{
+  display: block !important;
+  margin-top: 20px;
+}
+.card3 div:last-child p{
+  color: rgba(0, 0, 0, 0.684) !important;
+  font-size: 20px !important;
+  font-family: 'Nota sans', sans-serif !important;
+}
+
+/* What Farmers Are Saying */
+#div4{
+  height: 32rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+}
+#div4 h1{
+  font-family: 'Merriweather Sans', sans-serif;
+  font-weight: 800;
+  margin-top: 60px;
+}
+#div4 p{
+  font-size: 1.3rem;
+  color: grey;
+}
+#cards{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row !important;
+  height: 20rem;
+  width: 100%;
+  gap: 20px;
+  margin-top: 20px;
+}
+.cardss{
+  height: 16rem;
+  border: 0.5px solid rgba(152, 151, 151, 0.197);
+  background-color: rgba(226, 225, 225, 0.136); 
+  width: 30% !important;
+  padding: 20px;
+  border-radius: 15px;
+}
+.cardss:hover{
+  background-color: rgba(128, 128, 128, 0.126);
+}
+.cardss> p{
+  font-size: 18px !important;
+  color: rgb(32, 32, 32) !important;
+}
+.cardss >hr{
+  border: none;
+  border-top: 1px solid rgba(144, 142, 142, 0.233);
+  margin-top: 20px;
+}
+#divv{
+    display: flex;       
+    align-items: center;  
+    justify-content: space-between;
+    flex-direction: row!important;      
+    gap: 0.5rem;    
+    flex-wrap: nowrap;   
+    margin-top: 20px; 
+}
+#divv >div{
+  display: flex;        
+  gap: 0.2rem;
+}
+#divv >div >img{
+  height: 20px;
+  width: 20px;
+  display: inline;
+  margin-right: 5px;
+}
+#divv >div> div>p{
+  font-size: 0.8rem !important;
+}
+#divv >div>div> p:first-of-type{
+  font-weight: 600 !important;
+  color: #11421a !important;
+  display: block !important;
+}
+#divv >button{
+  border: none;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px;
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+#divv >button:hover{
+  background-color: rgba(128, 128, 128, 0.273);
+  cursor: pointer;
+}
+#image{
+  height: 17px !important;
+  margin-top: 5px;
+}
+
+/* Share your experience */
+#div5{
+  height: 40rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  background: rgba(223, 223, 223, 0.201);
+  padding: 30px;
+  border-radius: 10px;
+  width: 40%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border: 0.5px solid rgba(128, 128, 128, 0.274);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.container> h2 {
+  font-family: 'Merriweather Sans', sans-serif;
+  font-weight: 800;
+}
+.container> p {
+  color: grey;
+  font-size: 1rem;
+}
+.container label{
+  font-weight: 500;
+  color:rgb(95, 94, 94);
+}
+.container> form> input{
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.container span{
+  color: red;
+}
+.span {
+  font-size: 24px;
+  cursor: pointer;
+  color: #cccccc88 !important;
+}
+.span {
+  font-size: 24px;
+  cursor: pointer;
+  color: #cccccc88 !important;
+}
+#stars span.selected {
+  color: gold !important;
+}
+
+#message{
+  width: 100%;
+  height: 100px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+}
+#btn{
+  width: 100%;
+  padding: 10px;
+  background: #0056145c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+#btn>img{
+  height: 14px;
+  margin-right: 5px;
+}
+/* footer */
+footer{
+  background-color:#00480D;
+  width: 100%;
+  min-height: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: auto;
+
+}
+footer> div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.fd{
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px;
+}
+.fd>img{
+  height: 5rem;
+  width: 30%;
+}
+footer div>p{
+  color: rgba(255, 255, 255, 0.79);
+  font-size: 17px;
+}
+.fd1> p:first-of-type{
+  font-size: 20px;
+}
+.fd1>p>img{
+  margin-right: 10px;
+  height: 15px;
+}
+.fd>a{
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.79);
+}
+.fd>a:hover{
+  color: white;
+  cursor: pointer;
+}
+.fd>h3{
+  color: white;
+}
+.fd1{
+  width: 40%;
+}
+.fdd2{
+  width: 96%;
+  background-color: rgba(255, 255, 255, 0.233);
+  border-radius: 10px;
+  border: 1px solid rgba(158, 157, 157, 0.752);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+
+}
+.fdd2>div>h3{
+  color: #00480D;
+  margin-bottom: 5px;
+}
+.fdd2>div>input{
+  height: 40px;
+  width: 250px;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 15px;
+}
+.fdd2>div>button{
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 15px;
+  background-color: rgba(255, 255, 255, 0.703);
+}
+.fdd2>div>button:hover{
+  cursor: pointer;
+  background-color: rgb(255, 255, 255);
+}
+.fdd2 > div:last-child {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+}
+footer div:last-of-type{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 15px 25px;
+}
+.imgg{
+  height: 20px;
+  margin-right: 10px;
+}
+#p{
+  font-size: 12px;
+}
