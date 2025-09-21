@@ -5,7 +5,7 @@ from mysql.connector import Error
 import google.generativeai as genai
 
 # Configure Gemini API
-genai.configure(api_key='API KEY')
+genai.configure(api_key='API_KEY')
 model = genai.GenerativeModel('gemini-2.5-flash')
 
 app = Flask(__name__)
