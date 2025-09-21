@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KrishiBot Chat</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/chatbot.css">
+</head>
+
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="bot-icon">
+                <img src="/static/images/logo.png" alt="logo" style="height:30px;">
+            </div>
+            <div>
+                <h2>KrishiBot — Your Farm Assistant</h2>
+                <div class="muted">Crop guidance, pest help, soil tips — quick answers.</div>
+            </div>
+            <div style="margin-left:auto; text-align:right;">
+                <div class="muted">Powered by AI</div>
+                <div style="font-size:12px; color:var(--soil-brown);">Sustainable advice</div>
+            </div>
+        </div>
+
+        <div id="messages" class="chat-messages"></div>
+
+        <div class="chat-input">
+            <input id="textInput" placeholder="Ask about crop care, irrigation, soil, pests..." autocomplete="off">
+            <button id="sendBtn">Send</button>
+        </div>
+    </div>
+
+    <script src="/static/js/chatbot.js"></script>
+</body>
+
+</html>
