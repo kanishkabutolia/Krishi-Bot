@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>कृषिBot - My Profile</title>
+    <link rel="shortcut icon" href="/static/images/Favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* Profile Page Specific Styles */
+        .profile-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .profile-header h1 {
+            font-family: 'Merriweather Sans', sans-serif;
+            font-weight: 800;
+            color: #00480D;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .profile-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Profile Card */
+        .profile-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            height: fit-content;
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            border: 4px solid #00480D;
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #00480D;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-title {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .verification-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #e8f5e8;
+            color: #00480D;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+
+        .profile-info {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .info-item i {
+            color: #00480D;
+            width: 16px;
+        }
+
+        .edit-profile-btn {
+            width: 100%;
+            background: #00480D;
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .edit-profile-btn:hover {
+            background: #003a0a;
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+            color: #00480D;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #00480D;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #00480D;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Farm Details */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .detail-label {
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .detail-value {
+            color: #333;
+            font-weight: 600;
+        }
+
+        /* Recent Queries */
+        .query-list {
+            list-style: none;
+        }
+
+        .query-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .query-item:last-child {
+            border-bottom: none;
+        }
+
+        .query-text {
+            flex: 1;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .query-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-resolved {
+            background: #d1f7e0;
+            color: #00480D;
+        }
+
+        .status-progress {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .view-all-btn {
+            width: 100%;
+            background: #f8f9fa;
+            border: 2px solid #00480D;
+            color: #00480D;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .view-all-btn:hover {
+            background: #00480D;
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .profile-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .profile-header h1 {
+                font-size: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .query-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .profile-container {
+                padding: 1rem 0.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-card,
+            .content-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav id="nav">
+            <a href="#" class="logo-link">
+                <img src="/static/images/logo.png" alt="कृषिBot Logo" class="Logo">
+            </a>
+            
+            <!-- Mobile menu button -->
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <div id="nav-cont" class="nav-content">
+                <ul id="header-ul">
+                    <li><a href="/" class="a-li">
+                            <img src="/static/images/Home-icon.png" alt="" aria-hidden="true">
+                            <span>Home</span>
+                        </a></li>
+                    <li><a href="/query" class="a-li">
+                            <img src="/static/images/Query-icon.png" alt="" aria-hidden="true">
+                            <span>Query</span>
+                        </a></li>
+                    <li><a href="/contact" class="a-li">
+                            <img src="/static/images/Call-icon.png" alt="" aria-hidden="true">
+                            <span>Contact</span>
+                        </a></li>
+                    <li class="user-menu">
+                        {% if user %}
+                        <div class="user-info">
+                            <a href="/profile" class="a-li user-link">
+                                <img src="/static/images/profile2-icon.png" alt="" aria-hidden="true">
+                                <span>{{ user.first_name }}</span>
+                            </a>
+                            <a href="/logout" class="a-li logout-link">
+                                <span>Logout</span>
+                            </a>
+                        </div>
+                        {% endif %}
+                    </li>
+                </ul>
+                <div class="dropdown">
+                    <button class="dropbtn" aria-haspopup="true" aria-expanded="false" aria-label="Select language">
+                        <span id="selected-lang">
+                            <img src="/static/images/Englihs-icon.png" alt="English flag" class="Icon">
+                            <span>English</span>
+                        </span>
+                        <img src="/static/images/down-arrow.png" alt="Dropdown arrow" class="arrow">
+                    </button>
+                    <div class="dropdown-content" role="menu" aria-label="Language selection menu">
+                        <button onclick="setLang('English','/static/images/Englihs-icon.png')" role="menuitem" tabindex="-1">
+                            <img src="/static/images/Englihs-icon.png" alt="English flag" class="Language">
+                            <span>English</span>
+                        </button>
+                        <button onclick="setLang('हिन्दी','/static/images/Hindi-icon.png')" role="menuitem" tabindex="-1">
+                            <img src="/static/images/Hindi-icon.png" alt="Hindi flag" class="Language">
+                            <span>हिन्दी (Hindi)</span>
+                        </button>
+                        <button onclick="setLang('മലയാളം','/static/images/Language-icon.png')" role="menuitem" tabindex="-1">
+                            <img src="/static/images/Language-icon.png" alt="Malayalam flag" class="Language">
+                            <span>മലയാളം (Malayalam)</span>
+                    </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="profile-container">
+            <!-- Profile Header -->
+            <div class="profile-header">
+        <h1>My Profile</h1>
+        <p>Manage your farming profile and track your progress</p>
+            </div>
+
+            <!-- Profile Content -->
+            <div class="profile-content">
+                <!-- Profile Card -->
+                <div class="profile-card">
+                    <img src="/static/images/profile2.jpg" alt="Profile Picture" class="profile-avatar">
+                    <h2 class="profile-name">Prem Kumar Sharma</h2>
+                    <p class="profile-title">Organic Farmer</p>
+                    
+                    <div class="verification-badge">
+                        <i class="fa-solid fa-leaf"></i>
+                        <span>Verified Farmer</span>
+                    </div>
+
+                    <div class="profile-info">
+                        <div class="info-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>Village Rampur, Uttar Pradesh</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>+91 9273961926</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>prem.kumar@email.com</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fa-solid fa-calendar"></i>
+                            <span>Member since 2023</span>
+                        </div>
+                    </div>
+
+                    <button class="edit-profile-btn">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        Edit Profile
+                    </button>
+            </div>
+
+                <!-- Main Content -->
+                <div class="main-content">
+                <!-- Stats -->
+                    <div class="stats-grid">
+                    <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-square-check"></i>
+                            </div>
+                        <div class="stat-value">42</div>
+                        <div class="stat-label">Queries Resolved</div>
+                    </div>
+                    <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                        <div class="stat-value">8</div>
+                        <div class="stat-label">Expert Connections</div>
+                    </div>
+                    <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        <div class="stat-value">98%</div>
+                        <div class="stat-label">Satisfaction Rate</div>
+                    </div>
+                    <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </div>
+                        <div class="stat-value">2023</div>
+                        <div class="stat-label">Member Since</div>
+                    </div>
+                    </div>
+
+                <!-- Farm Details -->
+                    <div class="content-section">
+                        <h2 class="section-title">
+                            <i class="fa-solid fa-seedling"></i>
+                            Farm Details
+                        </h2>
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <span class="detail-label">Farm Size</span>
+                            <span class="detail-value">5.2 Acres</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Soil Type</span>
+                            <span class="detail-value">Alluvial Soil</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Primary Crops</span>
+                            <span class="detail-value">Wheat, Rice, Sugarcane</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Irrigation Method</span>
+                            <span class="detail-value">Drip Irrigation</span>
+                        </div>
+                    </div>
+                    </div>
+
+                <!-- Recent Queries -->
+                    <div class="content-section">
+                        <h2 class="section-title">
+                            <i class="fa-solid fa-question-circle"></i>
+                            Recent Queries
+                        </h2>
+                    <ul class="query-list">
+                        <li class="query-item">
+                            <span class="query-text">How to treat wheat rust disease?</span>
+                                <span class="query-status status-resolved">Resolved</span>
+                        </li>
+                        <li class="query-item">
+                            <span class="query-text">What is the best fertilizer for rice?</span>
+                                <span class="query-status status-resolved">Resolved</span>
+                        </li>
+                        <li class="query-item">
+                            <span class="query-text">Government subsidy for drip irrigation</span>
+                                <span class="query-status status-progress">In Progress</span>
+                        </li>
+                    </ul>
+                        <button class="view-all-btn">
+                            <i class="fa-solid fa-list"></i>
+                            View All Queries
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </main>
+
+    <footer>
+        <div>
+            <div class="fd fd1">
+                <img src="/static/images/logo.png" alt="LOGO">
+                <p>Empowering farmers with expert advice, real-time weather updates, and personalized agricultural
+                    solutions for better crop yields and sustainable farming.</p>
+                <p> <img src="/static/images/Call-icon.png" alt="Icon">+91 1800-Krishi-HELP</p>
+                <p> <img src="/static/images/mail-icon.png" alt="Icon">support@Krishihelp.in</p>
+                <p> <img src="/static/images/location-icon.png" alt="Icon">New Delhi, India</p>
+            </div>
+            <div class="fd fd2">
+                <h3>Services</h3>
+                <a href="#">Crop Advisory</a>
+                <a href="#">Weather Alerts</a>
+                <a href="#">Pest Control</a>
+                <a href="#">Market Prices</a>
+            </div>
+            <div class="fd fd3">
+                <h3>Support</h3>
+                <a href="#">Help Center</a>
+                <a href="#">Contact Us</a>
+                <a href="#">FAQs</a>
+                <a href="#">User Guide</a>
+            </div>
+            <div class="fd fd4">
+                <h3>Legal</h3>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+                <a href="#">Disclaimer</a>
+            </div>
+        </div>
+        <div class="fdd2">
+            <div>
+                <h3>Stay Updated</h3>
+                <p>Get the latest farming tips, weather alerts, and market updates delivered to your inbox.</p>
+            </div>
+            <div>
+                <input type="email" name="Email" id="Email" placeholder="Enter your Email">
+                <button>Subscribe</button>
+            </div>
+        </div>
+        <div id="d">
+            <p id="p">© 2025 कृषिBot. All rights reserved. | Developed for farmers, by farmers.</p>
+            <span>
+                <img class="imgg" src="/static/images/facebook-icon.png" alt="Facebook">
+                <img class="imgg" src="/static/images/twitter-icon.png" alt="Twitter">
+                <img class="imgg" src="/static/images/instagram-icon.png" alt="Instagram">
+                <img class="imgg" src="/static/images/youtube-icon.png" alt="Youtube">
+            </span>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>कृषिBot - Complete Your Profile</title>
+    <link rel="shortcut icon" href="/static/images/Favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* Complete Profile Page Specific Styles */
+        .complete-profile-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .profile-header h1 {
+            font-family: 'Merriweather Sans', sans-serif;
+            font-weight: 800;
+            color: #00480D;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .profile-form {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #00480D;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.75rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00480D;
+            box-shadow: 0 0 0 3px rgba(0, 72, 13, 0.1);
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .submit-section {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e1e5e9;
+        }
+
+        .btn-complete {
+            background: #00480D;
+            color: white;
+            border: none;
+            padding: 1rem 3rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-complete:hover {
+            background: #003a0a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 72, 13, 0.3);
+        }
+
+        .btn-complete:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .progress-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .progress-step {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e1e5e9;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active {
+            background: #00480D;
+            color: white;
+        }
+
+        .progress-step.completed {
+            background: #28a745;
+            color: white;
+        }
+
+        .progress-line {
+            width: 60px;
+            height: 2px;
+            background: #e1e5e9;
+            margin: 0 0.5rem;
+            align-self: center;
+        }
+
+        .progress-line.completed {
+            background: #28a745;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+
+            .profile-header h1 {
+                font-size: 2rem;
+            }
+
+            .complete-profile-container {
+                padding: 1rem 0.5rem;
+            }
+
+            .profile-form {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav id="nav">
+            <a href="#" class="logo-link">
+                <img src="/static/images/logo.png" alt="कृषिBot Logo" class="Logo">
+            </a>
+            
+            <!-- Mobile menu button -->
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <div id="nav-cont" class="nav-content">
+                <ul id="header-ul">
+                    <li><a href="/" class="a-li">
+                            <img src="/static/images/Home-icon.png" alt="" aria-hidden="true">
+                            <span>Home</span>
+                        </a></li>
+                    <li><a href="/contact" class="a-li">
+                            <img src="/static/images/Call-icon.png" alt="" aria-hidden="true">
+                            <span>Contact</span>
+                        </a></li>
+                    <li class="user-menu">
+                        <a href="/logout" class="a-li logout-link">
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="dropdown">
+                    <button class="dropbtn" aria-haspopup="true" aria-expanded="false" aria-label="Select language">
+                        <span id="selected-lang">
+                            <img src="/static/images/Englihs-icon.png" alt="English flag" class="Icon">
+                            <span>English</span>
+                        </span>
+                        <img src="/static/images/down-arrow.png" alt="Dropdown arrow" class="arrow">
+                    </button>
+                    <div class="dropdown-content" role="menu" aria-label="Language selection menu">
+                        <button onclick="setLang('English','/static/images/Englihs-icon.png')" role="menuitem" tabindex="-1">
+                            <img src="/static/images/Englihs-icon.png" alt="English flag" class="Language">
+                            <span>English</span>
+                        </button>
+                        <button onclick="setLang('हिन्दी','/static/images/Hindi-icon.png')" role="menuitem" tabindex="-1">
+                            <img src="/static/images/Hindi-icon.png" alt="Hindi flag" class="Language">
+                            <span>हिन्दी (Hindi)</span>
+                        </button>
+                        <button onclick="setLang('മലയാളം','/static/images/Language-icon.png')" role="menuitem" tabindex="-1">
+                            <img src="/static/images/Language-icon.png" alt="Malayalam flag" class="Language">
+                            <span>മലയാളം (Malayalam)</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="complete-profile-container">
+            <!-- Progress Indicator -->
+            <div class="progress-indicator">
+                <div class="progress-step completed">1</div>
+                <div class="progress-line completed"></div>
+                <div class="progress-step completed">2</div>
+                <div class="progress-line completed"></div>
+                <div class="progress-step active">3</div>
+            </div>
+
+            <!-- Profile Header -->
+            <div class="profile-header">
+                <h1>Complete Your Profile</h1>
+                <p>Help us personalize your farming experience by completing your profile</p>
+            </div>
+
+            <!-- Profile Form -->
+            <form id="completeProfileForm" class="profile-form">
+                <!-- Personal Information -->
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <i class="fa-solid fa-user"></i>
+                        Personal Information
+                    </h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="+91 9876543210" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" id="location" placeholder="Village, State" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Farm Information -->
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <i class="fa-solid fa-seedling"></i>
+                        Farm Information
+                    </h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="farmSize">Farm Size (Acres)</label>
+                            <input type="number" id="farmSize" placeholder="5.2" step="0.1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="soilType">Soil Type</label>
+                            <select id="soilType" required>
+                                <option value="">Select Soil Type</option>
+                                <option value="Alluvial">Alluvial Soil</option>
+                                <option value="Black">Black Soil</option>
+                                <option value="Red">Red Soil</option>
+                                <option value="Laterite">Laterite Soil</option>
+                                <option value="Mountain">Mountain Soil</option>
+                                <option value="Desert">Desert Soil</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="primaryCrops">Primary Crops</label>
+                            <input type="text" id="primaryCrops" placeholder="Wheat, Rice, Sugarcane" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="irrigationMethod">Irrigation Method</label>
+                            <select id="irrigationMethod" required>
+                                <option value="">Select Irrigation Method</option>
+                                <option value="Drip Irrigation">Drip Irrigation</option>
+                                <option value="Sprinkler">Sprinkler Irrigation</option>
+                                <option value="Flood">Flood Irrigation</option>
+                                <option value="Manual">Manual Watering</option>
+                                <option value="Rain-fed">Rain-fed</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Level -->
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <i class="fa-solid fa-chart-line"></i>
+                        Experience & Preferences
+                    </h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="experience">Farming Experience</label>
+                            <select id="experience" required>
+                                <option value="">Select Experience Level</option>
+                                <option value="Beginner">Beginner (0-2 years)</option>
+                                <option value="Intermediate">Intermediate (3-10 years)</option>
+                                <option value="Advanced">Advanced (10+ years)</option>
+                                <option value="Expert">Expert (20+ years)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="farmingType">Farming Type</label>
+                            <select id="farmingType" required>
+                                <option value="">Select Farming Type</option>
+                                <option value="Organic">Organic Farming</option>
+                                <option value="Conventional">Conventional Farming</option>
+                                <option value="Mixed">Mixed Farming</option>
+                                <option value="Commercial">Commercial Farming</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="interests">Areas of Interest (Optional)</label>
+                            <textarea id="interests" rows="3" placeholder="e.g., Pest management, Soil health, Weather forecasting, Market prices..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Section -->
+                <div class="submit-section">
+                    <button type="submit" class="btn-complete" id="completeBtn">
+                        <i class="fa-solid fa-check"></i>
+                        Complete Profile
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('completeProfileForm');
+            const completeBtn = document.getElementById('completeBtn');
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                // Show loading state
+                const originalText = completeBtn.innerHTML;
+                completeBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Completing Profile...';
+                completeBtn.disabled = true;
+
+                try {
+                    const formData = {
+                        phone: document.getElementById('phone').value.trim(),
+                        location: document.getElementById('location').value.trim(),
+                        farm_size: document.getElementById('farmSize').value,
+                        soil_type: document.getElementById('soilType').value,
+                        primary_crops: document.getElementById('primaryCrops').value.trim(),
+                        irrigation_method: document.getElementById('irrigationMethod').value,
+                        experience: document.getElementById('experience').value,
+                        farming_type: document.getElementById('farmingType').value,
+                        interests: document.getElementById('interests').value.trim()
+                    };
+
+                    const response = await fetch('/complete_profile', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        // Show success message
+                        alert('Profile completed successfully! Welcome to KrishiBot!');
+                        window.location.href = '/';
+                    } else {
+                        alert(result.message || 'Failed to complete profile. Please try again.');
+                    }
+                } catch (error) {
+                    console.error('Error completing profile:', error);
+                    alert('An error occurred while completing your profile. Please try again.');
+                } finally {
+                    // Reset button
+                    completeBtn.innerHTML = originalText;
+                    completeBtn.disabled = false;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
