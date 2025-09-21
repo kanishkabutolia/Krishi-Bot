@@ -686,7 +686,7 @@ footer {
 .fd1 p img {
   display: inline;
   margin-right: 10px;
-  height: 18px;
+  /* height: 18px; */
   vertical-align: middle;
 }
 
@@ -781,7 +781,13 @@ footer {
 }
 
 .imgg {
-  height: 20px;
+  height: 40px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.imggg {
+  height: 125px;
   margin-left: 10px;
   cursor: pointer;
 }
