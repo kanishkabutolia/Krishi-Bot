@@ -643,41 +643,175 @@ body {
   height: 14px;
   margin-right: 5px;
 }
-/* Footer main container */
+/* =================== FOOTER =================== */
 footer {
   background-color: #00480D;
   width: 100%;
-  min-height: 20rem;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  flex-direction: column;
-  margin: auto;
-  padding: 20px 0;
+  padding: 40px 0;
+  color: #fff;
+  font-family: 'Roboto', 'Noto Sans', 'Merriweather Sans', sans-serif;
 }
 
-/* Container holding the 4 divs */
-footer > div:first-child {
+/* Top section: 4 divs with 40%-20%-20%-20% split */
+.footer-top {
   display: flex;
-  width: 100%;
-  justify-content: space-between; /* spreads divs evenly */
+  width: 90%;
+  justify-content: space-between;
   align-items: flex-start;
-}
-
-/* 3 smaller divs */
-.fd {
-  width: 20%; /* 20% of footer width each */
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 40px;
   gap: 20px;
-  padding: 30px;
 }
 
-/* 1 larger div */
+/* First div 40% */
 .fd1 {
-  width: 40%; /* 40% of footer width */
+  flex: 0 0 40%;
   display: flex;
   flex-direction: column;
+  gap: 15px;
+  line-height: 1.6;
+}
+
+/* Heading for FarmAdvisor */
+.fd1 h3 {
+  color: #fff;
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* Keep contact icons aligned */
+.fd1 p img {
+  display: inline;
+  margin-right: 10px;
+  height: 18px;
+  vertical-align: middle;
+}
+
+/* Remaining divs 20% each */
+.fd {
+  flex: 0 0 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fd h3 {
+  color: white;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.fd a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 15px;
+}
+
+.fd a:hover {
+  color: white;
+  cursor: pointer;
+}
+
+/* Newsletter / Stay Updated section */
+.fdd2 {
+  width: 90%;
+  background-color: rgba(255, 255, 255, 0.23);
+  border-radius: 12px;
+  border: 1px solid rgba(158, 157, 157, 0.75);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 30px;
+  margin-bottom: 30px;
   gap: 20px;
-  padding: 30px;
+}
+
+.fdd2 > div {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Side-by-side email + button */
+.subscribe-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.subscribe-row input {
+  height: 45px;
+  width: 260px;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 15px;
+}
+
+.subscribe-row button {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 15px;
+  background-color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.subscribe-row button:hover {
+  background-color: #fff;
+}
+
+/* Footer bottom: copyright + social icons */
+#d {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  font-size: 12px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+#d p {
+  margin: 5px 0;
+}
+
+.imgg {
+  height: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .footer-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .fd1, .fd {
+    flex: 0 0 100%;
+    margin-bottom: 20px;
+  }
+  .fdd2 {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    text-align: center;
+  }
+  .subscribe-row {
+    flex-direction: column; /* stack input and button on smaller screens */
+    width: 100%;
+  }
+  .subscribe-row input {
+    width: 100%;
+  }
+  #d {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
 }
