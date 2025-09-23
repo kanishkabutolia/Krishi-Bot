@@ -185,12 +185,7 @@ def signup_post():
         if 'connection' in locals() and connection.is_connected():
             cursor.close()
             connection.close()
-
-
-# @app.route('/query')
-# @login_required
-# def queries():
-#     return render_template('main_page.html')    
+  
 
 @app.route('/profile')
 @login_required
@@ -310,7 +305,7 @@ def update_profile():
 
 @app.route('/contact')
 def contact():
-    return 'Hello, contact!'
+    return render_template('contact.html')
 
 @app.route('/complete_profile')
 @login_required

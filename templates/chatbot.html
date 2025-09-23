@@ -40,24 +40,7 @@
                             <img src="/static/images/Call-icon.png" alt="" aria-hidden="true">
                             <span data-translate="contact">Contact</span>
                         </a></li>
-                    <li class="user-menu">
-                        {% if user %}
-                        <div class="user-info">
-                            <a href="/profile" class="a-li user-link">
-                                <img src="/static/images/profile2-icon.png" alt="" aria-hidden="true">
-                                <span>{{ user.first_name }}</span>
-                            </a>
-                            <a href="/logout" class="a-li logout-link">
-                                <span data-translate="logout">Logout</span>
-                            </a>
-                        </div>
-                        {% else %}
-                        <a href="/login" class="a-li">
-                            <span data-translate="login">Login/SignUp</span>
-                        </a>
-                        {% endif %}
-                    </li>
-                </ul>
+                    
                 <div class="dropdown">
                     <button class="dropbtn" aria-haspopup="true" aria-expanded="false" aria-label="Select language">
                         <span id="selected-lang">
