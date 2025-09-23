@@ -309,7 +309,6 @@ def update_profile():
             connection.close()
 
 @app.route('/contact')
-@login_required
 def contact():
     return 'Hello, contact!'
 

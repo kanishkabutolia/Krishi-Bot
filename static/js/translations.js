@@ -1,6 +1,14 @@
 // Translation data for all supported languages
 const translations = {
     'English': {
+        // Chat Interface
+        'chatbotTitle': 'KrishiBot — Your Farm Assistant',
+        'chatbotSubtitle': 'Crop guidance, pest help, soil tips — quick answers.',
+        'poweredBy': 'Powered by AI',
+        'sustainableAdvice': 'Sustainable advice',
+        'chatInputPlaceholder': 'Ask about crop care, irrigation, soil, pests...',
+        'sendButton': 'Send',
+
         // Header
         'home': 'Home',
         'query': 'Query',
@@ -38,10 +46,52 @@ const translations = {
         'escalated': 'Escalated',
         'rateAnswer': 'Rate this answer',
         'followUp': 'Follow-up',
+        'importantNotice': 'Important Notice',
+        'pendingAssignment': 'Pending Assignment',
+
+        // Advisory Cards Categories
+        'categoryPlantDisease': 'Plant Disease',
+        'categoryCropPlanning': 'Crop Planning',
+        'categoryPestControl': 'Pest Control',
+
+        // Card 1
+        'card1Title': 'Leaf yellowing in wheat crop',
+        'card1Time': '2 hours ago',
+        'expertName1': 'Dr. Rajesh Kumar',
+        'card1Content': 'Diagnosed as nitrogen deficiency. Apply urea fertilizer at 50kg/acre immediately. Soil test recommended.',
+
+        // Card 2
+        'card2Title': 'Best time for cotton sowing',
+        'card2Time': '1 day ago',
+        'expertName2': 'Prof. Meera Singh',
+        'card2Content': 'Optimal sowing window is April 15-May 15 for your region. Ensure soil temperature above 18°C.',
+
+        // Card 3
+        'card3Title': 'Unusual pest attack on tomatoes',
+        'card3Time': '3 hours ago',
+        'card3Content': 'Query escalated to entomology specialist. Field visit scheduled within 48 hours.',
 
         // Testimonials
         'farmersSaying': 'What Farmers Are Saying',
         'testimonialSubtext': 'Real success stories from farmers across India',
+
+        // Testimonial 1
+        'testimonial1Quote': '"FarmAdvisor helped me identify and treat a pest problem that could have destroyed my entire cotton crop. The expert advice was accurate and timely."',
+        'testimonial1Name': 'Ramesh Patel',
+        'testimonial1Location': 'Gujarat, India',
+        'testimonial1Crop': 'Cotton',
+
+        // Testimonial 2
+        'testimonial2Quote': '"The weather alerts and farming tips have improved my wheat yield by 30%. The chatbot is very easy to use, even for someone like me who is not tech-savvy."',
+        'testimonial2Name': 'Priya Sharma',
+        'testimonial2Location': 'Punjab, India',
+        'testimonial2Crop': 'Wheat',
+
+        // Testimonial 3
+        'testimonial3Quote': '"Great platform for getting quick answers to farming questions. The subsidy information helped me apply for government schemes I didn\'t know existed."',
+        'testimonial3Name': 'Arjun Reddy',
+        'testimonial3Location': 'Karnataka, India',
+        'testimonial3Crop': 'Rice',
 
         // Feedback form
         'shareExperience': 'Share Your Experience',
@@ -75,6 +125,14 @@ const translations = {
         'copyright': '© 2025 कृषिBot. All rights reserved. | Developed for farmers, by farmers.'
     },
     'हिन्दी': {
+        // Chat Interface
+        'chatbotTitle': 'कृषिBot — आपका कृषि सहायक',
+        'chatbotSubtitle': 'फसल मार्गदर्शन, कीट सहायता, मिट्टी के सुझाव — त्वरित उत्तर।',
+        'poweredBy': 'AI द्वारा संचालित',
+        'sustainableAdvice': 'टिकाऊ सलाह',
+        'chatInputPlaceholder': 'फसल देखभाल, सिंचाई, मिट्टी, कीटों के बारे में पूछें...',
+        'sendButton': 'भेजें',
+
         // Header
         'home': 'होम',
         'query': 'प्रश्न',
@@ -112,10 +170,52 @@ const translations = {
         'escalated': 'बढ़ाया गया',
         'rateAnswer': 'उत्तर को रेट करें',
         'followUp': 'फॉलो-अप',
+        'importantNotice': 'महत्वपूर्ण सूचना',
+        'pendingAssignment': 'आवंटन लंबित',
+
+        // Advisory Cards Categories
+        'categoryPlantDisease': 'पौधों की बीमारी',
+        'categoryCropPlanning': 'फसल योजना',
+        'categoryPestControl': 'कीट नियंत्रण',
+
+        // Card 1
+        'card1Title': 'गेहूं की फसल में पत्तियां पीली होना',
+        'card1Time': '2 घंटे पहले',
+        'expertName1': 'डॉ. राजेश कुमार',
+        'card1Content': 'नाइट्रोजन की कमी का निदान। तुरंत 50 किग्रा/एकड़ यूरिया उर्वरक लगाएं। मिट्टी की जांच की सिफारिश की गई।',
+
+        // Card 2
+        'card2Title': 'कपास की बुवाई का सबसे अच्छा समय',
+        'card2Time': '1 दिन पहले',
+        'expertName2': 'प्रो. मीरा सिंह',
+        'card2Content': 'आपके क्षेत्र के लिए बुवाई का सर्वोत्तम समय 15 अप्रैल से 15 मई है। मिट्टी का तापमान 18°C से ऊपर सुनिश्चित करें।',
+
+        // Card 3
+        'card3Title': 'टमाटर पर असामान्य कीट हमला',
+        'card3Time': '3 घंटे पहले',
+        'card3Content': 'कीट विशेषज्ञ को प्रश्न भेजा गया। 48 घंटों के भीतर क्षेत्र का दौरा निर्धारित।',
 
         // Testimonials
         'farmersSaying': 'किसान क्या कह रहे हैं',
         'testimonialSubtext': 'भारत भर के किसानों की वास्तविक सफलता की कहानियां',
+
+        // Testimonial 1
+        'testimonial1Quote': '"कृषिBot ने मुझे कपास की फसल को नष्ट कर सकने वाली कीट समस्या की पहचान और उपचार में मदद की। विशेषज्ञ की सलाह सटीक और समय पर थी।"',
+        'testimonial1Name': 'रमेश पटेल',
+        'testimonial1Location': 'गुजरात, भारत',
+        'testimonial1Crop': 'कपास',
+
+        // Testimonial 2
+        'testimonial2Quote': '"मौसम की चेतावनियों और कृषि सुझावों ने मेरी गेहूं की उपज में 30% की वृद्धि की है। चैटबॉट उपयोग में बहुत आसान है, यहां तक कि मेरे जैसे तकनीकी रूप से कुशल नहीं व्यक्ति के लिए भी।"',
+        'testimonial2Name': 'प्रिया शर्मा',
+        'testimonial2Location': 'पंजाब, भारत',
+        'testimonial2Crop': 'गेहूं',
+
+        // Testimonial 3
+        'testimonial3Quote': '"कृषि प्रश्नों के त्वरित उत्तर पाने के लिए बेहतरीन मंच। सब्सिडी की जानकारी ने मुझे ऐसी सरकारी योजनाओं के लिए आवेदन करने में मदद की जिनके बारे में मुझे पता ही नहीं था।"',
+        'testimonial3Name': 'अर्जुन रेड्डी',
+        'testimonial3Location': 'कर्नाटक, भारत',
+        'testimonial3Crop': 'चावल',
 
         // Feedback form
         'shareExperience': 'अपना अनुभव साझा करें',
@@ -149,6 +249,14 @@ const translations = {
         'copyright': '© 2025 कृषिBot. सर्वाधिकार सुरक्षित। | किसानों द्वारा, किसानों के लिए विकसित।'
     },
     'മലയാളം': {
+        // Chat Interface
+        'chatbotTitle': 'കൃഷിBot — നിങ്ങളുടെ കാർഷിക സഹായി',
+        'chatbotSubtitle': 'വിള മാർഗ്ഗനിർദ്ദേശം, കീട സഹായം, മണ്ണ് നുറുങ്ങുകൾ — വേഗത്തിലുള്ള ഉത്തരങ്ങൾ.',
+        'poweredBy': 'AI പ്രവർത്തിപ്പിക്കുന്നത്',
+        'sustainableAdvice': 'സുസ്ഥിര ഉപദേശം',
+        'chatInputPlaceholder': 'വിള പരിപാലനം, ജലസേചനം, മണ്ണ്, കീടങ്ങൾ എന്നിവയെക്കുറിച്ച് ചോദിക്കൂ...',
+        'sendButton': 'അയക്കുക',
+
         // Header
         'home': 'ഹോം',
         'query': 'ചോദ്യം',
@@ -186,10 +294,52 @@ const translations = {
         'escalated': 'എസ്കലേറ്റ് ചെയ്തു',
         'rateAnswer': 'ഉത്തരം റേറ്റ് ചെയ്യുക',
         'followUp': 'ഫോളോ-അപ്പ്',
+        'importantNotice': 'പ്രധാന അറിയിപ്പ്',
+        'pendingAssignment': 'നിയോഗം പെൻഡിംഗ്',
+
+        // Advisory Cards Categories
+        'categoryPlantDisease': 'സസ്യരോഗം',
+        'categoryCropPlanning': 'കൃഷി ആസൂത്രണം',
+        'categoryPestControl': 'കീടനിയന്ത്രണം',
+
+        // Card 1
+        'card1Title': 'ഗോതമ്പ് വിളയിൽ ഇലകൾ മഞ്ഞളിക്കുന്നു',
+        'card1Time': '2 മണിക്കൂർ മുമ്പ്',
+        'expertName1': 'ഡോ. രാജേഷ് കുമാർ',
+        'card1Content': 'നൈട്രജൻ കുറവ് കണ്ടെത്തി. ഉടൻ തന്നെ 50 കിലോ/ഏക്കർ യൂറിയ വളം ചേർക്കുക. മണ്ണ് പരിശോധന ശുപാർശ ചെയ്യുന്നു.',
+
+        // Card 2
+        'card2Title': 'പരുത്തി നടീലിനുള്ള ഏറ്റവും നല്ല സമയം',
+        'card2Time': '1 ദിവസം മുമ്പ്',
+        'expertName2': 'പ്രൊഫ. മീര സിംഗ്',
+        'card2Content': 'നിങ്ങളുടെ പ്രദേശത്തിന് ഏപ്രിൽ 15 മുതൽ മെയ് 15 വരെയാണ് നടീൽ കാലം. മണ്ണിന്റെ താപനില 18°C-ൽ കൂടുതലാണെന്ന് ഉറപ്പാക്കുക.',
+
+        // Card 3
+        'card3Title': 'തക്കാളിയിൽ അസാധാരണ കീടബാധ',
+        'card3Time': '3 മണിക്കൂർ മുമ്പ്',
+        'card3Content': 'കീടശാസ്ത്ര വിദഗ്ധനിലേക്ക് ചോദ്യം എസ്കലേറ്റ് ചെയ്തു. 48 മണിക്കൂറിനുള്ളിൽ ഫീൽഡ് സന്ദർശനം ഷെഡ്യൂൾ ചെയ്തു.',
 
         // Testimonials
         'farmersSaying': 'കർഷകർ പറയുന്നത്',
         'testimonialSubtext': 'ഇന്ത്യയിലെ കർഷകരുടെ യഥാർത്ഥ വിജയ കഥകൾ',
+
+        // Testimonial 1
+        'testimonial1Quote': '"എന്റെ പരുത്തി വിളയെ മുഴുവൻ നശിപ്പിക്കാമായിരുന്ന ഒരു കീട പ്രശ്നം തിരിച്ചറിയാനും ചികിത്സിക്കാനും കൃഷിBot സഹായിച്ചു. വിദഗ്ധ ഉപദേശം കൃത്യവും സമയോചിതവുമായിരുന്നു."',
+        'testimonial1Name': 'രമേശ് പട്ടേൽ',
+        'testimonial1Location': 'ഗുജറാത്ത്, ഇന്ത്യ',
+        'testimonial1Crop': 'പരുത്തി',
+
+        // Testimonial 2
+        'testimonial2Quote': '"കാലാവസ്ഥ മുന്നറിയിപ്പുകളും കൃഷി നുറുങ്ങുകളും എന്റെ ഗോതമ്പ് വിളവ് 30% വർധിപ്പിച്ചു. ടെക്നോളജിയിൽ വിദഗ്ധനല്ലാത്ത എന്നെപ്പോലുള്ള ഒരാൾക്ക് പോലും ചാറ്റ്ബോട്ട് ഉപയോഗിക്കാൻ വളരെ എളുപ്പമാണ്."',
+        'testimonial2Name': 'പ്രിയ ശർമ്മ',
+        'testimonial2Location': 'പഞ്ചാബ്, ഇന്ത്യ',
+        'testimonial2Crop': 'ഗോതമ്പ്',
+
+        // Testimonial 3
+        'testimonial3Quote': '"കാർഷിക ചോദ്യങ്ങൾക്ക് വേഗത്തിൽ ഉത്തരം ലഭിക്കുന്നതിനുള്ള മികച്ച പ്ലാറ്റ്ഫോം. എനിക്ക് അറിയാത്ത സർക്കാർ പദ്ധതികൾക്ക് അപേക്ഷിക്കാൻ സബ്സിഡി വിവരങ്ങൾ സഹായിച്ചു."',
+        'testimonial3Name': 'അർജുൻ റെഡ്ഡി',
+        'testimonial3Location': 'കർണാടക, ഇന്ത്യ',
+        'testimonial3Crop': 'നെല്ല്',
 
         // Feedback form
         'shareExperience': 'നിങ്ങളുടെ അനുഭവം പങ്കുവയ്ക്കുക',
