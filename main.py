@@ -195,7 +195,118 @@ def signup_post():
 @app.route('/profile')
 @login_required
 def profile():
-    return render_template("profile.html")
+    try:
+        connection = create_db_connection()
+        if connection is None:
+            return "Database connection error", 500
+
+        try:
+            cursor = connection.cursor(dictionary=True)
+            
+            # Fetch user's personal and farm details from PersonalDetails table only
+            query = """
+            SELECT * FROM PersonalDetails WHERE id = %s
+            """
+            cursor.execute(query, (session['user_id'],))
+            user_data = cursor.fetchone()
+
+            if not user_data:
+                return redirect(url_for('login'))
+
+            # Format the data for template
+            profile_data = {
+                'personal_info': {
+                    'name': f"{user_data['first_name']} {user_data['last_name']}",
+                    'email': user_data['email'],
+                    'phone': user_data.get('phone', 'Not provided'),
+                    'location': user_data.get('location', 'Not provided'),
+                    'member_since': 2023  # Hardcoded for now, update when created_at field is available
+                },
+                'farm_details': {
+                    'farm_size': user_data.get('farm_size', 'Not provided'),
+                    'soil_type': user_data.get('soil_type', 'Not provided'),
+                    'primary_crops': user_data.get('primary_crops', 'Not provided'),
+                    'irrigation_method': user_data.get('irrigation_method', 'Not provided'),
+                    'farming_type': user_data.get('farming_type', 'Not provided')
+                },
+                'stats': {
+                    'resolved_queries': '-',  # Placeholder until queries table is created
+                    'expert_connections': '-',  # Placeholder
+                    'satisfaction_rate': 'N/A'  # Placeholder
+                }
+            }
+
+            return render_template(
+                "profile.html",
+                profile=profile_data,
+                user=user_data  # For nav bar user info
+            )
+
+        finally:
+            cursor.close()
+
+    except Error as e:
+        print(f"Database error in profile: {e}")
+        return "Database error", 500
+    finally:
+        if 'connection' in locals() and connection.is_connected():
+            connection.close()
+
+@app.route('/profile/update', methods=['POST'])
+@login_required
+def update_profile():
+    try:
+        data = request.get_json()
+        if not data:
+            return jsonify({'success': False, 'message': 'No data provided'})
+
+        connection = create_db_connection()
+        if connection is None:
+            return jsonify({'success': False, 'message': 'Database connection error'})
+
+        try:
+            cursor = connection.cursor()
+            
+            # Fields that can be updated
+            allowed_fields = [
+                'phone', 'location', 'farm_size', 'soil_type', 
+                'primary_crops', 'irrigation_method', 'farming_type'
+            ]
+            
+            # Build update query dynamically based on provided fields
+            update_fields = []
+            values = []
+            for field in allowed_fields:
+                if field in data:
+                    update_fields.append(f"{field} = %s")
+                    values.append(data[field])
+            
+            if not update_fields:
+                return jsonify({'success': False, 'message': 'No valid fields to update'})
+            
+            # Add user_id to values
+            values.append(session['user_id'])
+            
+            # Execute update query
+            query = f"""
+            UPDATE PersonalDetails 
+            SET {', '.join(update_fields)}
+            WHERE id = %s
+            """
+            cursor.execute(query, values)
+            connection.commit()
+
+            return jsonify({'success': True, 'message': 'Profile updated successfully'})
+
+        finally:
+            cursor.close()
+
+    except Error as e:
+        print(f"Database error in update_profile: {e}")
+        return jsonify({'success': False, 'message': 'Database error occurred'})
+    finally:
+        if 'connection' in locals() and connection.is_connected():
+            connection.close()
 
 @app.route('/contact')
 @login_required

@@ -333,7 +333,7 @@
                             <img src="/static/images/Home-icon.png" alt="" aria-hidden="true">
                             <span>Home</span>
                         </a></li>
-                    <li><a href="/query" class="a-li">
+                    <li><a href="/chatbot" class="a-li">
                             <img src="/static/images/Query-icon.png" alt="" aria-hidden="true">
                             <span>Query</span>
                         </a></li>
@@ -395,8 +395,8 @@
                 <!-- Profile Card -->
                 <div class="profile-card">
                     <img src="/static/images/profile2.jpg" alt="Profile Picture" class="profile-avatar">
-                    <h2 class="profile-name">Prem Kumar Sharma</h2>
-                    <p class="profile-title">Organic Farmer</p>
+                    <h2 class="profile-name">{{ profile.personal_info.name }}</h2>
+                    <p class="profile-title">{{ profile.farm_details.farming_type|default('Farmer', true) }}</p>
                     
                     <div class="verification-badge">
                         <i class="fa-solid fa-leaf"></i>
@@ -406,23 +406,23 @@
                     <div class="profile-info">
                         <div class="info-item">
                             <i class="fa-solid fa-location-dot"></i>
-                            <span>Village Rampur, Uttar Pradesh</span>
+                            <span>{{ profile.personal_info.location }}</span>
                         </div>
                         <div class="info-item">
                             <i class="fa-solid fa-phone"></i>
-                            <span>+91 9273961926</span>
+                            <span>{{ profile.personal_info.phone }}</span>
                         </div>
                         <div class="info-item">
                             <i class="fa-solid fa-envelope"></i>
-                            <span>prem.kumar@email.com</span>
+                            <span>{{ profile.personal_info.email }}</span>
                         </div>
                         <div class="info-item">
                             <i class="fa-solid fa-calendar"></i>
-                            <span>Member since 2023</span>
+                            <span>Member since {{ profile.personal_info.member_since }}</span>
                         </div>
                     </div>
 
-                    <button class="edit-profile-btn">
+                    <button class="edit-profile-btn" onclick="openEditProfileModal()">
                         <i class="fa-solid fa-pen-to-square"></i>
                         Edit Profile
                     </button>
@@ -432,34 +432,34 @@
                 <div class="main-content">
                 <!-- Stats -->
                     <div class="stats-grid">
-                    <div class="stat-card">
+                        <div class="stat-card">
                             <div class="stat-icon">
-                                <i class="fa-solid fa-square-check"></i>
+                                <i class="fa-solid fa-seedling"></i>
                             </div>
-                        <div class="stat-value">42</div>
-                        <div class="stat-label">Queries Resolved</div>
-                    </div>
-                    <div class="stat-card">
+                            <div class="stat-value">{{ profile.farm_details.farm_size|default('N/A', true) }}</div>
+                            <div class="stat-label">Farm Area</div>
+                        </div>
+                        <div class="stat-card">
                             <div class="stat-icon">
-                                <i class="fa-solid fa-users"></i>
+                                <i class="fa-solid fa-leaf"></i>
                             </div>
-                        <div class="stat-value">8</div>
-                        <div class="stat-label">Expert Connections</div>
-                    </div>
-                    <div class="stat-card">
+                            <div class="stat-value">{{ profile.farm_details.primary_crops|default('N/A', true)|truncate(10, true) }}</div>
+                            <div class="stat-label">Main Crop</div>
+                        </div>
+                        <div class="stat-card">
                             <div class="stat-icon">
-                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-water"></i>
                             </div>
-                        <div class="stat-value">98%</div>
-                        <div class="stat-label">Satisfaction Rate</div>
-                    </div>
-                    <div class="stat-card">
+                            <div class="stat-value">{{ profile.farm_details.soil_type|default('N/A', true)|truncate(10, true) }}</div>
+                            <div class="stat-label">Soil Type</div>
+                        </div>
+                        <div class="stat-card">
                             <div class="stat-icon">
                                 <i class="fa-solid fa-calendar-days"></i>
                             </div>
-                        <div class="stat-value">2023</div>
-                        <div class="stat-label">Member Since</div>
-                    </div>
+                            <div class="stat-value">{{ profile.personal_info.member_since }}</div>
+                            <div class="stat-label">Member Since</div>
+                        </div>
                     </div>
 
                 <!-- Farm Details -->
@@ -471,47 +471,32 @@
                     <div class="details-grid">
                         <div class="detail-item">
                             <span class="detail-label">Farm Size</span>
-                            <span class="detail-value">5.2 Acres</span>
+                            <span class="detail-value">{{ profile.farm_details.farm_size }}</span>
                         </div>
                         <div class="detail-item">
                             <span class="detail-label">Soil Type</span>
-                            <span class="detail-value">Alluvial Soil</span>
+                            <span class="detail-value">{{ profile.farm_details.soil_type }}</span>
                         </div>
                         <div class="detail-item">
                             <span class="detail-label">Primary Crops</span>
-                            <span class="detail-value">Wheat, Rice, Sugarcane</span>
+                            <span class="detail-value">{{ profile.farm_details.primary_crops }}</span>
                         </div>
                         <div class="detail-item">
                             <span class="detail-label">Irrigation Method</span>
-                            <span class="detail-value">Drip Irrigation</span>
+                            <span class="detail-value">{{ profile.farm_details.irrigation_method }}</span>
                         </div>
                     </div>
                     </div>
 
-                <!-- Recent Queries -->
+                <!-- Future Queries Section -->
                     <div class="content-section">
                         <h2 class="section-title">
-                            <i class="fa-solid fa-question-circle"></i>
-                            Recent Queries
+                            <i class="fa-solid fa-info-circle"></i>
+                            Note
                         </h2>
-                    <ul class="query-list">
-                        <li class="query-item">
-                            <span class="query-text">How to treat wheat rust disease?</span>
-                                <span class="query-status status-resolved">Resolved</span>
-                        </li>
-                        <li class="query-item">
-                            <span class="query-text">What is the best fertilizer for rice?</span>
-                                <span class="query-status status-resolved">Resolved</span>
-                        </li>
-                        <li class="query-item">
-                            <span class="query-text">Government subsidy for drip irrigation</span>
-                                <span class="query-status status-progress">In Progress</span>
-                        </li>
-                    </ul>
-                        <button class="view-all-btn">
-                            <i class="fa-solid fa-list"></i>
-                            View All Queries
-                        </button>
+                        <p style="color: #666; text-align: center; padding: 20px;">
+                            The queries feature will be available soon. You'll be able to track all your farming-related questions and expert responses here.
+                        </p>
                     </div>
                 </div>
             </div>

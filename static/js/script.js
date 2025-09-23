@@ -1,38 +1,80 @@
+// Get the user's preferred language from localStorage or default to English
+let currentLanguage = localStorage.getItem('preferredLanguage') || 'English';
+
 function setLang(language, iconPath) {
-  document.getElementById("selected-lang").innerHTML =
-    `<img src="${iconPath}" class="Icon"> ${language}`;
+    // Update the language selector UI
+    document.getElementById("selected-lang").innerHTML =
+        `<img src="${iconPath}" class="Icon"> ${language}`;
+
+    // Save the language preference
+    localStorage.setItem('preferredLanguage', language);
+    currentLanguage = language;
+
+    // Update all translatable elements
+    updatePageContent();
 }
 
+function updatePageContent() {
+    const elements = document.querySelectorAll('[data-translate]');
+    elements.forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (translations[currentLanguage] && translations[currentLanguage][key]) {
+            // Handle different types of content updates
+            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                element.placeholder = translations[currentLanguage][key];
+            } else if (element.tagName === 'IMG') {
+                element.alt = translations[currentLanguage][key];
+            } else {
+                element.textContent = translations[currentLanguage][key];
+            }
+        }
+    });
+}
+
+// Initialize language on page load
+document.addEventListener('DOMContentLoaded', function () {
+    // Get saved language or default to English
+    const savedLanguage = localStorage.getItem('preferredLanguage') || 'English';
+    const iconMap = {
+        'English': '/static/images/Englihs-icon.png',
+        'हिन्दी': '/static/images/Hindi-icon.png',
+        'മലയാളം': '/static/images/Language-icon.png'
+    };
+
+    // Set initial language
+    setLang(savedLanguage, iconMap[savedLanguage]);
+});
+
 // Mobile menu functionality
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const navContent = document.getElementById('nav-cont');
-    
+
     if (mobileMenuBtn && navContent) {
-        mobileMenuBtn.addEventListener('click', function() {
+        mobileMenuBtn.addEventListener('click', function () {
             mobileMenuBtn.classList.toggle('active');
             navContent.classList.toggle('active');
         });
-        
+
         // Close mobile menu when clicking on a link
         const navLinks = document.querySelectorAll('#header-ul .a-li');
         navLinks.forEach(link => {
-            link.addEventListener('click', function() {
+            link.addEventListener('click', function () {
                 mobileMenuBtn.classList.remove('active');
                 navContent.classList.remove('active');
             });
         });
-        
+
         // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
+        document.addEventListener('click', function (event) {
             if (!mobileMenuBtn.contains(event.target) && !navContent.contains(event.target)) {
                 mobileMenuBtn.classList.remove('active');
                 navContent.classList.remove('active');
             }
         });
-        
+
         // Close mobile menu on window resize if screen becomes larger
-        window.addEventListener('resize', function() {
+        window.addEventListener('resize', function () {
             if (window.innerWidth > 768) {
                 mobileMenuBtn.classList.remove('active');
                 navContent.classList.remove('active');
@@ -42,21 +84,21 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Enhanced dropdown functionality for desktop and mobile
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const dropdowns = document.querySelectorAll('.dropdown');
-    
+
     dropdowns.forEach(dropdown => {
         const dropbtn = dropdown.querySelector('.dropbtn');
         const dropdownContent = dropdown.querySelector('.dropdown-content');
-        
+
         if (dropbtn && dropdownContent) {
             // Toggle dropdown on click for both desktop and mobile
-            dropbtn.addEventListener('click', function(e) {
+            dropbtn.addEventListener('click', function (e) {
                 e.preventDefault();
                 e.stopPropagation();
-                
+
                 const isOpen = dropdownContent.classList.contains('show');
-                
+
                 // Close all other dropdowns
                 document.querySelectorAll('.dropdown-content').forEach(content => {
                     content.classList.remove('show');
@@ -64,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.querySelectorAll('.dropbtn').forEach(btn => {
                     btn.setAttribute('aria-expanded', 'false');
                 });
-                
+
                 // Toggle current dropdown
                 if (!isOpen) {
                     dropdownContent.classList.add('show');
@@ -74,9 +116,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     dropbtn.setAttribute('aria-expanded', 'false');
                 }
             });
-            
+
             // Handle keyboard navigation
-            dropbtn.addEventListener('keydown', function(e) {
+            dropbtn.addEventListener('keydown', function (e) {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
                     dropbtn.click();
@@ -86,11 +128,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     dropbtn.focus();
                 }
             });
-            
+
             // Handle keyboard navigation within dropdown
             const dropdownButtons = dropdownContent.querySelectorAll('button');
             dropdownButtons.forEach((button, index) => {
-                button.addEventListener('keydown', function(e) {
+                button.addEventListener('keydown', function (e) {
                     if (e.key === 'ArrowDown') {
                         e.preventDefault();
                         const nextIndex = (index + 1) % dropdownButtons.length;
@@ -106,17 +148,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 });
             });
-            
+
             // Close dropdown when clicking outside
-            document.addEventListener('click', function(event) {
+            document.addEventListener('click', function (event) {
                 if (!dropdown.contains(event.target)) {
                     dropdownContent.classList.remove('show');
                     dropbtn.setAttribute('aria-expanded', 'false');
                 }
             });
-            
+
             // Close dropdown on window resize
-            window.addEventListener('resize', function() {
+            window.addEventListener('resize', function () {
                 dropdownContent.classList.remove('show');
                 dropbtn.setAttribute('aria-expanded', 'false');
             });
@@ -125,23 +167,23 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Star Rating Functionality
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const stars = document.querySelectorAll('#stars .star');
     let selectedRating = 0;
 
     stars.forEach((star, index) => {
-        star.addEventListener('click', function() {
+        star.addEventListener('click', function () {
             selectedRating = index + 1;
             updateStars();
             checkFormValidity();
         });
 
-        star.addEventListener('mouseenter', function() {
+        star.addEventListener('mouseenter', function () {
             highlightStars(index + 1);
         });
     });
 
-    document.getElementById('stars').addEventListener('mouseleave', function() {
+    document.getElementById('stars').addEventListener('mouseleave', function () {
         updateStars();
     });
 
@@ -167,17 +209,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Make selectedRating globally accessible
-    window.getSelectedRating = function() {
+    window.getSelectedRating = function () {
         return selectedRating;
     };
 });
 
 // Feedback Form Validation and Submission
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const feedbackForm = document.getElementById('feedbackForm');
     const feedbackContainer = document.querySelector('#div5 .container');
     const submitBtn = document.getElementById('btn');
-    
+
     // Form elements
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
@@ -193,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Initial check
         checkFormValidity();
 
-        feedbackForm.addEventListener('submit', async function(e) {
+        feedbackForm.addEventListener('submit', async function (e) {
             e.preventDefault();
 
             const name = nameInput.value.trim();
@@ -279,7 +321,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showSuccessMessage() {
         const feedbackContainer = document.querySelector('#div5 .container');
-        
+
         // Create success message HTML
         const successHTML = `
             <div class="success-message">
@@ -376,7 +418,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Make resetFeedbackForm globally available
-    window.resetFeedbackForm = function() {
+    window.resetFeedbackForm = function () {
         location.reload(); // Simple reload to reset the form
     };
 });

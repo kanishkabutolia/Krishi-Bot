@@ -7,6 +7,7 @@
     <title>कृषिBot-AI-Powered Farmer Query Support & Advisory System</title>
     <link rel="shortcut icon" href="/static/images/Favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/translations.js"></script>
     <script src="/static/js/script.js"></script>
 </head>
 
@@ -16,31 +17,31 @@
             <a href="#" class="logo-link">
                 <img src="/static/images/logo.png" alt="कृषिBot Logo" class="Logo">
             </a>
-            
+
             <!-- Mobile menu button -->
             <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle mobile menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            
+
             <div id="nav-cont" class="nav-content">
                 <ul id="header-ul">
                     <li><a href="/" class="a-li">
                             <img src="/static/images/Home-icon.png" alt="" aria-hidden="true">
-                            <span>Home</span>
+                            <span data-translate="home">Home</span>
                         </a></li>
-                    <li><a href="/query" class="a-li">
+                    <li><a href="/chatbot" class="a-li">
                             <img src="/static/images/Query-icon.png" alt="" aria-hidden="true">
-                            <span>Query</span>
+                            <span data-translate="query">Query</span>
                         </a></li>
                     <li><a href="/profile" class="a-li">
                             <img src="/static/images/Profile-icon.png" alt="" aria-hidden="true">
-                            <span>My Profile</span>
+                            <span data-translate="myProfile">My Profile</span>
                         </a></li>
                     <li><a href="/contact" class="a-li">
                             <img src="/static/images/Call-icon.png" alt="" aria-hidden="true">
-                            <span>Contact</span>
+                            <span data-translate="contact">Contact</span>
                         </a></li>
                     <li class="user-menu">
                         {% if user %}
@@ -70,15 +71,18 @@
                         <img src="/static/images/down-arrow.png" alt="Dropdown arrow" class="arrow">
                     </button>
                     <div class="dropdown-content" role="menu" aria-label="Language selection menu">
-                        <button onclick="setLang('English','/static/images/Englihs-icon.png')" role="menuitem" tabindex="-1">
+                        <button onclick="setLang('English','/static/images/Englihs-icon.png')" role="menuitem"
+                            tabindex="-1">
                             <img src="/static/images/Englihs-icon.png" alt="English flag" class="Language">
                             <span>English</span>
                         </button>
-                        <button onclick="setLang('हिन्दी','/static/images/Hindi-icon.png')" role="menuitem" tabindex="-1">
+                        <button onclick="setLang('हिन्दी','/static/images/Hindi-icon.png')" role="menuitem"
+                            tabindex="-1">
                             <img src="/static/images/Hindi-icon.png" alt="Hindi flag" class="Language">
                             <span>हिन्दी (Hindi)</span>
                         </button>
-                        <button onclick="setLang('മലയാളം','/static/images/Language-icon.png')" role="menuitem" tabindex="-1">
+                        <button onclick="setLang('മലയാളം','/static/images/Language-icon.png')" role="menuitem"
+                            tabindex="-1">
                             <img src="/static/images/Language-icon.png" alt="Malayalam flag" class="Language">
                             <span>മലയാളം (Malayalam)</span>
                         </button>
@@ -91,54 +95,70 @@
         <!-- main image content -->
         <div id="headline">
             <div>
-                <h1>Get Expert Farming Advice Instantly</h1>
-                <p>Connect with agricultural experts, get answers to your farming questions, and receive personalized
+                <h1 data-translate="mainHeading">Get Expert Farming Advice Instantly</h1>
+                <p data-translate="mainSubheading">Connect with agricultural experts, get answers to your farming
+                    questions, and receive personalized
                     advice to boost your crop yields</p>
-                <button><a href="/chatbot"><img src="/static/images/ask-icon.png" alt="Ask Your Query">Ask Your
-                        Query</a></button>
+                <button><a href="/chatbot">
+                        <img src="/static/images/ask-icon.png" alt="Ask Your Query">
+                        <span data-translate="askQuery">Ask Your Query</span>
+                    </a></button>
                 <div id="small-div">
-                    <div class="div"><a href="/chatbot"><img src="/static/images/chat-bubble.png"
-                                alt="Chat-bubble">Text</a>
-                    </div>
-                    <div class="div"><a href="/voice_query"><img src="/static/images/mic-icon.png" alt="Voice">Voice</a>
-                    </div>
-                    <div class="div"><a href="/image_query"><img src="/static/images/cam-icon.png" alt="image">Image</a>
-                    </div>
+                    <div class="div"><a href="/chatbot">
+                            <img src="/static/images/chat-bubble.png" alt="Chat-bubble">
+                            <span data-translate="text">Text</span>
+                        </a></div>
+                    <div class="div"><a href="/voice_query">
+                            <img src="/static/images/mic-icon.png" alt="Voice">
+                            <span data-translate="voice">Voice</span>
+                        </a></div>
+                    <div class="div"><a href="/image_query">
+                            <img src="/static/images/cam-icon.png" alt="image">
+                            <span data-translate="image">Image</span>
+                        </a></div>
                 </div>
             </div>
         </div>
         <!-- quick help categories -->
         <div id="div2">
-            <h1>Quick Help Categories</h1>
-            <p>Get instant answers for the most common farming questions</p>
+            <h1 data-translate="quickHelp">Quick Help Categories</h1>
+            <p data-translate="quickHelpSubtext">Get instant answers for the most common farming questions</p>
             <div id="box">
                 <div class="div1">
                     <img src="/static/images/bug-icon.png" alt="Bugs">
-                    <h3>Pests & Diseases</h3>
-                    <p>Identify and treat crop pests and diseases</p>
-                    <button class="button"><a href="/chatbot">Get Help <img src="/static/images/right-arrow.png"
-                                alt="Right-arrow"></a></button>
+                    <h3 data-translate="pestsAndDiseases">Pests & Diseases</h3>
+                    <p data-translate="pestsAndDiseasesDesc">Identify and treat crop pests and diseases</p>
+                    <button class="button"><a href="/chatbot">
+                            <span data-translate="getHelp">Get Help</span>
+                            <img src="/static/images/right-arrow.png" alt="Right-arrow">
+                        </a></button>
                 </div>
                 <div class="div2">
                     <img src="/static/images/weather icon.png" alt="Weather">
-                    <h3>Weather Forecast</h3>
-                    <p>Get weather updates and farming alerts</p>
-                    <button class="button"><a href="https://www.accuweather.com/en/in/india-weather">Get Help <img src="/static/images/right-arrow.png"
-                                alt="Right-arrow"></a></button>
+                    <h3 data-translate="weatherForecast">Weather Forecast</h3>
+                    <p data-translate="weatherForecastDesc">Get weather updates and farming alerts</p>
+                    <button class="button"><a href="https://www.accuweather.com/en/in/india-weather">
+                            <span data-translate="getHelp">Get Help</span>
+                            <img src="/static/images/right-arrow.png" alt="Right-arrow">
+                        </a></button>
                 </div>
                 <div class="div3">
                     <img src="/static/images/dollar icon.png" alt="Dollar">
-                    <h3>Government Subsidies</h3>
-                    <p>Find available subsidies and schemes</p>
-                    <button class="button"><a href="/government_subsidies">Get Help <img src="/static/images/right-arrow.png"
-                                alt="Right-arrow"></a></button>
+                    <h3 data-translate="govtSubsidies">Government Subsidies</h3>
+                    <p data-translate="govtSubsidiesDesc">Find available subsidies and schemes</p>
+                    <button class="button"><a href="/government_subsidies">
+                            <span data-translate="getHelp">Get Help</span>
+                            <img src="/static/images/right-arrow.png" alt="Right-arrow">
+                        </a></button>
                 </div>
                 <div class="div4">
                     <img src="/static/images/graph-icon.png" alt="Graph">
-                    <h3>Market Trends</h3>
-                    <p>Check crop prices and market demand</p>
-                    <button class="button"><a href="https://agmarknet.gov.in/">Get Help <img src="/static/images/right-arrow.png"
-                                alt="Right-arrow"></a></button>
+                    <h3 data-translate="marketTrends">Market Trends</h3>
+                    <p data-translate="marketTrendsDesc">Check crop prices and market demand</p>
+                    <button class="button"><a href="https://agmarknet.gov.in/">
+                            <span data-translate="getHelp">Get Help</span>
+                            <img src="/static/images/right-arrow.png" alt="Right-arrow">
+                        </a></button>
                 </div>
             </div>
         </div>
@@ -274,28 +294,43 @@
                         <label>Your Rating <span>*</span></label>
                         <div id="stars">
                             <span class="star" data-value="1">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="#cccccc" stroke-width="2" fill="none"/>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                                        stroke="#cccccc" stroke-width="2" fill="none" />
                                 </svg>
                             </span>
                             <span class="star" data-value="2">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="#cccccc" stroke-width="2" fill="none"/>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                                        stroke="#cccccc" stroke-width="2" fill="none" />
                                 </svg>
                             </span>
                             <span class="star" data-value="3">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="#cccccc" stroke-width="2" fill="none"/>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                                        stroke="#cccccc" stroke-width="2" fill="none" />
                                 </svg>
                             </span>
                             <span class="star" data-value="4">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="#cccccc" stroke-width="2" fill="none"/>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                                        stroke="#cccccc" stroke-width="2" fill="none" />
                                 </svg>
                             </span>
                             <span class="star" data-value="5">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="#cccccc" stroke-width="2" fill="none"/>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                                        stroke="#cccccc" stroke-width="2" fill="none" />
                                 </svg>
                             </span>
                         </div>
