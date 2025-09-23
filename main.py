@@ -71,6 +71,20 @@ def login():
         return redirect(url_for('index'))
     return render_template('login.html')
 
+@app.route('/government_subsidies')
+def government_subsidies():
+    return render_template('government_subsidies.html')
+
+@app.route('/voice_query')
+@login_required
+def voice_query():
+    return render_template('coming_soon.html')
+
+@app.route('/image_query')
+@login_required
+def image_query():
+    return render_template('coming_soon.html')
+
 @app.route('/login', methods=['POST'])
 def login_post():
     try:
@@ -173,10 +187,10 @@ def signup_post():
             connection.close()
 
 
-@app.route('/query')
-@login_required
-def queries():
-    return render_template('main_page.html')    
+# @app.route('/query')
+# @login_required
+# def queries():
+#     return render_template('main_page.html')    
 
 @app.route('/profile')
 @login_required
@@ -344,6 +358,7 @@ def submit_feedback():
 
 
 @app.route('/chatbot')
+@login_required
 def chatbot_page():
     return render_template('chatbot.html')
 

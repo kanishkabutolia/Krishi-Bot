@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80") no-repeat center center/cover;
+      position: relative;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* Overlay for readability */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+    }
+
+    .content {
+      position: relative;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .coming-text {
+      font-size: 4rem;
+      font-weight: bold;
+      background: linear-gradient(90deg, #66bb6a, #aed581, #66bb6a);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientMove 5s infinite, fadeIn 3s ease-in-out;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .sub-text {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: #f1f8e9;
+      opacity: 0;
+      animation: fadeInUp 2s ease-in-out 2s forwards;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsiveness */
+    @media (max-width: 768px) {
+      .coming-text { font-size: 2.5rem; }
+      .sub-text { font-size: 1rem; }
+    }
+
+    @media (max-width: 480px) {
+      .coming-text { font-size: 2rem; }
+      .sub-text { font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <h1 class="coming-text">Coming Soon...</h1>
+    <p class="sub-text">🌱 A new era for Farmers is on the way 🌾</p>
+  </div>
+</body>
+</html>
