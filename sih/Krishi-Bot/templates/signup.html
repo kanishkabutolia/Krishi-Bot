@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KrishiBot - Sign Up</title>
+
+    <!-- Fav/images/icon -->
+    <link rel="/images/icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
+    <link rel="shortcut /images/icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap /images/icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-/images/icons@1.11.3/font/bootstrap-/images/icons.min.css">
+
+    <style>
+        body {
+            background-color: #f5f5f5;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .signup-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+
+        .signup-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            width: 100%;
+            max-width: 500px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .form-control {
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+        }
+
+        .btn-signup {
+            background-color: #1F4224;
+            color: white;
+            padding: 0.75rem;
+            border-radius: 8px;
+            width: 100%;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-signup:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: #2a5830;
+            color: white;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-floating>label {
+            padding: 0.75rem 1rem;
+        }
+
+        .form-control:focus {
+            border-color: #1F4224;
+            box-shadow: 0 0 0 0.25rem rgba(31, 66, 36, 0.25);
+        }
+
+        .password-requirements {
+            font-size: 0.875rem;
+            color: #6c757d;
+        }
+
+        .requirement {
+            margin-bottom: 0.25rem;
+        }
+
+        .requirement i {
+            margin-right: 0.5rem;
+        }
+
+        .valid-requirement {
+            color: #198754;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark shadow" style="background-color: #1F4224;">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="/">
+                <img src="/static/images/logo.png" alt="KrishiBot Logo" height="50">
+            </a>
+            <div class="dropdown">
+                <button class="btn btn-outline-light dropdown-toggle" type="button" id="languageDropdown"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-globe"></i> Language
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                    <li><button class="dropdown-item" onclick="changeLanguage('en')">English</button></li>
+                    <li><button class="dropdown-item" onclick="changeLanguage('hi')">हिंदी</button></li>
+                    <li><button class="dropdown-item" onclick="changeLanguage('ml')">മലയാളം</button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Signup Container -->
+    <div class="signup-container">
+        <div class="signup-card">
+            <h2 class="text-center mb-4 fw-bold">Create Account</h2>
+
+            <form id="signupForm">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+                            <label for="firstName"><i class="bi bi-person me-2"></i>First Name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+                            <label for="lastName"><i class="bi bi-person me-2"></i>Last Name</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+                    <label for="email"><i class="bi bi-envelope me-2"></i>Email address</label>
+                </div>
+
+                <!-- <div class="form-floating mb-3">
+                    <input type="tel" class="form-control" id="phone" placeholder="Phone Number" required>
+                    <label for="phone"><i class="bi bi-phone me-2"></i>Phone Number</label>
+                </div> -->
+
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="password" placeholder="Password" required>
+                    <label for="password"><i class="bi bi-lock me-2"></i>Password</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password"
+                        required>
+                    <label for="confirmPassword"><i class="bi bi-lock me-2"></i>Confirm Password</label>
+                </div>
+
+                <div class="password-requirements mb-3">
+                    <p class="mb-2 fw-bold">Password Requirements:</p>
+                    <div class="requirement" id="lengthReq">
+                        <i class="bi bi-circle"></i>At least 8 characters long
+                    </div>
+                    <div class="requirement" id="upperReq">
+                        <i class="bi bi-circle"></i>Contains uppercase letter
+                    </div>
+                    <div class="requirement" id="lowerReq">
+                        <i class="bi bi-circle"></i>Contains lowercase letter
+                    </div>
+                    <div class="requirement" id="numberReq">
+                        <i class="bi bi-circle"></i>Contains number
+                    </div>
+                    <div class="requirement" id="specialReq">
+                        <i class="bi bi-circle"></i>Contains special character
+                    </div>
+                </div>
+
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="termsCheck" required>
+                    <label class="form-check-label" for="termsCheck">
+                        I agree to the <a href="#" class="text-decoration-none" style="color: #1F4224;">Terms of
+                            Service</a> and <a href="#" class="text-decoration-none" style="color: #1F4224;">Privacy
+                            Policy</a>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-signup mb-3">Create Account</button>
+
+                <div class="text-center">
+                    <p class="mb-0">Already have an account? <a href="/login" class="text-decoration-none"
+                            style="color: #1F4224;">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Language translations
+        const translations = {
+            en: {
+                createAccount: "Create Account",
+                firstName: "First Name",
+                lastName: "Last Name",
+                email: "Email address",
+                phone: "Phone Number",
+                password: "Password",
+                confirmPassword: "Confirm Password",
+                passwordReq: "Password Requirements:",
+                lengthReq: "At least 8 characters long",
+                upperReq: "Contains uppercase letter",
+                lowerReq: "Contains lowercase letter",
+                numberReq: "Contains number",
+                specialReq: "Contains special character",
+                terms: "I agree to the",
+                termsLink: "Terms of Service",
+                and: "and",
+                privacyLink: "Privacy Policy",
+                createBtn: "Create Account",
+                haveAccount: "Already have an account?",
+                login: "Login",
+                errorMatch: "Passwords do not match!",
+                errorReq: "Please meet all password requirements"
+            },
+            hi: {
+                createAccount: "खाता बनाएं",
+                firstName: "पहला नाम",
+                lastName: "अंतिम नाम",
+                email: "ईमेल पता",
+                phone: "फ़ोन नंबर",
+                password: "पासवर्ड",
+                confirmPassword: "पासवर्ड की पुष्टि करें",
+                passwordReq: "पासवर्ड आवश्यकताएं:",
+                lengthReq: "कम से कम 8 अक्षर लंबा",
+                upperReq: "अपरकेस अक्षर शामिल करें",
+                lowerReq: "लोअरकेस अक्षर शामिल करें",
+                numberReq: "संख्या शामिल करें",
+                specialReq: "विशेष वर्ण शामिल करें",
+                terms: "मैं सहमत हूं",
+                termsLink: "सेवा की शर्तें",
+                and: "और",
+                privacyLink: "गोपनीयता नीति",
+                createBtn: "खाता बनाएं",
+                haveAccount: "पहले से खाता है?",
+                login: "लॉग इन करें",
+                errorMatch: "पासवर्ड मेल नहीं खाते!",
+                errorReq: "कृपया सभी पासवर्ड आवश्यकताओं को पूरा करें"
+            },
+            ml: {
+                createAccount: "അക്കൗണ്ട് സൃഷ്ടിക്കുക",
+                firstName: "പേര്",
+                lastName: "അവസാന പേര്",
+                email: "ഇമെയിൽ വിലാസം",
+                phone: "ഫോൺ നമ്പർ",
+                password: "പാസ്‌വേഡ്",
+                confirmPassword: "പാസ്‌വേഡ് സ്ഥിരീകരിക്കുക",
+                passwordReq: "പാസ്‌വേഡ് ആവശ്യകതകൾ:",
+                lengthReq: "കുറഞ്ഞത് 8 അക്ഷരങ്ങൾ",
+                upperReq: "വലിയക്ഷരം ഉൾപ്പെടുത്തുക",
+                lowerReq: "ചെറിയക്ഷരം ഉൾപ്പെടുത്തുക",
+                numberReq: "സംഖ്യ ഉൾപ്പെടുത്തുക",
+                specialReq: "പ്രത്യേക അക്ഷരം ഉൾപ്പെടുത്തുക",
+                terms: "ഞാൻ സമ്മതിക്കുന്നു",
+                termsLink: "സേവന നിബന്ധനകൾ",
+                and: "കൂടാതെ",
+                privacyLink: "സ്വകാര്യതാ നയം",
+                createBtn: "അക്കൗണ്ട് സൃഷ്ടിക്കുക",
+                haveAccount: "ഇതിനകം അക്കൗണ്ട് ഉണ്ടോ?",
+                login: "ലോഗിൻ",
+                errorMatch: "പാസ്‌വേഡുകൾ പൊരുത്തപ്പെടുന്നില്ല!",
+                errorReq: "എല്ലา പാസ്‌വേഡ് ആവശ്യകതകളും പൂർത്തീകരിക്കുക"
+            }
+        };
+
+        // Change language function
+        function changeLanguage(lang) {
+            const elements = {
+                createAccount: document.querySelector('h2.text-center'),
+                firstName: document.querySelector('label[for="firstName"]'),
+                lastName: document.querySelector('label[for="lastName"]'),
+                email: document.querySelector('label[for="email"]'),
+                phone: document.querySelector('label[for="phone"]'),
+                password: document.querySelector('label[for="password"]'),
+                confirmPassword: document.querySelector('label[for="confirmPassword"]'),
+                passwordReq: document.querySelector('.password-requirements p'),
+                lengthReq: document.querySelector('#lengthReq'),
+                upperReq: document.querySelector('#upperReq'),
+                lowerReq: document.querySelector('#lowerReq'),
+                numberReq: document.querySelector('#numberReq'),
+                specialReq: document.querySelector('#specialReq'),
+                terms: document.querySelector('label[for="termsCheck"]'),
+                createBtn: document.querySelector('.btn-signup'),
+                haveAccount: document.querySelector('.text-center p')
+            };
+
+            const texts = translations[lang];
+
+            elements.createAccount.textContent = texts.createAccount;
+            elements.firstName.innerHTML = '<i class="bi bi-person me-2"></i>' + texts.firstName;
+            elements.lastName.innerHTML = '<i class="bi bi-person me-2"></i>' + texts.lastName;
+            elements.email.innerHTML = '<i class="bi bi-envelope me-2"></i>' + texts.email;
+            elements.phone.innerHTML = '<i class="bi bi-phone me-2"></i>' + texts.phone;
+            elements.password.innerHTML = '<i class="bi bi-lock me-2"></i>' + texts.password;
+            elements.confirmPassword.innerHTML = '<i class="bi bi-lock me-2"></i>' + texts.confirmPassword;
+            elements.passwordReq.textContent = texts.passwordReq;
+
+            elements.lengthReq.innerHTML = `<i class="bi bi-circle"></i>${texts.lengthReq}`;
+            elements.upperReq.innerHTML = `<i class="bi bi-circle"></i>${texts.upperReq}`;
+            elements.lowerReq.innerHTML = `<i class="bi bi-circle"></i>${texts.lowerReq}`;
+            elements.numberReq.innerHTML = `<i class="bi bi-circle"></i>${texts.numberReq}`;
+            elements.specialReq.innerHTML = `<i class="bi bi-circle"></i>${texts.specialReq}`;
+
+            elements.terms.innerHTML = `${texts.terms} <a href="#" class="text-decoration-none" style="color: #1F4224;">${texts.termsLink}</a> ${texts.and} <a href="#" class="text-decoration-none" style="color: #1F4224;">${texts.privacyLink}</a>`;
+            elements.createBtn.textContent = texts.createBtn;
+            elements.haveAccount.innerHTML = `${texts.haveAccount} <a href="/" class="text-decoration-none" style="color: #1F4224;">${texts.login}</a>`;
+
+            // Update the language button text
+            document.getElementById('languageDropdown').innerHTML = '<i class="bi bi-globe"></i> ' +
+                (lang === 'en' ? 'Language' : lang === 'hi' ? 'भाषा' : 'ഭാഷ');
+
+            // Store the selected language
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // Password validation
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirmPassword');
+        const requirements = {
+            lengthReq: str => str.length >= 8,
+            upperReq: str => /[A-Z]/.test(str),
+            lowerReq: str => /[a-z]/.test(str),
+            numberReq: str => /[0-9]/.test(str),
+            specialReq: str => /[!@#$%^&*]/.test(str)
+        };
+
+        password.addEventListener('input', function () {
+            const value = this.value;
+            for (const [req, checkFn] of Object.entries(requirements)) {
+                const element = document.getElementById(req);
+                if (checkFn(value)) {
+                    element.classList.add('valid-requirement');
+                    element.querySelector('i').className = 'bi bi-check-circle-fill';
+                } else {
+                    element.classList.remove('valid-requirement');
+                    element.querySelector('i').className = 'bi bi-circle';
+                }
+            }
+        });
+
+        // Form submission
+        document.getElementById('signupForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const lang = localStorage.getItem('preferredLanguage') || 'en';
+            const texts = translations[lang];
+
+            // Validate passwords match
+            if (password.value !== confirmPassword.value) {
+                alert(texts.errorMatch);
+                return;
+            }
+
+            // Validate all password requirements are met
+            for (const [req, checkFn] of Object.entries(requirements)) {
+                if (!checkFn(password.value)) {
+                    alert(texts.errorReq);
+                    return;
+                }
+            }
+
+            // If all validations pass, collect form data
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                password: password.value
+            };
+
+            // Send registration request to server
+            fetch('/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert(data.message);
+                        // Redirect to login page
+                        window.location.href = '/login';
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred during registration');
+                });
+        });
+
+        // Set initial language based on stored preference or default to English
+        document.addEventListener('DOMContentLoaded', function () {
+            const storedLang = localStorage.getItem('preferredLanguage') || 'en';
+            changeLanguage(storedLang);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-key="Complete Your Profile">कृषिBot - Complete Your Profile</title>
+    <link rel="shortcut icon" href="/static/images/Favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/script.js"></script>
+    <link rel="stylesheet" href="/static/css/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header>
+        <nav id="nav">
+            <a href="#" class="logo-link">
+                <img src="/static/images/logo.png" alt="कृषिBot Logo" class="Logo">
+            </a>
+
+            <!-- Mobile menu button -->
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div id="nav-cont" class="nav-content">
+                <ul id="header-ul">
+                    <li><a href="/" class="a-li">
+                            <img src="/static/images/Home-icon.png" alt="" aria-hidden="true">
+                            <span data-key="Home">Home</span>
+                        </a></li>
+                    <li><a href="/contact" class="a-li">
+                            <img src="/static/images/Call-icon.png" alt="" aria-hidden="true">
+                            <span data-key="Contact">Contact</span>
+                        </a></li>
+                    <li class="user-menu">
+                        <a href="/logout" class="a-li logout-link">
+                            <span data-key="Logout">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="dropdown">
+                    <button class="dropbtn" aria-haspopup="true" aria-expanded="false" aria-label="Select language">
+                        <span id="selected-lang">
+                            <img src="/static/images/Englihs-icon.png" alt="English flag" class="Icon">
+                            <span>English</span>
+                        </span>
+                        <img src="/static/images/down-arrow.png" alt="Dropdown arrow" class="arrow">
+                    </button>
+                    <div class="dropdown-content" role="menu" aria-label="Language selection menu">
+                        <button onclick="setLang('English','/static/images/Englihs-icon.png')" role="menuitem"
+                            tabindex="-1">
+                            <img src="/static/images/Englihs-icon.png" alt="English flag" class="Language">
+                            <span>English</span>
+                        </button>
+                        <button onclick="setLang('हिन्दी','/static/images/Hindi-icon.png')" role="menuitem"
+                            tabindex="-1">
+                            <img src="/static/images/Hindi-icon.png" alt="Hindi flag" class="Language">
+                            <span>हिन्दी (Hindi)</span>
+                        </button>
+                        <button onclick="setLang('മലയാളം','/static/images/Language-icon.png')" role="menuitem"
+                            tabindex="-1">
+                            <img src="/static/images/Language-icon.png" alt="Malayalam flag" class="Language">
+                            <span>മലയാളം (Malayalam)</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="complete-profile-container">
+            <!-- Progress Indicator -->
+            <div class="progress-indicator">
+                <div class="progress-step completed">1</div>
+                <div class="progress-line completed"></div>
+                <div class="progress-step completed">2</div>
+                <div class="progress-line completed"></div>
+                <div class="progress-step active">3</div>
+            </div>
+
+            <!-- Profile Header -->
+            <div class="profile-header">
+                <h1 data-key="Complete Your Profile">Complete Your Profile</h1>
+                <p data-key="Help us personalize your farming experience by completing your profile">
+                    Help us personalize your farming experience by completing your profile
+                </p>
+            </div>
+
+            <!-- Profile Form -->
+            <form id="completeProfileForm" class="profile-form">
+                <!-- Personal Information -->
+                <div class="form-section">
+                    <h2 class="section-title" data-key="Personal Information">
+                        <i class="fa-solid fa-user"></i>
+                        Personal Information
+                    </h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone" data-key="Phone Number">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="+91 9876543210" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="location" data-key="Location">Location</label>
+                            <input type="text" id="location" placeholder="Village, State" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Farm Information -->
+                <div class="form-section">
+                    <h2 class="section-title" data-key="Farm Information">
+                        <i class="fa-solid fa-seedling"></i>
+                        Farm Information
+                    </h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="farmSize" data-key="Farm Size (Acres)">Farm Size (Acres)</label>
+                            <input type="number" id="farmSize" placeholder="5.2" step="0.1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="soilType" data-key="Soil Type">Soil Type</label>
+                            <select id="soilType" required>
+                                <option value="" data-key="Select Soil Type">Select Soil Type</option>
+                                <option value="Alluvial" data-key="Alluvial Soil">Alluvial Soil</option>
+                                <option value="Black" data-key="Black Soil">Black Soil</option>
+                                <option value="Red" data-key="Red Soil">Red Soil</option>
+                                <option value="Laterite" data-key="Laterite Soil">Laterite Soil</option>
+                                <option value="Mountain" data-key="Mountain Soil">Mountain Soil</option>
+                                <option value="Desert" data-key="Desert Soil">Desert Soil</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="primaryCrops" data-key="Primary Crops">Primary Crops</label>
+                            <input type="text" id="primaryCrops" placeholder="Wheat, Rice, Sugarcane" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="irrigationMethod" data-key="Irrigation Method">Irrigation Method</label>
+                            <select id="irrigationMethod" required>
+                                <option value="" data-key="Select Irrigation Method">Select Irrigation Method</option>
+                                <option value="Drip Irrigation" data-key="Drip Irrigation">Drip Irrigation</option>
+                                <option value="Sprinkler" data-key="Sprinkler">Sprinkler Irrigation</option>
+                                <option value="Flood" data-key="Flood">Flood Irrigation</option>
+                                <option value="Manual" data-key="Manual">Manual Watering</option>
+                                <option value="Rain-fed" data-key="Rain-fed">Rain-fed</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Level -->
+                <div class="form-section">
+                    <h2 class="section-title" data-key="Experience & Preferences">
+                        <i class="fa-solid fa-chart-line"></i>
+                        Experience & Preferences
+                    </h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="experience" data-key="Farming Experience">Farming Experience</label>
+                            <select id="experience" required>
+                                <option value="" data-key="Select Experience Level">Select Experience Level</option>
+                                <option value="Beginner" data-key="Beginner (0-2 years)">Beginner (0-2 years)</option>
+                                <option value="Intermediate" data-key="Intermediate (3-10 years)">Intermediate (3-10
+                                    years)</option>
+                                <option value="Advanced" data-key="Advanced (10+ years)">Advanced (10+ years)</option>
+                                <option value="Expert" data-key="Expert (20+ years)">Expert (20+ years)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="farmingType" data-key="Farming Type">Farming Type</label>
+                            <select id="farmingType" required>
+                                <option value="" data-key="Select Farming Type">Select Farming Type</option>
+                                <option value="Organic" data-key="Organic Farming">Organic Farming</option>
+                                <option value="Conventional" data-key="Conventional Farming">Conventional Farming
+                                </option>
+                                <option value="Mixed" data-key="Mixed Farming">Mixed Farming</option>
+                                <option value="Commercial" data-key="Commercial Farming">Commercial Farming</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="interests" data-key="Areas of Interest (Optional)">Areas of Interest
+                                (Optional)</label>
+                            <textarea id="interests" rows="3"
+                                placeholder="e.g., Pest management, Soil health, Weather forecasting, Market prices..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Section -->
+                <div class="submit-section">
+                    <button type="submit" class="btn-complete" id="completeBtn" data-key="Complete Profile">
+                        <i class="fa-solid fa-check"></i>
+                        Complete Profile
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Translation Script -->
+    <script>
+        // Translation strings
+        const translations = {
+            "English": {
+                "Complete Your Profile": "Complete Your Profile",
+                "Help us personalize your farming experience by completing your profile": "Help us personalize your farming experience by completing your profile",
+                "Personal Information": "Personal Information",
+                "Phone Number": "Phone Number",
+                "Location": "Location",
+                "Farm Information": "Farm Information",
+                "Farm Size (Acres)": "Farm Size (Acres)",
+                "Soil Type": "Soil Type",
+                "Select Soil Type": "Select Soil Type",
+                "Alluvial Soil": "Alluvial Soil",
+                "Black Soil": "Black Soil",
+                "Red Soil": "Red Soil",
+                "Laterite Soil": "Laterite Soil",
+                "Mountain Soil": "Mountain Soil",
+                "Desert Soil": "Desert Soil",
+                "Primary Crops": "Primary Crops",
+                "Irrigation Method": "Irrigation Method",
+                "Select Irrigation Method": "Select Irrigation Method",
+                "Drip Irrigation": "Drip Irrigation",
+                "Sprinkler": "Sprinkler Irrigation",
+                "Flood": "Flood Irrigation",
+                "Manual": "Manual Watering",
+                "Rain-fed": "Rain-fed",
+                "Experience & Preferences": "Experience & Preferences",
+                "Farming Experience": "Farming Experience",
+                "Select Experience Level": "Select Experience Level",
+                "Beginner (0-2 years)": "Beginner (0-2 years)",
+                "Intermediate (3-10 years)": "Intermediate (3-10 years)",
+                "Advanced (10+ years)": "Advanced (10+ years)",
+                "Expert (20+ years)": "Expert (20+ years)",
+                "Farming Type": "Farming Type",
+                "Select Farming Type": "Select Farming Type",
+                "Organic Farming": "Organic Farming",
+                "Conventional Farming": "Conventional Farming",
+                "Mixed Farming": "Mixed Farming",
+                "Commercial Farming": "Commercial Farming",
+                "Areas of Interest (Optional)": "Areas of Interest (Optional)",
+                "Complete Profile": "Complete Profile",
+                "e.g., Pest management, Soil health, Weather forecasting, Market prices...": "e.g., Pest management, Soil health, Weather forecasting, Market prices..."
+            },
+            "हिन्दी": {
+                "Complete Your Profile": "अपना प्रोफ़ाइल पूरा करें",
+                "Help us personalize your farming experience by completing your profile": "अपना प्रोफ़ाइल पूरा करके हमारी कृषि सेवा को आपके लिए व्यक्तिगत बनाएं",
+                "Personal Information": "व्यक्तिगत जानकारी",
+                "Phone Number": "फ़ोन नंबर",
+                "Location": "स्थान",
+                "Farm Information": "खेती की जानकारी",
+                "Farm Size (Acres)": "खेती का आकार (एकड़ में)",
+                "Soil Type": "मिट्टी का प्रकार",
+                "Select Soil Type": "मिट्टी का प्रकार चुनें",
+                "Alluvial Soil": "काली मिट्टी",
+                "Black Soil": "काली मिट्टी",
+                "Red Soil": "लाल मिट्टी",
+                "Laterite Soil": "लेटेराइट मिट्टी",
+                "Mountain Soil": "पर्वतीय मिट्टी",
+                "Desert Soil": "रेगिस्तानी मिट्टी",
+                "Primary Crops": "मुख्य फसलें",
+                "Irrigation Method": "सिंचाई विधि",
+                "Select Irrigation Method": "सिंचाई विधि चुनें",
+                "Drip Irrigation": "ड्रिप सिंचाई",
+                "Sprinkler": "स्प्रिंकलर सिंचाई",
+                "Flood": "बाढ़ सिंचाई",
+                "Manual": "हाथ से पानी देना",
+                "Rain-fed": "बारिश-निर्भर",
+                "Experience & Preferences": "अनुभव और प्राथमिकताएँ",
+                "Farming Experience": "खेती का अनुभव",
+                "Select Experience Level": "अनुभव स्तर चुनें",
+                "Beginner (0-2 years)": "शुरुआती (0-2 वर्ष)",
+                "Intermediate (3-10 years)": "मध्यम (3-10 वर्ष)",
+                "Advanced (10+ years)": "उन्नत (10+ वर्ष)",
+                "Expert (20+ years)": "विशेषज्ञ (20+ वर्ष)",
+                "Farming Type": "खेती का प्रकार",
+                "Select Farming Type": "खेती का प्रकार चुनें",
+                "Organic Farming": "जैविक खेती",
+                "Conventional Farming": "पारंपरिक खेती",
+                "Mixed Farming": "मिश्रित खेती",
+                "Commercial Farming": "वाणिज्यिक खेती",
+                "Areas of Interest (Optional)": "रुचि के क्षेत्र (वैकल्पिक)",
+                "Complete Profile": "प्रोफ़ाइल पूरा करें",
+                "e.g., Pest management, Soil health, Weather forecasting, Market prices...": "जैसे, कीट प्रबंधन, मिट्टी स्वास्थ्य, मौसम पूर्वानुमान, बाजार मूल्य..."
+            },
+            "മലയാളം": {
+                "Complete Your Profile": "നിങ്ങളുടെ പ്രൊഫൈൽ പൂർണ്ണമാക്കുക",
+                "Help us personalize your farming experience by completing your profile": "നിങ്ങളുടെ പ്രൊഫൈൽ പൂരിപ്പിച്ച് നിങ്ങളുടെ കർഷി അനുഭവം വ്യക്തിഗതമാക്കാൻ ഞങ്ങളെ സഹായിക്കുക",
+                "Personal Information": "വ്യക്തിഗത വിവരങ്ങൾ",
+                "Phone Number": "ഫോൺ നമ്പർ",
+                "Location": "സ്ഥാനം",
+                "Farm Information": "ഫാർം വിവരങ്ങൾ",
+                "Farm Size (Acres)": "ഫാർം വലുപ്പം (ഏക്കറുകളിൽ)",
+                "Soil Type": "മണ്ണിന്റെ തരം",
+                "Select Soil Type": "മണ്ണിന്റെ തരം തിരഞ്ഞെടുക്കുക",
+                "Alluvial Soil": "അല്ലുവിയൽ മണ്ണ്",
+                "Black Soil": "കറുത്ത മണ്ണ്",
+                "Red Soil": "ചുവപ്പ് മണ്ണ്",
+                "Laterite Soil": "ലാറ്ററൈറ്റ് മണ്ണ്",
+                "Mountain Soil": "പർവ്വത മണ്ണ്",
+                "Desert Soil": "മരുഭൂമിയിലെ മണ്ണ്",
+                "Primary Crops": "പ്രധാന വിളകൾ",
+                "Irrigation Method": "സിഞ്ചൈ രീതികൾ",
+                "Select Irrigation Method": "സിഞ്ചൈ രീതി തിരഞ്ഞെടുക്കുക",
+                "Drip Irrigation": "ഡ്രിപ്പ് സിഞ്ചൈ",
+                "Sprinkler": "സ്പിങ്ക്ലർ സിഞ്ചൈ",
+                "Flood": "പ്രളയ സിഞ്ചൈ",
+                "Manual": "കൈകൊണ്ട് വെള്ളം കൊടുക്കൽ",
+                "Rain-fed": "മഴയെ ആശ്രയിച്ചുള്ള",
+                "Experience & Preferences": "അനുഭവം & ഇഷ്ടങ്ങൾ",
+                "Farming Experience": "കർഷകാനുഭവം",
+                "Select Experience Level": "അനുഭവ നില തിരഞ്ഞെടുക്കുക",
+                "Beginner (0-2 years)": "ആരംഭകൻ (0-2 വർഷം)",
+                "Intermediate (3-10 years)": "ഇടത്തരം (3-10 വർഷം)",
+                "Advanced (10+ years)": "പ്രഗത്ഭൻ (10+ വർഷം)",
+                "Expert (20+ years)": "വിശേഷജ്ഞൻ (20+ വർഷം)",
+                "Farming Type": "കൃഷി തരം",
+                "Select Farming Type": "കൃഷി തരം തിരഞ്ഞെടുക്കുക",
+                "Organic Farming": "ഓർഗാനിക് കൃഷി",
+                "Conventional Farming": "സാമാന്യ കൃഷി",
+                "Mixed Farming": "മിശ്രിത കൃഷി",
+                "Commercial Farming": "വാണിജ്യ കൃഷി",
+                "Areas of Interest (Optional)": "ആരുളുകളുടെ മേഖലകൾ (ഐച്ഛികം)",
+                "Complete Profile": "പ്രൊഫൈൽ പൂരിപ്പിക്കുക",
+                "e.g., Pest management, Soil health, Weather forecasting, Market prices...": "ഉദാ., കീട നിയന്ത്രണം, മണ്ണ് ആരോഗ്യം, കാലാവസ്ഥ പ്രവചനം, വിപണി വിലകൾ..."
+            }
+        };
+
+        // Function to set language
+        function setLang(lang, flagPath) {
+            document.getElementById('selected-lang').innerHTML = `<img src="${flagPath}" class="Icon"> <span>${lang}</span>`;
+            const elements = document.querySelectorAll('h1, h2, label, p, button, textarea, select option');
+            elements.forEach(el => {
+                const text = el.getAttribute('data-key') || el.innerText.trim();
+                if (translations[lang][text]) {
+                    if (el.tagName.toLowerCase() === 'input' || el.tagName.toLowerCase() === 'textarea') {
+                        el.placeholder = translations[lang][text];
+                    } else {
+                        el.innerText = translations[lang][text];
+                    }
+                }
+            });
+        }
+
+        // Set data-key attributes for elements
+        document.querySelectorAll('h1, h2, p, label, button, textarea, select option').forEach(el => {
+            if (!el.getAttribute('data-key')) {
+                el.setAttribute('data-key', el.innerText.trim());
+            }
+        });
+    </script>
+
+</body>
+
+</html>

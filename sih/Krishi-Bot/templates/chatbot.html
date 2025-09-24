@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>कृषिBot - Chat Interface</title>
+    <link rel="shortcut icon" href="/static/images/Favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/chatbot.css">
+    <script src="/static/js/translations.js"></script>
+    <script src="/static/js/script.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav id="nav">
+            <a href="/" class="logo-link">
+                <img src="/static/images/logo.png" alt="कृषिBot Logo" class="Logo">
+            </a>
+
+            <!-- Mobile menu button -->
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div id="nav-cont" class="nav-content">
+                <ul id="header-ul">
+                    <li><a href="/" class="a-li">
+                            <img src="/static/images/Home-icon.png" alt="" aria-hidden="true">
+                            <span data-translate="home">Home</span>
+                        </a></li>
+                    <li><a href="/chatbot" class="a-li">
+                            <img src="/static/images/Query-icon.png" alt="" aria-hidden="true">
+                            <span data-translate="query">Query</span>
+                        </a></li>
+                    <li><a href="/profile" class="a-li">
+                            <img src="/static/images/Profile-icon.png" alt="" aria-hidden="true">
+                            <span data-translate="myProfile">My Profile</span>
+                        </a></li>
+                    <li><a href="/contact" class="a-li">
+                            <img src="/static/images/Call-icon.png" alt="" aria-hidden="true">
+                            <span data-translate="contact">Contact</span>
+                        </a></li>
+
+                    <li><a href="/help" class="a-li">
+                            <img src="/static/images/Query-icon.png" alt="" aria-hidden="true">
+                            <span data-translate="help">Help&Support</span>
+                        </a></li>
+                    <li class="user-menu">
+                        {% if user %}
+                        <div class="user-info">
+                            <a href="/profile" class="a-li user-link">
+                                <img src="/static/images/profile2-icon.png" alt="" aria-hidden="true">
+                                <span>{{ user.first_name }}</span>
+                            </a>
+                            <a href="/logout" class="a-li logout-link">
+                                <span data-translate="logout">Logout</span>
+                            </a>
+                        </div>
+                        {% else %}
+                        <a href="/login" class="a-li">
+                            <!-- <img src="/static/images/login-icon.png" alt="" aria-hidden="true"> -->
+                            <span data-translate="login">Login/SignUp</span>
+                        </a>
+                        {% endif %}
+                    </li>
+                </ul>
+                <div class="dropdown">
+                    <button class="dropbtn" aria-haspopup="true" aria-expanded="false" aria-label="Select language">
+                        <span id="selected-lang">
+                            <img src="/static/images/Englihs-icon.png" alt="English flag" class="Icon">
+                            <span>English</span>
+                        </span>
+                        <img src="/static/images/down-arrow.png" alt="Dropdown arrow" class="arrow">
+                    </button>
+                    <div class="dropdown-content" role="menu" aria-label="Language selection menu">
+                        <button onclick="setLang('English','/static/images/Englihs-icon.png')" role="menuitem"
+                            tabindex="-1">
+                            <img src="/static/images/Englihs-icon.png" alt="English flag" class="Language">
+                            <span>English</span>
+                        </button>
+                        <button onclick="setLang('हिन्दी','/static/images/Hindi-icon.png')" role="menuitem"
+                            tabindex="-1">
+                            <img src="/static/images/Hindi-icon.png" alt="Hindi flag" class="Language">
+                            <span>हिन्दी (Hindi)</span>
+                        </button>
+                        <button onclick="setLang('മലയാളം','/static/images/Language-icon.png')" role="menuitem"
+                            tabindex="-1">
+                            <img src="/static/images/Language-icon.png" alt="Malayalam flag" class="Language">
+                            <span>മലയാളം (Malayalam)</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="bot-icon">
+                <img src="/static/images/logo.png" alt="logo" style="height:30px;">
+            </div>
+            <div>
+                <h2 data-translate="chatbotTitle">KrishiBot — Your Farm Assistant</h2>
+                <div class="muted" data-translate="chatbotSubtitle">Crop guidance, pest help, soil tips — quick answers.
+                </div>
+            </div>
+            <div style="margin-left:auto; text-align:right;">
+                <div class="muted" data-translate="poweredBy">Powered by AI</div>
+                <div style="font-size:12px; color:var(--soil-brown);" data-translate="sustainableAdvice">Sustainable
+                    advice</div>
+            </div>
+        </div>
+
+        <div id="messages" class="chat-messages"></div>
+
+        <div class="chat-input">
+            <input id="textInput" data-translate="chatInputPlaceholder"
+                placeholder="Ask about crop care, irrigation, soil, pests..." autocomplete="off">
+            <button id="sendBtn" data-translate="sendButton">Send</button>
+        </div>
+    </div>
+
+    <script src="/static/js/chatbot.js"></script>
+</body>
+
+</html>

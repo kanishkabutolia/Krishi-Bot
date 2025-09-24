@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Subsidy Portal</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom right, #e8f5e9, #f1f8e9);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: #2e7d32;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .lang-select {
+            padding: 0.4rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-content h2 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #2e7d32;
+        }
+
+        .card-content p {
+            flex: 1;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-content a {
+            text-decoration: none;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            background: #66bb6a;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            transition: background 0.3s;
+        }
+
+        .card-content a:hover {
+            background: #388e3c;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #00480D;
+            padding: 20px;
+            color: white;
+            margin-top: auto;
+        }
+
+        footer>div:first-child {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .fd {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .fd1 {
+            width: 300px;
+        }
+
+        .fd1 img {
+            height: 3.5rem;
+        }
+
+        .fd1 p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .fd1 p img {
+            height: 1rem;
+            margin-right: 10px;
+        }
+
+        .fd h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .fd a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .fd a:hover {
+            color: #90EE90;
+        }
+
+        .fdd2 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 20px 0;
+            border-radius: 10px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .fdd2 h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .fdd2 p {
+            font-size: 14px;
+            max-width: 400px;
+        }
+
+        .fdd2 input {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            margin-right: 10px;
+            width: 250px;
+        }
+
+        .fdd2 button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background: #90EE90;
+            color: #00480D;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .fdd2 button:hover {
+            background: white;
+        }
+
+        #d {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        #p {
+            font-size: 14px;
+        }
+
+        .imgg {
+            height: 1.5rem;
+            margin-left: 15px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .imgg:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Animation */
+        .card {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s forwards;
+        }
+
+        .card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .card:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 id="title">Government Subsidies for Farmers</h1>
+        <select id="language" class="lang-select">
+            <option value="en">English</option>
+            <option value="hi">हिंदी</option>
+            <option value="ml">മലയാളം</option>
+        </select>
+    </header>
+
+    <main>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1600431521340-491eca880813?auto=format&fit=crop&w=800&q=60"
+                alt="Farmer Portal">
+            <div class="card-content">
+                <h2 id="sub1-title">Farmers’ Portal</h2>
+                <p id="sub1-desc">Central portal with details of government schemes, advisories, and subsidies for
+                    farmers.</p>
+                <a href="https://www.india.gov.in/farmers-portal" target="_blank" id="sub1-link">Visit</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1200&q=80"
+                alt="Kisan Suvidha">
+            <div class="card-content">
+                <h2 id="sub2-title">Kisan Suvidha</h2>
+                <p id="sub2-desc">Get subsidy details, scheme benefits, Aadhaar updates, and PM-KISAN status.</p>
+                <a href="https://kisansuvidha.gov.in/" target="_blank" id="sub2-link">Visit</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=800&q=60"
+                alt="Agri Mechanization">
+            <div class="card-content">
+                <h2 id="sub3-title">Agri Mechanization</h2>
+                <p id="sub3-desc">Check subsidy calculator, apply for farm machinery benefits, and track applications.
+                </p>
+                <a href="https://agrimachinery.nic.in/" target="_blank" id="sub3-link">Visit</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=60"
+                alt="NABARD">
+            <div class="card-content">
+                <h2 id="sub4-title">NABARD Subsidies</h2>
+                <p id="sub4-desc">Explore agricultural projects, financial support, and subsidy schemes by NABARD.</p>
+                <a href="https://www.nabard.org/" target="_blank" id="sub4-link">Visit</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div>
+            <div class="fd fd1">
+                <!-- <img src="/static/images/logo.png" alt="LOGO"> -->
+                <p>Empowering farmers with expert advice, real-time weather updates, and personalized agricultural
+                    solutions for better crop yields and sustainable farming.</p>
+                <p> <img src="/static/images/Call-icon.png" alt="Icon">+91 1800-Krishi-HELP</p>
+                <p> <img src="/static/images/mail-icon.png" alt="Icon">support@Krishihelp.in</p>
+                <p> <img src="/static/images/location-icon.png" alt="Icon">New Delhi, India</p>
+            </div>
+            <div class="fd fd2">
+                <h3>Services</h3>
+                <a href="#">Crop Advisory</a>
+                <a href="#">Weather Alerts</a>
+                <a href="#">Pest Control</a>
+                <a href="#">Market Prices</a>
+            </div>
+            <div class="fd fd3">
+                <h3>Support</h3>
+                <a href="#">Help Center</a>
+                <a href="#">Contact Us</a>
+                <a href="#">FAQs</a>
+                <a href="#">User Guide</a>
+            </div>
+            <div class="fd fd4">
+                <h3>Legal</h3>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+                <a href="#">Disclaimer</a>
+            </div>
+        </div>
+        <div class="fdd2">
+            <div>
+                <h3>Stay Updated</h3>
+                <p>Get the latest farming tips, weather alerts, and market updates delivered to your inbox.</p>
+            </div>
+            <div>
+                <input type="email" name="Email" id="Email" placeholder="Enter your Email">
+                <button>Subscribe</button>
+            </div>
+        </div>
+        <div id="d">
+            <p id="p">© 2025 कृषिBot. All rights reserved. | Developed for farmers, by farmers.</p>
+            <span>
+                <img class="imgg" src="/static/images/facebook-icon.png" alt="Facebook">
+                <img class="imgg" src="/static/images/twitter-icon.png" alt="Twitter">
+                <img class="imgg" src="/static/images/instagram-icon.png" alt="Instagram">
+                <img class="imgg" src="/static/images/youtube-icon.png" alt="Youtube">
+            </span>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                title: "Government Subsidies for Farmers",
+                sub1: { title: "Farmers’ Portal", desc: "Central portal with details of government schemes, advisories, and subsidies for farmers.", link: "Visit" },
+                sub2: { title: "Kisan Suvidha", desc: "Get subsidy details, scheme benefits, Aadhaar updates, and PM-KISAN status.", link: "Visit" },
+                sub3: { title: "Agri Mechanization", desc: "Check subsidy calculator, apply for farm machinery benefits, and track applications.", link: "Visit" },
+                sub4: { title: "NABARD Subsidies", desc: "Explore agricultural projects, financial support, and subsidy schemes by NABARD.", link: "Visit" }
+            },
+            hi: {
+                title: "किसानों के लिए सरकारी सब्सिडी",
+                sub1: { title: "किसान पोर्टल", desc: "सरकारी योजनाओं, सलाह और सब्सिडी की जानकारी।", link: "देखें" },
+                sub2: { title: "किसान सुविधा", desc: "सब्सिडी विवरण, लाभ, आधार अपडेट और पीएम-किसान स्थिति।", link: "देखें" },
+                sub3: { title: "कृषि मशीनीकरण", desc: "सब्सिडी कैलकुलेटर, कृषि मशीनरी के लिए आवेदन और ट्रैकिंग।", link: "देखें" },
+                sub4: { title: "नाबार्ड सब्सिडी", desc: "कृषि परियोजनाएं, वित्तीय सहायता और सब्सिडी योजनाएं।", link: "देखें" }
+            },
+            ml: {
+                title: "കർഷകർക്കുള്ള സർക്കാർ സബ്സിഡികൾ",
+                sub1: { title: "കർഷക പോർട്ടൽ", desc: "സർക്കാർ പദ്ധതികൾ, ഉപദേശങ്ങൾ, സബ്സിഡി വിവരങ്ങൾ.", link: "കാണുക" },
+                sub2: { title: "കിസാൻ സുഗന്ധ", desc: "സബ്സിഡി വിവരങ്ങൾ, ആധാർ അപ്ഡേറ്റുകൾ, PM-KISAN സ്ഥിതി.", link: "കാണുക" },
+                sub3: { title: "കൃഷി മെക്കാനൈസേഷൻ", desc: "സബ്സിഡി കാൽക്കുലേറ്റർ, യന്ത്രങ്ങളുടെ അപേക്ഷ, ട്രാക്കിംഗ്.", link: "കാണുക" },
+                sub4: { title: "നാബാർഡ് സബ്സിഡി", desc: "കൃഷി പദ്ധതികൾ, സാമ്പത്തിക സഹായം, സബ്സിഡി പദ്ധതികൾ.", link: "കാണുക" }
+            }
+        };
+
+        const langSelect = document.getElementById("language");
+
+        function updateLanguage(lang) {
+            document.getElementById("title").textContent = translations[lang].title;
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById(`sub${i}-title`).textContent = translations[lang][`sub${i}`].title;
+                document.getElementById(`sub${i}-desc`).textContent = translations[lang][`sub${i}`].desc;
+                document.getElementById(`sub${i}-link`).textContent = translations[lang][`sub${i}`].link;
+            }
+        }
+
+        langSelect.addEventListener("change", (e) => {
+            updateLanguage(e.target.value);
+        });
+    </script>
+</body>
+
+</html>

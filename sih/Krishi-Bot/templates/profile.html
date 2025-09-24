@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>कृषिBot - My Profile</title>
+    <link rel="shortcut icon" href="/static/images/Favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/script.js"></script>
+    <script src="/static/js/translations.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* Profile Page Specific Styles */
+        .profile-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .profile-header h1 {
+            font-family: 'Merriweather Sans', sans-serif;
+            font-weight: 800;
+            color: #00480D;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .profile-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Profile Card */
+        .profile-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            height: fit-content;
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            border: 4px solid #00480D;
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #00480D;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-title {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .verification-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #e8f5e8;
+            color: #00480D;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+
+        .profile-info {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .info-item i {
+            color: #00480D;
+            width: 16px;
+        }
+
+        .edit-profile-btn {
+            width: 100%;
+            background: #00480D;
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .edit-profile-btn:hover {
+            background: #003a0a;
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+            color: #00480D;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #00480D;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #00480D;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Farm Details */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .detail-label {
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .detail-value {
+            color: #333;
+            font-weight: 600;
+        }
+
+        /* Recent Queries */
+        .query-list {
+            list-style: none;
+        }
+
+        .query-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .query-item:last-child {
+            border-bottom: none;
+        }
+
+        .query-text {
+            flex: 1;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .query-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-resolved {
+            background: #d1f7e0;
+            color: #00480D;
+        }
+
+        .status-progress {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .view-all-btn {
+            width: 100%;
+            background: #f8f9fa;
+            border: 2px solid #00480D;
+            color: #00480D;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .view-all-btn:hover {
+            background: #00480D;
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .profile-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .profile-header h1 {
+                font-size: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .query-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .profile-container {
+                padding: 1rem 0.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-card,
+            .content-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav id="nav">
+            <a href="/" class="logo-link">
+                <img src="/static/images/logo.png" alt="कृषिBot Logo" class="Logo">
+            </a>
+            
+            <!-- Mobile menu button -->
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <div id="nav-cont" class="nav-content">
+                <ul id="header-ul">
+                    <li><a href="/" class="a-li">
+                            <img src="/static/images/Home-icon.png" alt="" aria-hidden="true">
+                            <span data-translate="home">Home</span>
+                        </a></li>
+                    <li><a href="/chatbot" class="a-li">
+                            <img src="/static/images/Query-icon.png" alt="" aria-hidden="true">
+                            <span data-translate="query">Query</span>
+                        </a></li>
+                    <li><a href="/profile" class="a-li">
+                            <img src="/static/images/Profile-icon.png" alt="" aria-hidden="true">
+                            <span data-translate="myProfile">My Profile</span>
+                        </a></li>
+                    <li><a href="/contact" class="a-li">
+                            <img src="/static/images/Call-icon.png" alt="" aria-hidden="true">
+                            <span data-translate="contact">Contact</span>
+                        </a></li>
+                    <li><a href="/help" class="a-li">
+                            <img src="/static/images/Query-icon.png" alt="" aria-hidden="true">
+                            <span data-translate="help">Help&Support</span>
+                        </a></li>
+                    <li class="user-menu">
+                        {% if user %}
+                        <div class="user-info">
+                            <a href="/profile" class="a-li user-link">
+                                <img src="/static/images/profile2-icon.png" alt="" aria-hidden="true">
+                                <span>{{ user.first_name }}</span>
+                            </a>
+                            <a href="/logout" class="a-li logout-link">
+                                <span data-translate="logout">Logout</span>
+                            </a>
+                        </div>
+                        {% else %}
+                        <a href="/login" class="a-li">
+                            <!-- <img src="/static/images/login-icon.png" alt="" aria-hidden="true"> -->
+                            <span data-translate="login">Login/SignUp</span>
+                        </a>
+                        {% endif %}
+                    </li>
+                </ul>
+                <div class="dropdown">
+                    <button class="dropbtn" aria-haspopup="true" aria-expanded="false" aria-label="Select language">
+                        <span id="selected-lang">
+                            <img src="/static/images/Englihs-icon.png" alt="English flag" class="Icon">
+                            <span>English</span>
+                        </span>
+                        <img src="/static/images/down-arrow.png" alt="Dropdown arrow" class="arrow">
+                    </button>
+                    <div class="dropdown-content" role="menu" aria-label="Language selection menu">
+                        <button onclick="setLang('English','/static/images/Englihs-icon.png')" role="menuitem" tabindex="-1">
+                            <img src="/static/images/Englihs-icon.png" alt="English flag" class="Language">
+                            <span>English</span>
+                        </button>
+                        <button onclick="setLang('हिन्दी','/static/images/Hindi-icon.png')" role="menuitem" tabindex="-1">
+                            <img src="/static/images/Hindi-icon.png" alt="Hindi flag" class="Language">
+                            <span>हिन्दी (Hindi)</span>
+                        </button>
+                        <button onclick="setLang('മലയാളം','/static/images/Language-icon.png')" role="menuitem" tabindex="-1">
+                            <img src="/static/images/Language-icon.png" alt="Malayalam flag" class="Language">
+                            <span>മലയാളം (Malayalam)</span>
+                    </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="profile-container">
+            <!-- Profile Header -->
+            <div class="profile-header">
+        <h1 data-translate="myProfile">My Profile</h1>
+        <p data-translate="profileSubtitle">Manage your farming profile and track your progress</p>
+            </div>
+
+            <!-- Profile Content -->
+            <div class="profile-content">
+                <!-- Profile Card -->
+                <div class="profile-card">
+                    <img src="/static/images/profile2.jpg" alt="Profile Picture" class="profile-avatar">
+                    <h2 class="profile-name">{{ profile.personal_info.name }}</h2>
+                    <p class="profile-title">{{ profile.farm_details.farming_type|default('Farmer', true) }}</p>
+                    
+                    <div class="verification-badge">
+                        <i class="fa-solid fa-leaf"></i>
+                        <span data-translate="verifiedFarmer">Verified Farmer</span>
+                    </div>
+
+                    <div class="profile-info">
+                        <div class="info-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>{{ profile.personal_info.location }}</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>{{ profile.personal_info.phone }}</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>{{ profile.personal_info.email }}</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fa-solid fa-calendar"></i>
+                            <span><span data-translate="memberSince">Member since</span> {{ profile.personal_info.member_since }}</span>
+                        </div>
+                    </div>
+
+                    <!-- <button class="edit-profile-btn" onclick="openEditProfileModal()">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span data-translate="editProfile">Edit Profile</span>
+                    </button> -->
+            </div>
+
+                <!-- Main Content -->
+                <div class="main-content">
+                <!-- Stats -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-seedling"></i>
+                            </div>
+                            <div class="stat-value">{{ profile.farm_details.farm_size|default('N/A', true) }}</div>
+                            <div class="stat-label" data-translate="farmArea">Farm Area</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-leaf"></i>
+                            </div>
+                            <div class="stat-value">{{ profile.farm_details.primary_crops|default('N/A', true)|truncate(10, true) }}</div>
+                            <div class="stat-label" data-translate="mainCrop">Main Crop</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-water"></i>
+                            </div>
+                            <div class="stat-value">{{ profile.farm_details.soil_type|default('N/A', true)|truncate(10, true) }}</div>
+                            <div class="stat-label" data-translate="soilType">Soil Type</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </div>
+                            <div class="stat-value">{{ profile.personal_info.member_since }}</div>
+                            <div class="stat-label" data-translate="memberSinceLabel">Member Since</div>
+                        </div>
+                    </div>
+
+                <!-- Farm Details -->
+                    <div class="content-section">
+                        <h2 class="section-title">
+                            <i class="fa-solid fa-seedling"></i>
+                            <span data-translate="farmDetails">Farm Details</span>
+                        </h2>
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <span class="detail-label" data-translate="farmSize">Farm Size</span>
+                            <span class="detail-value">{{ profile.farm_details.farm_size }}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label" data-translate="soilType">Soil Type</span>
+                            <span class="detail-value">{{ profile.farm_details.soil_type }}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label" data-translate="primaryCrops">Primary Crops</span>
+                            <span class="detail-value">{{ profile.farm_details.primary_crops }}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label" data-translate="irrigationMethod">Irrigation Method</span>
+                            <span class="detail-value">{{ profile.farm_details.irrigation_method }}</span>
+                        </div>
+                    </div>
+                    </div>
+
+                <!-- Future Queries Section -->
+                    <div class="content-section">
+                        <h2 class="section-title">
+                            <i class="fa-solid fa-info-circle"></i>
+                            <span data-translate="note">Note</span>
+                        </h2>
+                        <p style="color: #666; text-align: center; padding: 20px;" data-translate="queriesFeatureNote">
+                            The queries feature will be available soon. You'll be able to track all your farming-related questions and expert responses here.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </main>
+
+    <footer>
+        <div>
+            <div class="fd fd1">
+                <img src="/static/images/logo.png" alt="LOGO">
+                <p data-translate="empoweringFarmers">Empowering farmers with expert advice, real-time weather updates, and personalized agricultural
+                    solutions for better crop yields and sustainable farming.</p>
+                <p> <img src="/static/images/Call-icon.png" alt="Icon">+91 1800-Krishi-HELP</p>
+                <p> <img src="/static/images/mail-icon.png" alt="Icon">support@Krishihelp.in</p>
+                <p> <img src="/static/images/location-icon.png" alt="Icon">New Delhi, India</p>
+            </div>
+            <div class="fd fd2">
+                <h3 data-translate="services">Services</h3>
+                <a href="#" data-translate="cropAdvisory">Crop Advisory</a>
+                <a href="#" data-translate="weatherAlerts">Weather Alerts</a>
+                <a href="#" data-translate="pestControl">Pest Control</a>
+                <a href="#" data-translate="marketPrices">Market Prices</a>
+            </div>
+            <div class="fd fd3">
+                <h3 data-translate="support">Support</h3>
+                <a href="#" data-translate="helpCenter">Help Center</a>
+                <a href="#" data-translate="contactUs">Contact Us</a>
+                <a href="#" data-translate="faqs">FAQs</a>
+                <a href="#" data-translate="userGuide">User Guide</a>
+            </div>
+            <div class="fd fd4">
+                <h3 data-translate="legal">Legal</h3>
+                <a href="#" data-translate="privacy">Privacy Policy</a>
+                <a href="#" data-translate="terms">Terms of Service</a>
+                <a href="#" data-translate="cookie">Cookie Policy</a>
+                <a href="#" data-translate="disclaimer">Disclaimer</a>
+            </div>
+        </div>
+        <div class="fdd2">
+            <div>
+                <h3 data-translate="stayUpdated">Stay Updated</h3>
+                <p data-translate="emailUpdates">Get the latest farming tips, weather alerts, and market updates delivered to your inbox.</p>
+            </div>
+            <div>
+                <input type="email" name="Email" id="Email" data-translate="email" placeholder="Enter your Email">
+                <button data-translate="subscribe">Subscribe</button>
+            </div>
+        </div>
+        <div id="d">
+            <p id="p" data-translate="copyright">© 2025 कृषिBot. All rights reserved. | Developed for farmers, by farmers.</p>
+            <span>
+                <img class="imgg" src="/static/images/facebook-icon.png" alt="Facebook">
+                <img class="imgg" src="/static/images/twitter-icon.png" alt="Twitter">
+                <img class="imgg" src="/static/images/instagram-icon.png" alt="Instagram">
+                <img class="imgg" src="/static/images/youtube-icon.png" alt="Youtube">
+            </span>
+        </div>
+    </footer>
+
+    <script>
+        // Get the user's preferred language from localStorage or default to English
+        let currentLanguage = localStorage.getItem('preferredLanguage') || 'English';
+
+        function setLang(language, iconPath) {
+            // Update the language selector UI
+            document.getElementById("selected-lang").innerHTML =
+                `<img src="${iconPath}" class="Icon"> ${language}`;
+
+            // Save the language preference
+            localStorage.setItem('preferredLanguage', language);
+            currentLanguage = language;
+
+            // Update all translatable elements
+            updatePageContent();
+        }
+
+        function updatePageContent() {
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[currentLanguage] && translations[currentLanguage][key]) {
+                    // Handle different types of content updates
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = translations[currentLanguage][key];
+                    } else if (element.tagName === 'IMG') {
+                        element.alt = translations[currentLanguage][key];
+                    } else {
+                        element.textContent = translations[currentLanguage][key];
+                    }
+                }
+            });
+        }
+
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get saved language or default to English
+            const savedLanguage = localStorage.getItem('preferredLanguage') || 'English';
+            const iconMap = {
+                'English': '/static/images/Englihs-icon.png',
+                'हिन्दी': '/static/images/Hindi-icon.png',
+                'മലയാളം': '/static/images/Language-icon.png'
+            };
+
+            // Set initial language
+            setLang(savedLanguage, iconMap[savedLanguage]);
+        });
+
+        // Enhanced dropdown functionality for desktop and mobile
+        document.addEventListener('DOMContentLoaded', function () {
+            const dropdowns = document.querySelectorAll('.dropdown');
+
+            dropdowns.forEach(dropdown => {
+                const dropbtn = dropdown.querySelector('.dropbtn');
+                const dropdownContent = dropdown.querySelector('.dropdown-content');
+
+                if (dropbtn && dropdownContent) {
+                    // Toggle dropdown on click for both desktop and mobile
+                    dropbtn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        const isOpen = dropdownContent.classList.contains('show');
+
+                        // Close all other dropdowns
+                        document.querySelectorAll('.dropdown-content').forEach(content => {
+                            content.classList.remove('show');
+                        });
+                        document.querySelectorAll('.dropbtn').forEach(btn => {
+                            btn.setAttribute('aria-expanded', 'false');
+                        });
+
+                        // Toggle current dropdown
+                        if (!isOpen) {
+                            dropdownContent.classList.add('show');
+                            dropbtn.setAttribute('aria-expanded', 'true');
+                        } else {
+                            dropdownContent.classList.remove('show');
+                            dropbtn.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+
+                    // Close dropdown when clicking outside
+                    document.addEventListener('click', function (event) {
+                        if (!dropdown.contains(event.target)) {
+                            dropdownContent.classList.remove('show');
+                            dropbtn.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
