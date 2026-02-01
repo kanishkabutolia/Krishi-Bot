@@ -1,0 +1,259 @@
+/* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom right, #e8f5e9, #f1f8e9);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: #2e7d32;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .lang-select {
+            padding: 0.4rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-content h2 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #2e7d32;
+        }
+
+        .card-content p {
+            flex: 1;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-content a {
+            text-decoration: none;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            background: #66bb6a;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            transition: background 0.3s;
+        }
+
+        .card-content a:hover {
+            background: #388e3c;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #00480D;
+            padding: 20px;
+            color: white;
+            margin-top: auto;
+        }
+
+        footer>div:first-child {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .fd {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .fd1 {
+            width: 300px;
+        }
+
+        .fd1 img {
+            height: 3.5rem;
+        }
+
+        .fd1 p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .fd1 p img {
+            height: 1rem;
+            margin-right: 10px;
+        }
+
+        .fd h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .fd a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .fd a:hover {
+            color: #90EE90;
+        }
+
+        .fdd2 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 20px 0;
+            border-radius: 10px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .fdd2 h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .fdd2 p {
+            font-size: 14px;
+            max-width: 400px;
+        }
+
+        .fdd2 input {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            margin-right: 10px;
+            width: 250px;
+        }
+
+        .fdd2 button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background: #90EE90;
+            color: #00480D;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .fdd2 button:hover {
+            background: white;
+        }
+
+        #d {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        #p {
+            font-size: 14px;
+        }
+
+        .imgg {
+            height: 1.5rem;
+            margin-left: 15px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .imgg:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Animation */
+        .card {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s forwards;
+        }
+
+        .card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .card:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }

@@ -1,0 +1,181 @@
+.complete-profile-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .profile-header h1 {
+            font-family: 'Merriweather Sans', sans-serif;
+            font-weight: 800;
+            color: #00480D;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .profile-form {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #00480D;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.75rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00480D;
+            box-shadow: 0 0 0 3px rgba(0, 72, 13, 0.1);
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .submit-section {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e1e5e9;
+        }
+
+        .btn-complete {
+            background: #00480D;
+            color: white;
+            border: none;
+            padding: 1rem 3rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-complete:hover {
+            background: #003a0a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 72, 13, 0.3);
+        }
+
+        .btn-complete:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .progress-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .progress-step {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e1e5e9;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active {
+            background: #00480D;
+            color: white;
+        }
+
+        .progress-step.completed {
+            background: #28a745;
+            color: white;
+        }
+
+        .progress-line {
+            width: 60px;
+            height: 2px;
+            background: #e1e5e9;
+            margin: 0 0.5rem;
+            align-self: center;
+        }
+
+        .progress-line.completed {
+            background: #28a745;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+
+            .profile-header h1 {
+                font-size: 2rem;
+            }
+
+            .complete-profile-container {
+                padding: 1rem 0.5rem;
+            }
+
+            .profile-form {
+                padding: 1.5rem;
+            }
+        }

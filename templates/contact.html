@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>कृषिBot-AI-Powered Farmer Query Support & Advisory System</title>
+    <link rel="shortcut icon" href="/static/images/Favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="static/css/contact.css">
+    <!-- <script src="script.js"></script> -->
+    <style>
+        
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav id="nav">
+            <a href="/" class="logo-link">
+                <img src="/static/images/logo.png" alt="कृषिBot Logo" class="Logo">
+            </a>
+
+            <!-- Mobile menu button -->
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div id="nav-cont" class="nav-content">
+                <ul id="header-ul">
+                    <li><a href="/" class="a-li">
+                            <img src="/static/images/Home-icon.png" alt="" aria-hidden="true">
+                            <span data-translate="home">Home</span>
+                        </a></li>
+                    <li><a href="/chatbot" class="a-li">
+                            <img src="/static/images/Query-icon.png" alt="" aria-hidden="true">
+                            <span data-translate="query">Query</span>
+                        </a></li>
+                    <li><a href="/profile" class="a-li">
+                            <img src="/static/images/Profile-icon.png" alt="" aria-hidden="true">
+                            <span data-translate="myProfile">My Profile</span>
+                        </a></li>
+                    <li><a href="/contact" class="a-li">
+                            <img src="/static/images/Call-icon.png" alt="" aria-hidden="true">
+                            <span data-translate="contact">Contact</span>
+                        </a></li>
+                    <li><a href="/help" class="a-li">
+                            <img src="/static/images/Query-icon.png" alt="" aria-hidden="true">
+                            <span data-translate="help">Help&Support</span>
+                        </a></li>
+                    <li class="user-menu">
+                        {% if user %}
+                        <div class="user-info">
+                            <a href="/profile" class="a-li user-link">
+                                <img src="/static/images/profile2-icon.png" alt="" aria-hidden="true">
+                                <span>{{ user.first_name }}</span>
+                            </a>
+                            <a href="/logout" class="a-li logout-link">
+                                <span data-translate="logout">Logout</span>
+                            </a>
+                        </div>
+                        {% else %}
+                        <a href="/login" class="a-li">
+                            <!-- <img src="/static/images/login-icon.png" alt="" aria-hidden="true"> -->
+                            <span data-translate="login">Login/SignUp</span>
+                        </a>
+                        {% endif %}
+                    </li>
+                </ul>
+                <div class="dropdown">
+                    <button class="dropbtn" aria-haspopup="true" aria-expanded="false" aria-label="Select language">
+                        <span id="selected-lang">
+                            <img src="/static/images/Englihs-icon.png" alt="English flag" class="Icon">
+                            <span>English</span>
+                        </span>
+                        <img src="/static/images/down-arrow.png" alt="Dropdown arrow" class="arrow">
+                    </button>
+                    <div class="dropdown-content" role="menu" aria-label="Language selection menu">
+                        <button onclick="setLang('English','/static/images/Englihs-icon.png')" role="menuitem"
+                            tabindex="-1">
+                            <img src="/static/images/Englihs-icon.png" alt="English flag" class="Language">
+                            <span>English</span>
+                        </button>
+                        <button onclick="setLang('हिन्दी','/static/images/Hindi-icon.png')" role="menuitem"
+                            tabindex="-1">
+                            <img src="/static/images/Hindi-icon.png" alt="Hindi flag" class="Language">
+                            <span>हिन्दी (Hindi)</span>
+                        </button>
+                        <button onclick="setLang('മലയാളം','/static/images/Language-icon.png')" role="menuitem"
+                            tabindex="-1">
+                            <img src="/static/images/Language-icon.png" alt="Malayalam flag" class="Language">
+                            <span>മലയാളം (Malayalam)</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <h1 data-translate="contactUsTitle">Contact Us</h1>
+        <p data-translate="contactSubtitle">Need help? Have questions? We're here to support you on your farming journey</p>
+        <div class="div">
+            <div class="card">
+                <img src="/static/images/greencall-icon.png" alt="Phone">
+                <h3 data-translate="phoneSupport">Phone Support</h3>
+                <p data-translate="phoneSupportDesc">Speak directly with our agricultural experts</p>
+                <p class="p" data-translate="phoneNumber">+91 1800-कृषि-HELP (1800-3276-4357)</p>
+                <p class="p3" data-translate="phoneHours">Mon-Sat, 9 AM - 6 PM IST</p>
+            </div>
+            <div class="card">
+                <img src="/static/images/greenmail-icon.png" alt="Mail">
+                <h3 data-translate="emailSupport">Email Support</h3>
+                <p data-translate="emailSupportDesc">Send detailed queries with attachments</p>
+                <p class="p" data-translate="emailAddress">support@KrishiBot.in</p>
+                <p class="p3" data-translate="emailResponse">Replies within 4-6 hours</p>
+            </div>
+            <div class="card">
+                <img src="/static/images/ask-icon.png" alt="Chat-bubble">
+                <h3 data-translate="liveChat">Live Chat</h3>
+                <p data-translate="liveChatDesc">Get instant help from our AI assistant</p>
+                <p class="p" data-translate="liveChatAvailability">Available on all pages</p>
+                <p class="p3" data-translate="liveChatHours">24/7 Availability</p>
+            </div>
+            <div class="card">
+                <img src="/static/images/community-icon.png" alt="Community">
+                <h3 data-translate="communityForum">Community Forum</h3>
+                <p data-translate="communityForumDesc">Connect with fellow farmers</p>
+                <p class="p" data-translate="forumLink">forum.KrishiBot.in</p>
+                <p class="p3" data-translate="forumStatus">Always Active</p>
+            </div>
+        </div>
+    </main>
+    <script>
+        // Get the user's preferred language from localStorage or default to English
+let currentLanguage = localStorage.getItem('preferredLanguage') || 'English';
+
+function setLang(language, iconPath) {
+    // Update the language selector UI
+    document.getElementById("selected-lang").innerHTML =
+        `<img src="${iconPath}" class="Icon"> ${language}`;
+
+    // Save the language preference
+    localStorage.setItem('preferredLanguage', language);
+    currentLanguage = language;
+
+    // Update all translatable elements
+    updatePageContent();
+}
+
+function updatePageContent() {
+    const elements = document.querySelectorAll('[data-translate]');
+    elements.forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (translations[currentLanguage] && translations[currentLanguage][key]) {
+            // Handle different types of content updates
+            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                element.placeholder = translations[currentLanguage][key];
+            } else if (element.tagName === 'IMG') {
+                element.alt = translations[currentLanguage][key];
+            } else {
+                element.textContent = translations[currentLanguage][key];
+            }
+        }
+    });
+}
+
+// Initialize language on page load
+document.addEventListener('DOMContentLoaded', function () {
+    // Get saved language or default to English
+    const savedLanguage = localStorage.getItem('preferredLanguage') || 'English';
+    const iconMap = {
+        'English': '/static/images/Englihs-icon.png',
+        'हिन्दी': '/static/images/Hindi-icon.png',
+        'മലയാളം': '/static/images/Language-icon.png'
+    };
+
+    // Set initial language
+    setLang(savedLanguage, iconMap[savedLanguage]);
+});
+
+// Mobile menu functionality
+document.addEventListener('DOMContentLoaded', function () {
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const navContent = document.getElementById('nav-cont');
+
+    if (mobileMenuBtn && navContent) {
+        mobileMenuBtn.addEventListener('click', function () {
+            mobileMenuBtn.classList.toggle('active');
+            navContent.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('#header-ul .a-li');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                mobileMenuBtn.classList.remove('active');
+                navContent.classList.remove('active');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function (event) {
+            if (!mobileMenuBtn.contains(event.target) && !navContent.contains(event.target)) {
+                mobileMenuBtn.classList.remove('active');
+                navContent.classList.remove('active');
+            }
+        });
+
+        // Close mobile menu on window resize if screen becomes larger
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 768) {
+                mobileMenuBtn.classList.remove('active');
+                navContent.classList.remove('active');
+            }
+        });
+    }
+});
+
+// Enhanced dropdown functionality for desktop and mobile
+document.addEventListener('DOMContentLoaded', function () {
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    dropdowns.forEach(dropdown => {
+        const dropbtn = dropdown.querySelector('.dropbtn');
+        const dropdownContent = dropdown.querySelector('.dropdown-content');
+
+        if (dropbtn && dropdownContent) {
+            // Toggle dropdown on click for both desktop and mobile
+            dropbtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const isOpen = dropdownContent.classList.contains('show');
+
+                // Close all other dropdowns
+                document.querySelectorAll('.dropdown-content').forEach(content => {
+                    content.classList.remove('show');
+                });
+                document.querySelectorAll('.dropbtn').forEach(btn => {
+                    btn.setAttribute('aria-expanded', 'false');
+                });
+
+                // Toggle current dropdown
+                if (!isOpen) {
+                    dropdownContent.classList.add('show');
+                    dropbtn.setAttribute('aria-expanded', 'true');
+                } else {
+                    dropdownContent.classList.remove('show');
+                    dropbtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Handle keyboard navigation
+            dropbtn.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    dropbtn.click();
+                } else if (e.key === 'Escape') {
+                    dropdownContent.classList.remove('show');
+                    dropbtn.setAttribute('aria-expanded', 'false');
+                    dropbtn.focus();
+                }
+            });
+
+            // Handle keyboard navigation within dropdown
+            const dropdownButtons = dropdownContent.querySelectorAll('button');
+            dropdownButtons.forEach((button, index) => {
+                button.addEventListener('keydown', function (e) {
+                    if (e.key === 'ArrowDown') {
+                        e.preventDefault();
+                        const nextIndex = (index + 1) % dropdownButtons.length;
+                        dropdownButtons[nextIndex].focus();
+                    } else if (e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        const prevIndex = index === 0 ? dropdownButtons.length - 1 : index - 1;
+                        dropdownButtons[prevIndex].focus();
+                    } else if (e.key === 'Escape') {
+                        dropdownContent.classList.remove('show');
+                        dropbtn.setAttribute('aria-expanded', 'false');
+                        dropbtn.focus();
+                    }
+                });
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function (event) {
+                if (!dropdown.contains(event.target)) {
+                    dropdownContent.classList.remove('show');
+                    dropbtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Close dropdown on window resize
+            window.addEventListener('resize', function () {
+                dropdownContent.classList.remove('show');
+                dropbtn.setAttribute('aria-expanded', 'false');
+            });
+        }
+    });
+});
+    </script>
+    <script src="/static/js/translations.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>कृषिBot - Help & Support</title>
+    <link rel="shortcut icon" href="/static/images/Favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/script.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+
+        h1.section-title,
+        h2.fw-bold {
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Rounded cards */
+        .card-rounded {
+            border-radius: 12px !important;
+        }
+
+        /* FAQ accordion buttons rounded */
+        .accordion-button {
+            border-radius: 8px;
+        }
+
+        /* FAQ search bar rounded */
+        .faq-search .form-control {
+            border-radius: 0.5rem 0 0 0.5rem;
+        }
+
+        .faq-search .btn {
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+
+        /* Resource Boxes hover */
+        .resource-box {
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .resource-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Buttons in FAQ Categories */
+        .faq-btn {
+            background-color: rgba(229, 225, 225, 0.85);
+            color: black;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .faq-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Contact buttons hover */
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Status badges */
+        .badge-pending {
+            background-color: #ffc107;
+            color: #212529;
+        }
+
+        .badge-answered {
+            background-color: #28a745;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav id="nav">
+            <a href="/" class="logo-link">
+                <img src="/static/images/logo.png" alt="कृषिBot Logo" class="Logo">
+            </a>
+
+            <!-- Mobile menu button -->
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div id="nav-cont" class="nav-content">
+                <ul id="header-ul">
+                    <li><a href="/" class="a-li">
+                            <img src="/static/images/Home-icon.png" alt="" aria-hidden="true">
+                            <span data-translate="home">Home</span>
+                        </a></li>
+                    <li><a href="/chatbot" class="a-li">
+                            <img src="/static/images/Query-icon.png" alt="" aria-hidden="true">
+                            <span data-translate="query">Query</span>
+                        </a></li>
+                    <li><a href="/profile" class="a-li">
+                            <img src="/static/images/Profile-icon.png" alt="" aria-hidden="true">
+                            <span data-translate="myProfile">My Profile</span>
+                        </a></li>
+                    <li><a href="/contact" class="a-li">
+                            <img src="/static/images/Call-icon.png" alt="" aria-hidden="true">
+                            <span data-translate="contact">Contact</span>
+                        </a></li>
+                    <li><a href="/help" class="a-li">
+                            <img src="/static/images/Query-icon.png" alt="" aria-hidden="true">
+                            <span data-translate="help">Help&Support</span>
+                        </a></li>
+                    <li class="user-menu">
+                        {% if user %}
+                        <div class="user-info">
+                            <a href="/profile" class="a-li user-link">
+                                <img src="/static/images/profile2-icon.png" alt="" aria-hidden="true">
+                                <span>{{ user.first_name }}</span>
+                            </a>
+                            <a href="/logout" class="a-li logout-link">
+                                <span data-translate="logout">Logout</span>
+                            </a>
+                        </div>
+                        {% else %}
+                        <a href="/login" class="a-li">
+                            <!-- <img src="/static/images/login-icon.png" alt="" aria-hidden="true"> -->
+                            <span data-translate="login">Login/SignUp</span>
+                        </a>
+                        {% endif %}
+                    </li>
+                </ul>
+                <div class="dropdown">
+                    <button class="dropbtn" aria-haspopup="true" aria-expanded="false" aria-label="Select language">
+                        <span id="selected-lang">
+                            <img src="/static/images/Englihs-icon.png" alt="English flag" class="Icon">
+                            <span>English</span>
+                        </span>
+                        <img src="/static/images/down-arrow.png" alt="Dropdown arrow" class="arrow">
+                    </button>
+                    <div class="dropdown-content" role="menu" aria-label="Language selection menu">
+                        <button onclick="setLang('English','/static/images/Englihs-icon.png')" role="menuitem"
+                            tabindex="-1">
+                            <img src="/static/images/Englihs-icon.png" alt="English flag" class="Language">
+                            <span>English</span>
+                        </button>
+                        <button onclick="setLang('हिन्दी','/static/images/Hindi-icon.png')" role="menuitem"
+                            tabindex="-1">
+                            <img src="/static/images/Hindi-icon.png" alt="Hindi flag" class="Language">
+                            <span>हिन्दी (Hindi)</span>
+                        </button>
+                        <button onclick="setLang('മലയാളം','/static/images/Language-icon.png')" role="menuitem"
+                            tabindex="-1">
+                            <img src="/static/images/Language-icon.png" alt="Malayalam flag" class="Language">
+                            <span>മലയാളം (Malayalam)</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Header -->
+    <main class="help">
+        <div class="container text-center my-5">
+            <h1 class="mb-4 fw-bold" data-translate="helpSupportTitle">Help and Support</h1>
+            <p class="lead" data-translate="helpSupportSubtitle">Find answers to common questions and learn how to make the most of Krishibot.</p>
+        </div>
+    </main>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+        <div class="row g-4">
+            <!-- Left Column: FAQ + My Queries (70%) -->
+            <div class="col-lg-8 d-flex flex-column gap-3">
+
+                <!-- FAQ Section Card -->
+                <div class="p-4 bg-white border rounded shadow-sm">
+                    <h2 class="fw-bold mb-3" data-translate="faqTitle">Frequently Asked Questions</h2>
+
+                    <!-- Search Bar -->
+                    <div class="faq-search mb-3">
+                        <div class="input-group">
+                            <input id="faqSearch" type="text" class="form-control" placeholder="Search FAQs..." data-translate="faqSearchPlaceholder">
+                            <button class="btn btn-success"><i class="bi bi-search"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Accordion -->
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item card-rounded">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq1" data-translate="faq1Q">
+                                    How to manage crop irrigation?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body" data-translate="faq1A">You can manage crop irrigation by setting schedules based on
+                                    crop type and weather conditions.</div>
+                            </div>
+                        </div>
+                        <div class="accordion-item card-rounded">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq2" data-translate="faq2Q">
+                                    How long does it take for a query to be answered?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body" data-translate="faq2A">Most queries are answered within 2-4 business hours. Complex
+                                    queries may take up to 24 hours. Emergency queries are escalated for faster
+                                    response.</div>
+                            </div>
+                        </div>
+                        <div class="accordion-item card-rounded">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq3" data-translate="faq3Q">
+                                    How to track my queries history?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body" data-translate="faq3A">You can view all your queries under 'My Queries' section
+                                    with their status.</div>
+                            </div>
+                        </div>
+                        <div class="accordion-item card-rounded">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq4" data-translate="faq4Q">
+                                    Is Krishibot free to use?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body" data-translate="faq4A">Basic features of Krishibot are free. Premium features like
+                                    soil report require a subscription.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- My Queries Section Card -->
+                <div class="p-4 bg-white border rounded shadow-sm">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h2 class="fw-bold mb-0" data-translate="myQueries">My Queries</h2>
+                        <button class="btn btn-success d-flex align-items-center gap-1" data-bs-toggle="modal"
+                            data-bs-target="#addQueryModal" data-translate="addQueryBtn">
+                            <i class="bi bi-plus-lg"></i> Add Query
+                        </button>
+                    </div>
+
+                    <!-- Search Bar with Filter -->
+                    <div class="d-flex mb-3 gap-2">
+                        <input id="querySearch" type="text" class="form-control" placeholder="Search your queries..." data-translate="searchyourqueries">
+                        <select id="queryFilter" class="form-select filter-select">
+                            <option value="all" data-translate="filterAll">All</option>
+                            <option value="answered" data-translate="filterAnswered">Answered</option>
+                            <option value="pending" data-translate="filterPending">Pending</option>
+                        </select>
+                        <button class="btn btn-success"><i class="bi bi-search"></i></button>
+                    </div>
+
+                    <!-- Queries List -->
+                    <div class="list-group" id="queriesList">
+                        <div class="list-group-item list-group-item-action flex-column align-items-start query-item fade-in"
+                            data-status="answered">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1 fw-bold" data-translate="query1">Query 1: How to increase wheat yield?</h6>
+                                <span class="badge badge-answered" data-translate="answered">Answered</span>
+                            </div>
+                            <p class="mb-1" data-translate="ans1">Tips and best practices for wheat crop yield improvement.</p>
+                        </div>
+                        <div class="list-group-item list-group-item-action flex-column align-items-start query-item fade-in"
+                            data-status="pending">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1 fw-bold" data-translate="query2">Query 2: Best irrigation schedule?</h6>
+                                <span class="badge badge-pending" data-translate="pending">Pending</span>
+                            </div>
+                            <p class="mb-1" data-translate="ans2">Looking for optimal irrigation methods for different crops.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Column: Boxes (30%) -->
+            <div class="col-lg-4 d-flex flex-column gap-3">
+                <!-- FAQ Categories Box -->
+                <div class="p-3 bg-light border rounded text-center flex-fill">
+                    <h5 class="mb-3 fw-bold" data-translate="faqCategories">FAQ Categories</h5>
+                    <div class="d-grid gap-2" style="grid-template-columns: repeat(2, 1fr);">
+                        <button class="faq-btn" data-translate="faqGettingStarted">Getting Started</button>
+                        <button class="faq-btn" data-translate="faqResponseTimes">Response Times</button>
+                        <button class="faq-btn" data-translate="faqQueryTypes">Query Types</button>
+                        <button class="faq-btn" data-translate="faqPricing">Pricing</button>
+                    </div>
+                </div>
+
+                <!-- Help Resources Box -->
+                <div class="p-3 bg-light border rounded text-center flex-fill">
+                    <h5 class="mb-3 fw-bold" data-translate="helpResources">Help Resources</h5>
+                    <div class="d-flex flex-column gap-3">
+                        <div class="p-3 border border-dark rounded text-center bg-white shadow-sm resource-box">
+                            <h6 class="fw-bold" data-translate="helpRes1Title">Getting Started with Krishibot</h6>
+                            <p class="mb-0" data-translate="helpRes1Desc">Complete guide to using the platform efficiently</p>
+                        </div>
+                        <div class="p-3 border border-dark rounded text-center bg-white shadow-sm resource-box">
+                            <h6 class="fw-bold" data-translate="helpRes2Title">Crop Disease Identification Guide</h6>
+                            <p class="mb-0" data-translate="helpRes2Desc">Visual guide to common crop diseases and treatments</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Still Need Help Box -->
+                <div class="p-3 bg-light border rounded text-center flex-fill">
+                    <h5 class="mb-3 fw-bold" data-translate="stillNeedHelp">Still Need Help?</h5>
+                    <p class="mb-3" data-translate="contactSupport">Contact our support team directly:</p>
+                    <div class="d-flex flex-column gap-2 align-items-center">
+                        <a href="tel:+911234567890"
+                            class="btn btn-outline-dark w-75 d-flex align-items-center justify-content-center gap-2 contact-btn">
+                            <i class="bi bi-telephone-fill"></i> +91 12345 67890
+                        </a>
+                        <a href="mailto:support@krishibot.com"
+                            class="btn btn-outline-dark w-75 d-flex align-items-center justify-content-center gap-2 contact-btn">
+                            <i class="bi bi-envelope-fill"></i> support@krishibot.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add Query Modal -->
+    <div class="modal fade" id="addQueryModal" tabindex="-1" aria-labelledby="addQueryModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="addQueryModalLabel" data-translate="addNewQuery">Add New Query</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addQueryForm">
+                        <div class="mb-3">
+                            <label for="queryTitle" class="form-label" data-translate="queryTitle">Query Title</label>
+                            <input type="text" class="form-control" id="queryTitle" placeholder="Enter your query title" data-translate="queryTitlePlaceholder2"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="queryDescription" class="form-label" data-translate="queryDescription">Description</label>
+                            <textarea class="form-control" id="queryDescription" rows="3"
+                                placeholder="Enter query description" required data-translate="queryDescriptionPlaceholder"></textarea>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal" data-translate="cancel">Cancel</button>
+                            <button type="submit" class="btn btn-success" data-translate="submitQuery">Add Query</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        let currentLanguage = localStorage.getItem('preferredLanguage') || 'English';
+
+        function setLang(language, iconPath) {
+            // Update the language selector UI
+            document.getElementById("selected-lang").innerHTML =
+                `<img src="${iconPath}" class="Icon"> ${language}`;
+
+            // Save the language preference
+            localStorage.setItem('preferredLanguage', language);
+            currentLanguage = language;
+
+            // Update all translatable elements
+            updatePageContent();
+        }
+
+        function updatePageContent() {
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[currentLanguage] && translations[currentLanguage][key]) {
+                    // Handle different types of content updates
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = translations[currentLanguage][key];
+                    } else if (element.tagName === 'IMG') {
+                        element.alt = translations[currentLanguage][key];
+                    } else {
+                        element.textContent = translations[currentLanguage][key];
+                    }
+                }
+            });
+        }
+
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get saved language or default to English
+            const savedLanguage = localStorage.getItem('preferredLanguage') || 'English';
+            const iconMap = {
+                'English': '/static/images/Englihs-icon.png',
+                'हिन्दी': '/static/images/Hindi-icon.png',
+                'മലയാളം': '/static/images/Language-icon.png'
+            };
+
+            // Set initial language
+            setLang(savedLanguage, iconMap[savedLanguage]);
+        });
+        // FAQ search
+        document.getElementById('faqSearch').addEventListener('input', function () {
+            const query = this.value.toLowerCase();
+            document.querySelectorAll('#faqAccordion .accordion-item').forEach(faq => {
+                faq.style.display = faq.innerText.toLowerCase().includes(query) ? "block" : "none";
+            });
+        });
+
+        // Queries: add new query
+        const queriesList = document.getElementById('queriesList');
+        const queryForm = document.getElementById('addQueryForm');
+
+        function getNextQueryNumber() {
+            return queriesList.querySelectorAll('.query-item').length + 1;
+        }
+
+        queryForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const title = document.getElementById('queryTitle').value.trim();
+            const description = document.getElementById('queryDescription').value.trim();
+            if (!title || !description) return;
+
+            const number = getNextQueryNumber();
+            const div = document.createElement('div');
+            div.className = 'list-group-item list-group-item-action flex-column align-items-start query-item fade-in';
+            div.dataset.status = 'pending';
+            div.innerHTML = `
+                <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1 fw-bold">Query ${number}: ${title}</h6>
+                    <span class="badge badge-pending">Pending</span>
+                </div>
+                <p class="mb-1">${description}</p>
+                `;
+            queriesList.appendChild(div);
+            queryForm.reset();
+            bootstrap.Modal.getInstance(document.getElementById('addQueryModal')).hide();
+            filterQueries(); // update visibility
+        });
+
+        // Queries search & filter
+        const querySearch = document.getElementById('querySearch');
+        const queryFilter = document.getElementById('queryFilter');
+
+        function filterQueries() {
+            const searchText = querySearch.value.toLowerCase();
+            const filterValue = queryFilter.value.toLowerCase();
+            document.querySelectorAll('.query-item').forEach(query => {
+                const text = query.innerText.toLowerCase();
+                const status = query.dataset.status.toLowerCase();
+                query.style.display = (text.includes(searchText) && (filterValue === 'all' || filterValue === status)) ? "block" : "none";
+            });
+        }
+
+        querySearch.addEventListener('input', filterQueries);
+        queryFilter.addEventListener('change', filterQueries);
+    </script>
+    <script src="/static/js/translations.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KrishiBot - Login</title>
+
+    <!-- Fav/images/icon -->
+    <link rel="/images/icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
+    <link rel="shortcut /images/icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap /images/icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-/images/icons@1.11.3/font/bootstrap-/images/icons.min.css">
+
+    <style>
+        body {
+            background-color: #f5f5f5;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .login-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .form-control {
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+        }
+
+        .btn-login {
+            background-color: #1F4224;
+            color: white;
+            padding: 0.75rem;
+            border-radius: 8px;
+            width: 100%;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: #2a5830;
+            color: white;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-floating>label {
+            padding: 0.75rem 1rem;
+        }
+
+        .input-group-text {
+            background-color: transparent;
+            border-left: none;
+            cursor: pointer;
+        }
+
+        .form-control:focus {
+            border-color: #1F4224;
+            box-shadow: 0 0 0 0.25rem rgba(31, 66, 36, 0.25);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark shadow" style="background-color: #1F4224;">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="/">
+                <img src="/static/images/logo.png" alt="KrishiBot Logo" height="50">
+            </a>
+            <div class="dropdown">
+                <button class="btn btn-outline-light dropdown-toggle" type="button" id="languageDropdown"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-globe"></i> Language
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                    <li><button class="dropdown-item" onclick="changeLanguage('en')">English</button></li>
+                    <li><button class="dropdown-item" onclick="changeLanguage('hi')">हिंदी</button></li>
+                    <li><button class="dropdown-item" onclick="changeLanguage('ml')">മലയാളം</button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Container -->
+    <div class="login-container">
+        <div class="login-card">
+            <h2 class="text-center mb-4 fw-bold">Welcome to KrishiBot</h2>
+
+            <form id="loginForm">
+                <div class="mb-4">
+                    <div class="form-floating">
+                        <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+                        <label for="email"><i class="bi bi-envelope me-2"></i>Email address</label>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <div class="form-floating">
+                        <input type="password" class="form-control" id="password" placeholder="Password" required>
+                        <label for="password"><i class="bi bi-lock me-2"></i>Password</label>
+                    </div>
+                </div>
+
+                <div class="mb-4 form-check">
+                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                </div>
+
+                <button type="submit" class="btn btn-login mb-3">Login</button>
+
+                <div class="text-center">
+                    <!-- <a href="#" class="text-decoration-none text-muted">Forgot password?</a> -->
+                    <hr>
+                    <p class="mb-0">Don't have an account? <a href="/signup" class="text-decoration-none"
+                            style="color: #1F4224;">Sign up</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Form submission handler
+        document.getElementById('loginForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const formData = {
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value
+            };
+
+            try {
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    window.location.href = data.redirect;
+                } else {
+                    alert(data.message || 'Login failed. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred during login. Please try again.');
+            }
+        });
+
+        // Language translations
+        const translations = {
+            en: {
+                welcome: "Welcome to KrishiBot",
+                email: "Email address",
+                password: "Password",
+                rememberMe: "Remember me",
+                login: "Login",
+                noAccount: "Don't have an account?",
+                signUp: "Sign up"
+            },
+            hi: {
+                welcome: "कृषिबॉट में आपका स्वागत है",
+                email: "ईमेल पता",
+                password: "पासवर्ड",
+                rememberMe: "मुझे याद रखें",
+                login: "लॉग इन करें",
+                noAccount: "खाता नहीं है?",
+                signUp: "साइन अप करें"
+            },
+            ml: {
+                welcome: "കൃഷിബോട്ടിലേക്ക് സ്വാഗതം",
+                email: "ഇമെയിൽ വിലാസം",
+                password: "പാസ്‌വേഡ്",
+                rememberMe: "എന്നെ ഓർക്കുക",
+                login: "ലോഗിൻ",
+                noAccount: "അക്കൗണ്ട് ഇല്ലേ?",
+                signUp: "സൈൻ അപ്പ്"
+            }
+        };
+
+        // Change language function
+        function changeLanguage(lang) {
+            const elements = {
+                welcome: document.querySelector('h2.text-center'),
+                email: document.querySelector('label[for="email"]'),
+                password: document.querySelector('label[for="password"]'),
+                rememberMe: document.querySelector('label[for="rememberMe"]'),
+                login: document.querySelector('.btn-login'),
+                noAccount: document.querySelector('.text-center p'),
+                signUp: document.querySelector('.text-center p a')
+            };
+
+            const texts = translations[lang];
+            elements.welcome.textContent = texts.welcome;
+            elements.email.innerHTML = '<i class="bi bi-envelope me-2"></i>' + texts.email;
+            elements.password.innerHTML = '<i class="bi bi-lock me-2"></i>' + texts.password;
+            elements.rememberMe.textContent = texts.rememberMe;
+            elements.login.textContent = texts.login;
+            elements.noAccount.innerHTML = texts.noAccount + ' <a href="/signup" class="text-decoration-none" style="color: #1F4224;">' + texts.signUp + '</a>';
+
+            // Update the language button text
+            document.getElementById('languageDropdown').innerHTML = '<i class="bi bi-globe"></i> ' +
+                (lang === 'en' ? 'Language' : lang === 'hi' ? 'भाषा' : 'ഭാഷ');
+
+            // Store the selected language
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+
+        // Set initial language based on stored preference or default to English
+        document.addEventListener('DOMContentLoaded', function () {
+            const storedLang = localStorage.getItem('preferredLanguage') || 'en';
+            changeLanguage(storedLang);
+        });
+    </script>
+</body>
+
+</html>
